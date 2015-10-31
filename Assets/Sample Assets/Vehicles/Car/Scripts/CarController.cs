@@ -2,6 +2,17 @@
 
 public class CarController : MonoBehaviour
 {
+	void OnTriggerEnter(Collider other) 
+	{
+		if (other.gameObject.CompareTag ("Pick Up"))
+		{
+			other.gameObject.SetActive (false);
+		}
+		if(other.gameObject.CompareTag ("Collider"))
+		{
+			Debug.Log ("Collision avec un mur détectée");
+		}
+	}
 
 	// This car component is designed to be used on a gameobject which has wheels attached.
 	// The wheels must be child objects, and each have a Wheel script attached, and a WheelCollider component.
