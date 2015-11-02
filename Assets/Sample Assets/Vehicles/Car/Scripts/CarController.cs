@@ -28,6 +28,8 @@ public class CarController : MonoBehaviour
     [SerializeField] private Advanced advanced;                                     // container for the advanced setting which will expose as a foldout in the inspector
 	[SerializeField] bool preserveDirectionWhileInAir = false;                      // flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
 
+	private int stylePoint = 0;									// Score increase by special drive
+
     [System.Serializable]
     public class Advanced                                                           // the advanced settings for the car controller
     {
@@ -167,7 +169,7 @@ public class CarController : MonoBehaviour
         ApplyDownforce ();
 		CalculateRevs();
 		PreserveDirectionInAir();
-
+		AddStylePoints();
 	}
 
 	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)
@@ -313,6 +315,14 @@ public class CarController : MonoBehaviour
 		}
 	}
 
+	void AddStylePoints ()
+	{
+		// Add style point when jumping
+		if (!anyOnGround) {
+			stylePoint++;
+		}
+	}
+
 	// simple function to add a curved bias towards 1 for a value in the 0-1 range
     float CurveFactor (float factor)
     {
@@ -372,5 +382,10 @@ public class CarController : MonoBehaviour
 	public void Reset()
 	{
 		immobilized = false;
+	}
+
+	void OnGUI() {
+		if(GetComponent<CarUserControlMP>() != null)
+			GUI.Label(new Rect(5, 200, 300, 250), "Style Points : " + stylePoint);
 	}
 }
