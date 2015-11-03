@@ -9630,7 +9630,6 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustRubberbanding: 1.5
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -10645,6 +10644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _carContainer: {fileID: 1158375330}
   _announcement: {fileID: 438218563}
+  adjustRubberbanding: 1.5
   _timeToStart: 3
   _endCountdown: 5
 --- !u!114 &557694393
@@ -20504,7 +20504,6 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustRubberbanding: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -24085,7 +24084,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1158375331}
-  - 114: {fileID: 1158375332}
   m_Layer: 0
   m_Name: Cars
   m_TagString: Untagged
@@ -24113,17 +24111,6 @@ Transform:
   - {fileID: 981142453}
   m_Father: {fileID: 0}
   m_RootOrder: 7
---- !u!114 &1158375332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1158375330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 607a9b4e4bd34e34cbf2173541d4931a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1161015890
 Prefab:
   m_ObjectHideFlags: 0
@@ -29551,7 +29538,6 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustRubberbanding: 1.5
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -34107,7 +34093,6 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustRubberbanding: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -38297,7 +38282,6 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustRubberbanding: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -41362,7 +41346,6 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustRubberbanding: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -42649,7 +42632,6 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustRubberbanding: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -43875,7 +43857,6 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustRubberbanding: 1.5
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
