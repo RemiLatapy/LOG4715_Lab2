@@ -94,10 +94,10 @@ public class CheckpointManager : MonoBehaviour
 			{
 				carData.checkPoint = checkPointIndex;
 				carData.passageOrder = passageOrder;
-				if(IsPlayer(car)) {
-					Debug.Log(car.name + " " + carData.lap + " " + carData.checkPoint + " " + carData.passageOrder);
-					Debug.Log(car.name + " " + car.rank + " score = " + carData.Score);
-				}
+//				if(IsPlayer(car)) {
+//					Debug.Log(car.name + " " + carData.lap + " " + carData.checkPoint + " " + carData.passageOrder);
+//					Debug.Log(car.name + " " + car.rank + " score = " + carData.Score);
+//				}
 			}
 		}
 
