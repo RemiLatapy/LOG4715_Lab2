@@ -36,13 +36,17 @@ public class CarController : MonoBehaviour
     [SerializeField] private float minTorque = 10;                                  // the minimum torque of the engine
     [SerializeField] private float brakePower = 40;                                 // how powerful the brakes are at stopping the car
     
-	[SerializeField] public int rank; 
+	public int rank;																// rank of the car
+	private int numberOfCars;														// number of cars in the race
 
 	[SerializeField] private float adjustCentreOfMass = 0.25f;                      // vertical offset for the centre of mass
-    [SerializeField] private Advanced advanced;                                     // container for the advanced setting which will expose as a foldout in the inspector
 	[SerializeField] bool preserveDirectionWhileInAir = false;                      // flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
 
-	private int stylePoint = 0;									// Score increase by special drive
+	private int stylePoint = 0;														// Score increase by special drive
+
+	private float rubberbandingFactor = 1;											// Factor apply to increase or decrease speed
+
+	[SerializeField] private Advanced advanced;                                     // container for the advanced setting which will expose as a foldout in the inspector
 
     [System.Serializable]
     public class Advanced                                                           // the advanced settings for the car controller
@@ -64,6 +68,8 @@ public class CarController : MonoBehaviour
         [Range(0,1)]public float revRangeBoundary = 0.8f;                           // The amount of the full rev range used in each gear.
     }
 
+
+	private RaceManager raceManager;
 
     private float[] gearDistribution;                                               // Stores the caluclated change point for each gear (0-1 as a normalised amount relative to car's max speed)
     private Wheel[] wheels;                                                         // Stores a reference to each wheel attached to this car.
@@ -148,6 +154,8 @@ public class CarController : MonoBehaviour
 		// get a reference to all wheel attached to the car.
 		wheels = GetComponentsInChildren<Wheel>();
 
+		raceManager = GameObject.Find ("Game Manager").GetComponent<RaceManager>();
+
 		SetUpGears();
 
 		// deactivate and reactivate the gameobject - this is a workaround
@@ -161,6 +169,10 @@ public class CarController : MonoBehaviour
         maxReversingSpeed = maxSpeed * advanced.reversingSpeedFactor;
 	}
 
+	void Start()
+	{
+		numberOfCars = transform.root.GetComponentsInChildren<CarController> ().Length;
+	}
 
 	void OnEnable()
 	{
@@ -171,7 +183,6 @@ public class CarController : MonoBehaviour
 
 	public void Move (float steerInput, float accelBrakeInput)
     {
-
 		// lose control of engine if immobilized
 		if (immobilized) accelBrakeInput = 0;
 
@@ -197,8 +208,10 @@ public class CarController : MonoBehaviour
 		reversing = false;
 		if (accelBrakeInput > 0) {
 			if (CurrentSpeed > -smallSpeed) {
+
+				CalculateRubberbandingFactor ();
 				// pressing forward while moving forward : accelerate!
-				targetAccelInput = accelBrakeInput;
+				targetAccelInput = accelBrakeInput * rubberbandingFactor;
 				BrakeInput = 0;
 			}
 			else {
@@ -222,6 +235,13 @@ public class CarController : MonoBehaviour
 		}
 		// smoothly move the current accel towards the target accel value.
 		AccelInput = Mathf.MoveTowards (AccelInput, targetAccelInput, Time.deltaTime * advanced.accelChangeSmoothing);
+	}
+
+	void CalculateRubberbandingFactor ()
+	{
+		// calcul rubberbanding factor with adjustment
+		float adjustRubberbanding = raceManager.AdjustRubberbanding;
+		rubberbandingFactor = ((adjustRubberbanding - 1/adjustRubberbanding) * (rank - 1)) / (numberOfCars - 1) + 1/adjustRubberbanding;
 	}
 
 	void CalculateSpeedValues ()
@@ -399,7 +419,11 @@ public class CarController : MonoBehaviour
 	}
 
 	void OnGUI() {
-		if(GetComponent<CarUserControlMP>() != null)
-			GUI.Label(new Rect(5, 200, 300, 250), "Style Points : " + stylePoint);
+		if (GetComponent<CarUserControlMP> () != null) { // if real player
+			GUI.Label (new Rect (5, 200, 300, 220), "Style Points : " + stylePoint);
+			GUI.Label (new Rect (5, 220, 300, 240), "Rank : " + rank);
+			GUI.Label (new Rect (5, 240, 300, 260), "Rubberbanding Factor : " + rubberbandingFactor);
+			GUI.Label (new Rect (5, 260, 300, 280), "Accel target input : " + targetAccelInput);
+		}
 	}
 }

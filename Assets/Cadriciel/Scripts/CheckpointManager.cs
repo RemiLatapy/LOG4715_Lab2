@@ -31,6 +31,7 @@ public class CheckpointManager : MonoBehaviour
 			get {return lap*100000+checkPoint*1000+passageOrder;}
 		}
 
+
 		// Default comparer for Part type.
 		public int CompareTo(PositionData comparePart)
 		{
@@ -55,10 +56,12 @@ public class CheckpointManager : MonoBehaviour
 	void Awake () 
 	{
 		rank = new List<PositionData> ();
+		int i = 0;
 		foreach (CarController car in _carContainer.GetComponentsInChildren<CarController>(true))
 		{
 			_carPositions[car] = new PositionData();
 			_carPositions[car].car = car;
+			_carPositions[car].passageOrder = i++;
 			rank.Add(_carPositions[car]);
 		}
 	}

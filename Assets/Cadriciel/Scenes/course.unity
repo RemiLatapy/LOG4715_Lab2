@@ -9629,6 +9629,8 @@ MonoBehaviour:
   brakePower: 40
   rank: 0
   adjustCentreOfMass: .25
+  preserveDirectionWhileInAir: 1
+  adjustRubberbanding: 1.5
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -9644,7 +9646,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  preserveDirectionWhileInAir: 1
 --- !u!114 &481286552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10271,6 +10272,10 @@ Prefab:
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: maxSpeedSteerAngle
       value: .156000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: adjustRubberbanding
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
@@ -20498,6 +20503,8 @@ MonoBehaviour:
   brakePower: 40
   rank: 0
   adjustCentreOfMass: .25
+  preserveDirectionWhileInAir: 1
+  adjustRubberbanding: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -20513,7 +20520,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  preserveDirectionWhileInAir: 1
 --- !u!54 &981142460
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29544,6 +29550,8 @@ MonoBehaviour:
   brakePower: 40
   rank: 0
   adjustCentreOfMass: .25
+  preserveDirectionWhileInAir: 1
+  adjustRubberbanding: 1.5
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -29559,7 +29567,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  preserveDirectionWhileInAir: 1
 --- !u!114 &1368033982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34099,6 +34106,8 @@ MonoBehaviour:
   brakePower: 40
   rank: 0
   adjustCentreOfMass: .25
+  preserveDirectionWhileInAir: 1
+  adjustRubberbanding: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -34114,7 +34123,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  preserveDirectionWhileInAir: 1
 --- !u!114 &1635867385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38288,6 +38296,8 @@ MonoBehaviour:
   brakePower: 40
   rank: 0
   adjustCentreOfMass: .25
+  preserveDirectionWhileInAir: 1
+  adjustRubberbanding: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -38303,7 +38313,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  preserveDirectionWhileInAir: 1
 --- !u!54 &1881066739
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41352,6 +41361,8 @@ MonoBehaviour:
   brakePower: 40
   rank: 0
   adjustCentreOfMass: .25
+  preserveDirectionWhileInAir: 1
+  adjustRubberbanding: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -41367,7 +41378,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  preserveDirectionWhileInAir: 1
 --- !u!54 &1977983691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42638,6 +42648,8 @@ MonoBehaviour:
   brakePower: 40
   rank: 0
   adjustCentreOfMass: .25
+  preserveDirectionWhileInAir: 1
+  adjustRubberbanding: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -42653,7 +42665,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  preserveDirectionWhileInAir: 1
 --- !u!114 &2042105153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43863,6 +43874,8 @@ MonoBehaviour:
   brakePower: 40
   rank: 0
   adjustCentreOfMass: .25
+  preserveDirectionWhileInAir: 1
+  adjustRubberbanding: 1.5
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -43878,7 +43891,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  preserveDirectionWhileInAir: 1
 --- !u!114 &2099699819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44259,6 +44271,10 @@ Prefab:
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
       value: .156000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: adjustRubberbanding
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
@@ -45061,6 +45077,10 @@ Prefab:
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
       value: .156000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: adjustRubberbanding
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}

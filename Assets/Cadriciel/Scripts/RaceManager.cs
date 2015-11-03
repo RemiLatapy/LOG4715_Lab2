@@ -4,13 +4,13 @@ using System.Collections;
 
 public class RaceManager : MonoBehaviour 
 {
-
-
 	[SerializeField]
 	private GameObject _carContainer;
 
 	[SerializeField]
 	private GUIText _announcement;
+
+	[SerializeField] [Range(1f, 3f)] private float adjustRubberbanding = 1.5f;			// Param to increase or decrease the rubberbanding effect
 
 	[SerializeField]
 	private int _timeToStart;
@@ -91,5 +91,15 @@ public class RaceManager : MonoBehaviour
 			car.enabled = activate;
 		}
 
+	}
+
+	public int getNumberOfCars() {
+		return _carContainer.transform.childCount;
+	}
+
+	public float AdjustRubberbanding {
+		get {
+			return adjustRubberbanding;
+		}
 	}
 }
