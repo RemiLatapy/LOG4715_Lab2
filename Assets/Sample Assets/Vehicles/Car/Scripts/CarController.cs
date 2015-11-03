@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class CarController : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class CarController : MonoBehaviour
 	[SerializeField] [Range(0, 2f)] private float adjustPitch = 1f;
 	[SerializeField] [Range(0, 2f)] private float adjustRoll = 1f;
 
-	private int stylePoint = 0;														// Score increase by special drive
+	[SerializeField] private int stylePoint = 0;														// Score increase by special drive
 
 	private float rubberbandingFactor = 1;											// Factor apply to increase or decrease speed
 
@@ -174,6 +175,8 @@ public class CarController : MonoBehaviour
 	void Start()
 	{
 		numberOfCars = transform.root.GetComponentsInChildren<CarController> ().Length;
+		if(IsPlayer())
+			StartCoroutine(DoABarrelRoll());
 	}
 
 	void OnEnable()
@@ -356,7 +359,27 @@ public class CarController : MonoBehaviour
 	{
 		// Add style point when jumping
 		if (!anyOnGround) {
-			stylePoint++;
+			//stylePoint++;
+		}
+	}
+
+	float startAngle;
+	float barrelProgress;
+	
+	IEnumerator DoABarrelRoll() {
+		while (true) {
+			if(anyOnGround) {
+				barrelProgress = 0;
+			}
+			while (!anyOnGround) {
+				barrelProgress += Mathf.Rad2Deg * rigidbody.angularVelocity.z * Time.deltaTime;
+				if (barrelProgress < -340 || barrelProgress > 340) {
+					barrelProgress = 0;
+					stylePoint += 1000;
+				}
+				yield return null;
+			}
+			yield return null;
 		}
 	}
 
@@ -441,10 +464,13 @@ public class CarController : MonoBehaviour
 
 	void OnGUI() {
 		if (IsPlayer()) {
+			GUI.Label (new Rect (5, 180, 300, 200), "barel prog : " + barrelProgress);
 			GUI.Label (new Rect (5, 200, 300, 220), "Style Points : " + stylePoint);
 			GUI.Label (new Rect (5, 220, 300, 240), "Rank : " + rank);
 			GUI.Label (new Rect (5, 240, 300, 260), "Rubberbanding Factor : " + rubberbandingFactor);
 			GUI.Label (new Rect (5, 260, 300, 280), "Accel target input : " + targetAccelInput);
+			GUI.Label (new Rect (5, 280, 300, 300), "startAngle : " + startAngle);
+			GUI.Label (new Rect (5, 300, 300, 320), "grounded : " + anyOnGround);
 		}
 	}
 
