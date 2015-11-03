@@ -2,6 +2,17 @@
 
 public class CarController : MonoBehaviour
 {
+	void OnTriggerEnter(Collider other) 
+	{
+		if (other.gameObject.CompareTag ("Pick Up"))
+		{
+			other.gameObject.SetActive (false);
+		}
+		if(other.gameObject.CompareTag ("Collider"))
+		{
+			// Debug.Log ("Collision avec un mur détectée");
+		}
+	}
 
 	// This car component is designed to be used on a gameobject which has wheels attached.
 	// The wheels must be child objects, and each have a Wheel script attached, and a WheelCollider component.
@@ -24,7 +35,10 @@ public class CarController : MonoBehaviour
     [SerializeField] private float maxTorque = 35;                                  // the maximum torque of the engine
     [SerializeField] private float minTorque = 10;                                  // the minimum torque of the engine
     [SerializeField] private float brakePower = 40;                                 // how powerful the brakes are at stopping the car
-    [SerializeField] private float adjustCentreOfMass = 0.25f;                      // vertical offset for the centre of mass
+    
+	[SerializeField] public int rank; 
+
+	[SerializeField] private float adjustCentreOfMass = 0.25f;                      // vertical offset for the centre of mass
     [SerializeField] private Advanced advanced;                                     // container for the advanced setting which will expose as a foldout in the inspector
 	[SerializeField] bool preserveDirectionWhileInAir = false;                      // flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
 
