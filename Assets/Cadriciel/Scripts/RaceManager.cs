@@ -102,4 +102,11 @@ public class RaceManager : MonoBehaviour
 			return adjustRubberbanding;
 		}
 	}
+
+	public IEnumerator DisplayText(string text, int timeMS)
+	{
+		_announcement.text = text;
+		yield return new WaitForSeconds(timeMS/1000f);
+		_announcement.text = "";
+	}
 }

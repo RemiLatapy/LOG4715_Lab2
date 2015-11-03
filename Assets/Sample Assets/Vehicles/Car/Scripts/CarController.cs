@@ -359,14 +359,12 @@ public class CarController : MonoBehaviour
 	{
 		// Add style point when jumping
 		if (!anyOnGround) {
-			//stylePoint++;
+			stylePoint++;
 		}
 	}
 
-	float startAngle;
-	float barrelProgress;
-	
 	IEnumerator DoABarrelRoll() {
+		float barrelProgress = 0;
 		while (true) {
 			if(anyOnGround) {
 				barrelProgress = 0;
@@ -376,6 +374,7 @@ public class CarController : MonoBehaviour
 				if (barrelProgress < -340 || barrelProgress > 340) {
 					barrelProgress = 0;
 					stylePoint += 1000;
+					StartCoroutine(raceManager.DisplayText("Barrel Roll ! +1000 !", 1000));
 				}
 				yield return null;
 			}
@@ -464,13 +463,10 @@ public class CarController : MonoBehaviour
 
 	void OnGUI() {
 		if (IsPlayer()) {
-			GUI.Label (new Rect (5, 180, 300, 200), "barel prog : " + barrelProgress);
 			GUI.Label (new Rect (5, 200, 300, 220), "Style Points : " + stylePoint);
 			GUI.Label (new Rect (5, 220, 300, 240), "Rank : " + rank);
 			GUI.Label (new Rect (5, 240, 300, 260), "Rubberbanding Factor : " + rubberbandingFactor);
-			GUI.Label (new Rect (5, 260, 300, 280), "Accel target input : " + targetAccelInput);
-			GUI.Label (new Rect (5, 280, 300, 300), "startAngle : " + startAngle);
-			GUI.Label (new Rect (5, 300, 300, 320), "grounded : " + anyOnGround);
+			GUI.Label (new Rect (5, 260, 300, 280), "grounded : " + anyOnGround);
 		}
 	}
 
