@@ -14,8 +14,11 @@ public class AutoCam : PivotBasedCameraRig
     [SerializeField] private float spinTurnLimit = 90;      		// The threshold beyond which the camera stops following the target's rotation. (used in situations where a car spins out, for example)
  	[SerializeField] private float targetVelocityLowerLimit = 4f;	// the minimum velocity above which the camera turns towards the object's velocity. Below this we use the object's forward direction.
     [SerializeField] private float smoothTurnTime = 0.2f;           // the smoothing for the camera's rotation
+	[SerializeField] private bool cameraAlignTargetRoll = false;	// Whether the camera will roll as car
 
-	private float lastFlatAngle;                            // The relative angle of the target and the rig from the previous frame.
+	private float lastFlatAngle;
+
+                            // The relative angle of the target and the rig from the previous frame.
 	private float currentTurnAmount;                        // How much to turn the camera
 	private float turnSpeedVelocityChange;                  // The change in the turn speed velocity
 	private Vector3 rollUp = Vector3.up;                    // The roll of the camera around the z axis ( generally this will always just be up )
@@ -93,7 +96,8 @@ public class AutoCam : PivotBasedCameraRig
 	    var rollRotation = Quaternion.LookRotation(targetForward, rollUp);
 
 	    // and aligning with the target object's up direction (i.e. its 'roll')
-		rollUp = rollSpeed > 0 ? Vector3.Slerp(rollUp, targetUp, rollSpeed * deltaTime) : Vector3.up;
+		if(cameraAlignTargetRoll)
+			rollUp = rollSpeed > 0 ? Vector3.Slerp(rollUp, targetUp, rollSpeed * deltaTime) : Vector3.up;
 		transform.rotation = Quaternion.Lerp(transform.rotation, rollRotation, turnSpeed*currentTurnAmount*deltaTime);
 	}
 

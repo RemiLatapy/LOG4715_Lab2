@@ -9630,6 +9630,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
+  adjustPitch: 1
+  adjustRoll: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -14334,6 +14336,7 @@ MonoBehaviour:
   spinTurnLimit: 180
   targetVelocityLowerLimit: 4
   smoothTurnTime: .200000003
+  cameraAlignTargetRoll: 0
 --- !u!114 &797654043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15991,6 +15994,7 @@ MonoBehaviour:
   spinTurnLimit: 180
   targetVelocityLowerLimit: 4
   smoothTurnTime: .200000003
+  cameraAlignTargetRoll: 0
 --- !u!114 &822550897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20190,7 +20194,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -3.49697387e-07
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 2}
       propertyPath: m_LocalRotation.w
@@ -20500,6 +20504,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
+  adjustPitch: 1
+  adjustRoll: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -29534,6 +29540,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
+  adjustPitch: 1
+  adjustRoll: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -34089,6 +34097,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
+  adjustPitch: 1
+  adjustRoll: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -37920,7 +37930,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2, type: 2}
   m_PrefabInternal: {fileID: 970742417}
   m_GameObject: {fileID: 1873886570}
-  m_LocalRotation: {x: 0, y: 0, z: -3.49697387e-07, w: -1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: -1}
   m_LocalPosition: {x: 2.24172783, y: 0, z: 25.9920959}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -37951,6 +37961,7 @@ MonoBehaviour:
   spinTurnLimit: 180
   targetVelocityLowerLimit: 4
   smoothTurnTime: .200000003
+  cameraAlignTargetRoll: 0
 --- !u!114 &1873886573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38278,6 +38289,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
+  adjustPitch: 1
+  adjustRoll: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -41342,6 +41355,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
+  adjustPitch: 1
+  adjustRoll: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -42628,6 +42643,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
+  adjustPitch: 1
+  adjustRoll: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -43853,6 +43870,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
+  adjustPitch: 1
+  adjustRoll: 1
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
