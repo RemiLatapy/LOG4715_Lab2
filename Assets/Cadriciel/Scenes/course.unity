@@ -9632,7 +9632,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
-  stylePoint: 0
+  jumpForce: 10
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -10274,6 +10274,10 @@ Prefab:
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: maxSpeedSteerAngle
       value: .156000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: jumpForce
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
@@ -20507,7 +20511,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
-  stylePoint: 0
+  jumpForce: 20
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -29544,7 +29548,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
-  stylePoint: 0
+  jumpForce: 20
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -34102,7 +34106,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
-  stylePoint: 0
+  jumpForce: 20
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -38295,7 +38299,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
-  stylePoint: 0
+  jumpForce: 20
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -41362,7 +41366,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
-  stylePoint: 0
+  jumpForce: 20
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -42651,7 +42655,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
-  stylePoint: 0
+  jumpForce: 20
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -43879,7 +43883,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
-  stylePoint: 0
+  jumpForce: 20
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003

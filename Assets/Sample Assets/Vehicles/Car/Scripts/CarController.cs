@@ -45,7 +45,8 @@ public class CarController : MonoBehaviour
 	[SerializeField] [Range(0, 2f)] private float adjustPitch = 1f;
 	[SerializeField] [Range(0, 2f)] private float adjustRoll = 1f;
 
-	[SerializeField] private int stylePoint = 0;														// Score increase by special drive
+	private int stylePoint = 0;														// Score increase by special drive
+	[SerializeField] private float jumpForce = 10f;
 
 	private float rubberbandingFactor = 1;											// Factor apply to increase or decrease speed
 
@@ -400,12 +401,17 @@ public class CarController : MonoBehaviour
 		}
 	}
 
+	public void Jump ()
+	{
+		if(anyOnGround)
+			rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+	}	
+
 	// simple function to add a curved bias towards 1 for a value in the 0-1 range
     float CurveFactor (float factor)
     {
         return 1 - (1 - factor)*(1 - factor);
     }
-	
 
 	// unclamped version of Lerp, to allow value to exceed the from-to range
 	float ULerp (float from, float to, float value)

@@ -10,11 +10,21 @@ public class CarUserControlMP : MonoBehaviour
 
 	[SerializeField]
 	private string horizontal = "Horizontal";
-	
+
+	private bool jump;
+
 	void Awake ()
 	{
 		// get the car controller
 		car = GetComponent<CarController>();
+	}
+
+	void Update () {
+		#if CROSS_PLATFORM_INPUT
+		if (CrossPlatformInput.GetButtonDown("Jump")) jump = true;
+		#else
+		if (Input.GetButtonDown("Jump")) jump = true;
+		#endif
 	}
 	
 	
@@ -29,5 +39,9 @@ public class CarUserControlMP : MonoBehaviour
 		float v = Input.GetAxis(vertical);
 		#endif
 		car.Move(h,v);
+		if (jump) {
+			car.Jump ();
+			jump = false;
+		}
 	}
 }
