@@ -9632,6 +9632,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
+  stylePoint: 0
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -20506,6 +20507,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
+  stylePoint: 0
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -29542,6 +29544,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
+  stylePoint: 0
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -34099,6 +34102,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
+  stylePoint: 0
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -38291,6 +38295,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
+  stylePoint: 0
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -41357,6 +41362,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
+  stylePoint: 0
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -42645,6 +42651,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
+  stylePoint: 0
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -43872,6 +43879,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
+  stylePoint: 0
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
