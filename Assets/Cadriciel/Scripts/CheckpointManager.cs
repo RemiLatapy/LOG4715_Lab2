@@ -28,7 +28,13 @@ public class CheckpointManager : MonoBehaviour
 		public CarController car;
 
 		public int Score {
-			get{return int.Parse(lap.ToString () + checkPoint.ToString () + passageOrder.ToString ());}
+			get {
+				return int.Parse(
+					lap.ToString ()
+					+ (checkPoint<10? 0 + checkPoint.ToString():checkPoint.ToString()) 
+					+ passageOrder.ToString ()
+					);
+			}
 		}
 
 		// Default comparer for Part type.
@@ -38,16 +44,16 @@ public class CheckpointManager : MonoBehaviour
 			if (comparePart == null)
 				return 1;
 			else
-				return this.Score.CompareTo (comparePart.Score);
+				return comparePart.Score.CompareTo(this.Score);
 		}
 	}
 
 	void Update() {
 		rank.Sort();
-		int i = 8;
+		int i = 1;
 		foreach (PositionData car in rank) {
-			i--;
 			car.car.rank=i;
+			i++;
 		}
 	}
 
@@ -70,11 +76,12 @@ public class CheckpointManager : MonoBehaviour
 
 		if (!_finished)
 		{
-			if (checkPointIndex == 0)
+			if (checkPointIndex == 0) // First checkpoint
 			{
-				if (carData.checkPoint == _checkPointCount-1)
+				if (carData.checkPoint == _checkPointCount-1) // Last checkpoint
 				{
 					carData.checkPoint = checkPointIndex;
+					carData.passageOrder = passageOrder;
 					carData.lap += 1;
 					Debug.Log(car.name + " lap " + carData.lap);
 					if (IsPlayer(car))
@@ -89,11 +96,14 @@ public class CheckpointManager : MonoBehaviour
 					}
 				}
 			}
-			else if (carData.checkPoint == checkPointIndex-1) //Checkpoints must be hit in order
+			else if (carData.checkPoint == checkPointIndex-1) //Checkpoints must be hit in order (any checkpoint)
 			{
 				carData.checkPoint = checkPointIndex;
 				carData.passageOrder = passageOrder;
-				Debug.Log (car.name+ " rank:" + car.rank);
+//				if(IsPlayer(car)) {
+//					Debug.Log(car.name + " " + carData.lap + " " + carData.checkPoint + " " + carData.passageOrder);
+//					Debug.Log(car.name + " " + car.rank + " score = " + carData.Score);
+//				}
 			}
 		}
 

@@ -10655,7 +10655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _carContainer: {fileID: 1158375330}
   _checkPointCount: 9
-  _totalLaps: 1
+  _totalLaps: 2
 --- !u!1 &561691734
 GameObject:
   m_ObjectHideFlags: 0

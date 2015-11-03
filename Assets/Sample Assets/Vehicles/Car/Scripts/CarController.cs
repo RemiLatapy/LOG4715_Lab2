@@ -10,7 +10,7 @@ public class CarController : MonoBehaviour
 		}
 		if(other.gameObject.CompareTag ("Collider"))
 		{
-			Debug.Log ("Collision avec un mur détectée");
+			// Debug.Log ("Collision avec un mur détectée");
 		}
 	}
 
