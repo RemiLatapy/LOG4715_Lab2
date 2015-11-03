@@ -28,13 +28,7 @@ public class CheckpointManager : MonoBehaviour
 		public CarController car;
 
 		public int Score {
-			get {
-				return int.Parse(
-					lap.ToString ()
-					+ (checkPoint<10? 0 + checkPoint.ToString():checkPoint.ToString()) 
-					+ passageOrder.ToString ()
-					);
-			}
+			get {return lap*100000+checkPoint*1000+passageOrder;}
 		}
 
 		// Default comparer for Part type.
@@ -100,10 +94,10 @@ public class CheckpointManager : MonoBehaviour
 			{
 				carData.checkPoint = checkPointIndex;
 				carData.passageOrder = passageOrder;
-//				if(IsPlayer(car)) {
-//					Debug.Log(car.name + " " + carData.lap + " " + carData.checkPoint + " " + carData.passageOrder);
-//					Debug.Log(car.name + " " + car.rank + " score = " + carData.Score);
-//				}
+				if(IsPlayer(car)) {
+					Debug.Log(car.name + " " + carData.lap + " " + carData.checkPoint + " " + carData.passageOrder);
+					Debug.Log(car.name + " " + car.rank + " score = " + carData.Score);
+				}
 			}
 		}
 
