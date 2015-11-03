@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class CheckpointManager : MonoBehaviour 
 {
@@ -16,23 +17,53 @@ public class CheckpointManager : MonoBehaviour
 	
 	private Dictionary<CarController,PositionData> _carPositions = new Dictionary<CarController, PositionData>();
 
-	private class PositionData
+	private List<PositionData> rank;
+
+	private class PositionData: IComparable<PositionData>
 	{
 		public int lap;
 		public int checkPoint;
+		public int passageOrder;
 		public int position;
+		public CarController car;
+
+		public int Score {
+			get{return int.Parse(lap.ToString () + checkPoint.ToString () + passageOrder.ToString ());}
+		}
+
+		// Default comparer for Part type.
+		public int CompareTo(PositionData comparePart)
+		{
+			// A null value means that this object is greater.
+			if (comparePart == null)
+				return 1;
+			else
+				return this.Score.CompareTo (comparePart.Score);
+		}
+	}
+
+	void Update() {
+		rank.Sort();
+		int i = 8;
+		foreach (PositionData car in rank) {
+			i--;
+			car.car.rank=i;
+		}
 	}
 
 	// Use this for initialization
 	void Awake () 
 	{
+		rank = new List<PositionData> ();
 		foreach (CarController car in _carContainer.GetComponentsInChildren<CarController>(true))
 		{
 			_carPositions[car] = new PositionData();
+			_carPositions[car].car = car;
+			rank.Add(_carPositions[car]);
 		}
 	}
 	
-	public void CheckpointTriggered(CarController car, int checkPointIndex)
+	public void CheckpointTriggered(CarController car, int checkPointIndex, int passageOrder)
 	{
 
 		PositionData carData = _carPositions[car];
@@ -61,6 +92,8 @@ public class CheckpointManager : MonoBehaviour
 			else if (carData.checkPoint == checkPointIndex-1) //Checkpoints must be hit in order
 			{
 				carData.checkPoint = checkPointIndex;
+				carData.passageOrder = passageOrder;
+				Debug.Log (car.name+ " rank:" + car.rank);
 			}
 		}
 
