@@ -195,6 +195,7 @@ public class CarController : MonoBehaviour
 		CalculateRevs();
 		PreserveDirectionInAir();
 		AddStylePoints();
+		AirOrientation(accelBrakeInput, steerInput);
 	}
 
 	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)
@@ -357,6 +358,17 @@ public class CarController : MonoBehaviour
 		}
 	}
 
+	void AirOrientation (float h, float v)
+	{
+		if (!anyOnGround && IsPlayer()) {
+			h *= 300 * Time.deltaTime;
+			v *= 300 * Time.deltaTime;
+
+			rigidbody.AddTorque (transform.right * h);
+			rigidbody.AddTorque (transform.forward * -v);
+		}
+	}
+
 	// simple function to add a curved bias towards 1 for a value in the 0-1 range
     float CurveFactor (float factor)
     {
@@ -419,11 +431,16 @@ public class CarController : MonoBehaviour
 	}
 
 	void OnGUI() {
-		if (GetComponent<CarUserControlMP> () != null) { // if real player
+		if (IsPlayer()) {
 			GUI.Label (new Rect (5, 200, 300, 220), "Style Points : " + stylePoint);
 			GUI.Label (new Rect (5, 220, 300, 240), "Rank : " + rank);
 			GUI.Label (new Rect (5, 240, 300, 260), "Rubberbanding Factor : " + rubberbandingFactor);
 			GUI.Label (new Rect (5, 260, 300, 280), "Accel target input : " + targetAccelInput);
 		}
+	}
+
+	bool IsPlayer()
+	{
+		return this.GetComponent<CarUserControlMP>() != null;
 	}
 }
