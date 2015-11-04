@@ -489,7 +489,8 @@ public class CarController : MonoBehaviour
 		{
 			// Destroy the object
 			Destroy (other.gameObject);
-			item = (int) Random.Range(1F, 4F);
+
+			randomizeItem();
 
 			// If the car is the player, display informations
 			if(this.IsPlayer()){
@@ -519,6 +520,27 @@ public class CarController : MonoBehaviour
 				StartCoroutine(ShowMessageItem(3f));
 				itemBox.enabled = true;
 			}
+		}
+	}
+
+	void randomizeItem ()
+	{
+		// Divise in three categories for rubberbanding
+		int rankThird = Mathf.CeilToInt (3f * rank / numberOfCars);
+		switch (rankThird) {
+		case 1:
+			// green or red
+			item = Mathf.RoundToInt(Random.Range (1F, 2F));
+			break;
+		case 2:
+			// red or nitro
+			item = Mathf.RoundToInt(Random.Range (2F, 3F));
+			item = item == 3 ? 4 : 2;
+			break;
+		case 3:
+			// red or blue or nitro => 2x plus de chance d'avoir une bleu, c'est ben fun
+			item = Mathf.RoundToInt(Random.Range (2F, 4F));
+			break;
 		}
 	}
 
