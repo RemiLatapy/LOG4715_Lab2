@@ -526,7 +526,7 @@ public class CarController : MonoBehaviour
 	void randomizeItem ()
 	{
 		// Divise in three categories for rubberbanding
-		int rankThird = Mathf.CeilToInt (3f * rank / numberOfCars);
+		int rankThird = Mathf.FloorToInt (3f * rank / numberOfCars);
 		switch (rankThird) {
 		case 1:
 			// green or red
@@ -538,8 +538,8 @@ public class CarController : MonoBehaviour
 			item = item == 3 ? 4 : 2;
 			break;
 		case 3:
-			// red or blue or nitro => 2x plus de chance d'avoir une bleu, c'est ben fun
-			item = Mathf.RoundToInt(Random.Range (2F, 4F));
+			// red or blue or nitro => plus de chance d'avoir une bleu, c'est ben fun
+			item = Mathf.RoundToInt(Random.Range (1.8F, 4.2F));
 			break;
 		}
 	}
