@@ -1,20 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CarController : MonoBehaviour
 {
-	void OnTriggerEnter(Collider other) 
-	{
-		if (other.gameObject.CompareTag ("Pick Up"))
-		{
-			other.gameObject.SetActive (false);
-		}
-		if(other.gameObject.CompareTag ("Collider"))
-		{
-			// Debug.Log ("Collision avec un mur détectée");
-		}
-	}
-
 	// This car component is designed to be used on a gameobject which has wheels attached.
 	// The wheels must be child objects, and each have a Wheel script attached, and a WheelCollider component.
 
@@ -94,7 +83,14 @@ public class CarController : MonoBehaviour
 	public float AvgSkid { get; private set; }                                      // the average skid factor from all wheels
     public float RevsFactor { get; private set; }                                   // value between 0-1 indicating where the current revs fall between 0 and max revs
     public float SpeedFactor { get;  private set; }                                 // value between 0-1 of the car's current speed relative to max speed
-	
+
+	// Variables use for picked up objects	
+	private int item; // id of picked up item, 0 -> none, 1 -> green projectile, 2 -> red projectile, 3 -> blue projectile, 4 -> nitro
+	// TODO : change into private
+	public Image itemBox;
+	public Text itemWonText;
+
+
 	public int NumGears {					// the number of gears set up on the car
 		get { return advanced.numGears; }
 	}						
@@ -175,6 +171,11 @@ public class CarController : MonoBehaviour
 
 	void Start()
 	{
+		item = 0;
+		if(this.IsPlayer()){
+			itemWonText.enabled = false;
+			itemBox.enabled = false;
+		}
 		numberOfCars = transform.root.GetComponentsInChildren<CarController> ().Length;
 		if(IsPlayer())
 			StartCoroutine(DoABarrelRoll());
@@ -479,5 +480,51 @@ public class CarController : MonoBehaviour
 	bool IsPlayer()
 	{
 		return this.GetComponent<CarUserControlMP>() != null;
+	}
+
+	void OnTriggerEnter(Collider other) 
+	{
+		// If we pick up an object and we don't already have one
+		if (other.gameObject.CompareTag ("Pick Up")) //&& item == 0)
+		{
+			// Destroy the object
+			Destroy (other.gameObject);
+			item = (int) Random.Range(1F, 4F);
+
+			// If the car is the player, display informations
+			if(this.IsPlayer()){
+				switch(item){
+				case 1 :
+					itemWonText.text = "Yeaaah un projectile vert !!!";
+					itemWonText.color = Color.green;
+					itemBox.color = Color.green;
+					break;
+				case 2 :
+					itemWonText.text = "Yeaaah un projectile rouge !!!";
+					itemWonText.color = Color.red;
+					itemBox.color = Color.red;
+					break;
+				case 3 :
+					itemWonText.text = "Yeaaah un projectile bleu !!!";
+					itemWonText.color = Color.blue;
+					itemBox.color = Color.blue;
+					break;
+				case 4 : 
+					itemWonText.text = "Sbriii sbriii d'la nitro !!!";
+					itemWonText.color = Color.yellow;
+					itemBox.color = Color.yellow;
+					break;
+				}
+				// Display the message for a certain amount of time
+				StartCoroutine(ShowMessageItem(3f));
+				itemBox.enabled = true;
+			}
+		}
+	}
+
+	IEnumerator ShowMessageItem (float delay) {
+		itemWonText.enabled = true;
+		yield return new WaitForSeconds(delay);
+		itemWonText.enabled = false;
 	}
 }
