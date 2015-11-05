@@ -505,9 +505,6 @@ public class CarController : MonoBehaviour
 
 			randomizeItem();
 
-			// TODO : delete
-			item = 4;
-
 			if(item == 4) {
 				nitroLevel = 100;
 			}

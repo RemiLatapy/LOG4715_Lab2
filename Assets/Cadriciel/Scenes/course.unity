@@ -9743,7 +9743,8 @@ MonoBehaviour:
   itemBox: {fileID: 535432262}
   itemWonText: {fileID: 993812022}
   nitroSlider: {fileID: 1061812346}
-  nitroSpeed: 15
+  nitroSpeed: 130
+  nitroTorque: 130
 --- !u!114 &481286552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10452,6 +10453,14 @@ Prefab:
       propertyPath: nitroSlider
       value: 
       objectReference: {fileID: 1061812346}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: nitroSpeed
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: nitroTorque
+      value: 130
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
@@ -20837,7 +20846,8 @@ MonoBehaviour:
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
-  nitroSpeed: 15
+  nitroSpeed: 130
+  nitroTorque: 130
 --- !u!54 &981142460
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30027,7 +30037,8 @@ MonoBehaviour:
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
-  nitroSpeed: 15
+  nitroSpeed: 130
+  nitroTorque: 130
 --- !u!114 &1368033982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34589,7 +34600,8 @@ MonoBehaviour:
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
-  nitroSpeed: 15
+  nitroSpeed: 130
+  nitroTorque: 130
 --- !u!114 &1635867385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38880,7 +38892,8 @@ MonoBehaviour:
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
-  nitroSpeed: 15
+  nitroSpeed: 130
+  nitroTorque: 130
 --- !u!54 &1881066739
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41951,7 +41964,8 @@ MonoBehaviour:
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
-  nitroSpeed: 15
+  nitroSpeed: 130
+  nitroTorque: 130
 --- !u!54 &1977983691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -43244,7 +43258,8 @@ MonoBehaviour:
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
-  nitroSpeed: 15
+  nitroSpeed: 130
+  nitroTorque: 130
 --- !u!114 &2042105153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44476,7 +44491,8 @@ MonoBehaviour:
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
-  nitroSpeed: 15
+  nitroSpeed: 130
+  nitroTorque: 130
 --- !u!114 &2099699819
 MonoBehaviour:
   m_ObjectHideFlags: 0
