@@ -21,7 +21,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float steeringResponseSpeed = 200;                     // how fast the steering responds
     [SerializeField] [Range(0, 1)] private float maxSpeedSteerAngle = 0.23f;        // the reduction in steering angle at max speed
     [SerializeField] [Range(0, .5f)] private float maxSpeedSteerResponse = 0.5f;    // the reduction in steer response at max speed
-    [SerializeField] private float maxSpeed = 60;                                   // the maximum speed (in meters per second!)
+	[SerializeField] private float maxSpeed = 60;                                   // the maximum speed (in meters per second!)
     [SerializeField] private float maxTorque = 35;                                  // the maximum torque of the engine
     [SerializeField] private float minTorque = 10;                                  // the minimum torque of the engine
     [SerializeField] private float brakePower = 40;                                 // how powerful the brakes are at stopping the car
@@ -89,6 +89,15 @@ public class CarController : MonoBehaviour
 	// TODO : change into private
 	public Image itemBox;
 	public Text itemWonText;
+	// Variables for nitro
+	public Slider nitroSlider;
+	private float nitroLevel;
+	private float currentMaxSpeed;
+	private float currentMaxTorque;
+	[SerializeField] 
+	[Range(100, 200)] private float nitroSpeed = 130f;
+	[SerializeField] 
+	[Range(100, 200)] private float nitroTorque = 130f;
 
 
 	public int NumGears {					// the number of gears set up on the car
@@ -172,9 +181,13 @@ public class CarController : MonoBehaviour
 	void Start()
 	{
 		item = 0;
+		nitroLevel = 100;
+		currentMaxSpeed = maxSpeed;
+		currentMaxTorque = maxTorque;
 		if(this.IsPlayer()){
 			itemWonText.enabled = false;
 			itemBox.enabled = false;
+			nitroSlider.value = nitroLevel;
 		}
 		numberOfCars = transform.root.GetComponentsInChildren<CarController> ().Length;
 		if(IsPlayer())
@@ -492,6 +505,12 @@ public class CarController : MonoBehaviour
 
 			randomizeItem();
 
+			// TODO : delete
+			item = 4;
+
+			if(item == 4) {
+				nitroLevel = 100;
+			}
 			// If the car is the player, display informations
 			if(this.IsPlayer()){
 				switch(item){
@@ -513,6 +532,7 @@ public class CarController : MonoBehaviour
 				case 4 : 
 					itemWonText.text = "Sbriii sbriii d'la nitro !!!";
 					itemWonText.color = Color.yellow;
+					nitroSlider.value = nitroLevel;
 					itemBox.color = Color.yellow;
 					break;
 				}
@@ -548,5 +568,26 @@ public class CarController : MonoBehaviour
 		itemWonText.enabled = true;
 		yield return new WaitForSeconds(delay);
 		itemWonText.enabled = false;
+	}
+
+	// When nitro is used, set maxSpeed and maxTorque to nitro values which are bigger
+	// So the car can drive faster
+	public void NitroUse () {
+		if (nitroLevel > 0) {
+			Debug.Log ("NitroUse");
+			this.maxSpeed = nitroSpeed;
+			this.maxTorque = nitroTorque;
+			nitroLevel -= 0.7f;
+			nitroSlider.value = nitroLevel;
+		}
+		else {
+			StopNitroUse();
+		}
+	}
+	
+	public void StopNitroUse () {
+		Debug.Log ("StopNitroUse");
+		this.maxSpeed = currentMaxSpeed;
+		this.maxTorque = currentMaxTorque;
 	}
 }

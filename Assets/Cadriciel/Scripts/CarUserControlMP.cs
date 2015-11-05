@@ -12,7 +12,8 @@ public class CarUserControlMP : MonoBehaviour
 	private string horizontal = "Horizontal";
 
 	private bool jump;
-
+	private bool nitro;
+	
 	void Awake ()
 	{
 		// get the car controller
@@ -22,6 +23,8 @@ public class CarUserControlMP : MonoBehaviour
 	void Update () {
 		#if CROSS_PLATFORM_INPUT
 		if (CrossPlatformInput.GetButtonDown("Jump")) jump = true;
+		if (CrossPlatformInput.GetButton("Nitro")) nitro = true;
+		if (CrossPlatformInput.GetButtonUp("Nitro")) nitro = false;
 		#else
 		if (Input.GetButtonDown("Jump")) jump = true;
 		#endif
@@ -42,6 +45,12 @@ public class CarUserControlMP : MonoBehaviour
 		if (jump) {
 			car.Jump ();
 			jump = false;
+		}
+		if (nitro) {
+			car.NitroUse ();
+		} 
+		else {
+			car.StopNitroUse ();
 		}
 	}
 }
