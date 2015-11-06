@@ -185,6 +185,8 @@ public class CarController : MonoBehaviour
 		// TODO delete
 		nitroLevel = 100;
 		currentMaxSpeed = maxSpeed;
+		this.transform.FindChild ("Fire").renderer.enabled = false;
+		this.transform.FindChild ("Smoke").renderer.enabled = false;
 		if(this.IsPlayer()){
 			itemWonText.enabled = false;
 			itemBox.enabled = false;
@@ -574,9 +576,14 @@ public class CarController : MonoBehaviour
 				Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
 				this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
 			}
+			if(this.damagePoints >= 70)
+			{
+				this.transform.FindChild ("Smoke").renderer.enabled = true;
+			}
 			if(this.damagePoints >= 100)
 			{
 				damageFactor = 2;
+				this.transform.FindChild ("Fire").renderer.enabled = true;
 				StartCoroutine(raceManager.DisplayText("Voiture dead !", 1000));
 			}
 		}

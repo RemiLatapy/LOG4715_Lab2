@@ -1448,7 +1448,6 @@ MonoBehaviour:
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
   nitroSpeed: 130
-  nitroTorque: 130
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
