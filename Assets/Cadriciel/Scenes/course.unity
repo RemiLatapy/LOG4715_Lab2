@@ -272,7 +272,7 @@ GameObject:
   - 65: {fileID: 5794647}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1160,7 +1160,7 @@ GameObject:
   - 65: {fileID: 55790553}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2003,7 +2003,7 @@ GameObject:
   - 65: {fileID: 95964277}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2204,7 +2204,7 @@ GameObject:
   - 65: {fileID: 116221832}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2883,7 +2883,7 @@ GameObject:
   - 65: {fileID: 148785384}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3409,7 +3409,7 @@ GameObject:
   - 65: {fileID: 171971366}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5363,6 +5363,50 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1791083872}
   m_GameObject: {fileID: 2141454675}
   m_Mesh: {fileID: 4300000, guid: e6fec471c20b9d148b1f87910e67bea4, type: 3}
+--- !u!1001 &254087979
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 481286550}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 4b31b1caadab1ee4b8606c9f35713992, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4b31b1caadab1ee4b8606c9f35713992, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4b31b1caadab1ee4b8606c9f35713992, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4b31b1caadab1ee4b8606c9f35713992, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4b31b1caadab1ee4b8606c9f35713992, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4b31b1caadab1ee4b8606c9f35713992, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4b31b1caadab1ee4b8606c9f35713992, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4b31b1caadab1ee4b8606c9f35713992, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 4b31b1caadab1ee4b8606c9f35713992, type: 2}
+  m_RootGameObject: {fileID: 1070703628}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &262614991
 GameObject:
   m_ObjectHideFlags: 0
@@ -7317,7 +7361,7 @@ GameObject:
   - 65: {fileID: 333441247}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7389,7 +7433,7 @@ GameObject:
   - 65: {fileID: 336434100}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7579,7 +7623,7 @@ GameObject:
   - 65: {fileID: 352388362}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7787,7 +7831,7 @@ GameObject:
   - 65: {fileID: 367487136}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8196,7 +8240,7 @@ GameObject:
   - 65: {fileID: 401431576}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8773,7 +8817,7 @@ GameObject:
   - 65: {fileID: 428350804}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8845,7 +8889,7 @@ GameObject:
   - 65: {fileID: 428607986}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9501,6 +9545,7 @@ Transform:
   - {fileID: 1220979752}
   - {fileID: 1024953204}
   - {fileID: 2025098120}
+  - {fileID: 1070703629}
   m_Father: {fileID: 1158375331}
   m_RootOrder: 0
 --- !u!114 &481286551
@@ -9548,7 +9593,6 @@ MonoBehaviour:
   itemWonText: {fileID: 993812022}
   nitroSlider: {fileID: 1061812346}
   nitroSpeed: 130
-  nitroTorque: 130
 --- !u!114 &481286552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10910,7 +10954,7 @@ GameObject:
   - 65: {fileID: 582965563}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12299,7 +12343,7 @@ GameObject:
   - 65: {fileID: 654103633}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12848,7 +12892,7 @@ GameObject:
   - 4: {fileID: 691674701}
   m_Layer: 0
   m_Name: Outer wall
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13124,7 +13168,7 @@ GameObject:
   - 65: {fileID: 710782514}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16060,7 +16104,7 @@ GameObject:
   - 65: {fileID: 822932213}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20603,7 +20647,6 @@ MonoBehaviour:
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
   nitroSpeed: 130
-  nitroTorque: 130
 --- !u!54 &981142460
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21457,7 +21500,7 @@ GameObject:
   - 65: {fileID: 1052194670}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Collider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21541,7 +21584,7 @@ GameObject:
   - 65: {fileID: 1052350986}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22210,6 +22253,126 @@ Prefab:
   m_RootGameObject: {fileID: 1881944719}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1070703628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 4b31b1caadab1ee4b8606c9f35713992, type: 2}
+  m_PrefabInternal: {fileID: 254087979}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1070703629}
+  - 15: {fileID: 1070703632}
+  - 12: {fileID: 1070703631}
+  - 26: {fileID: 1070703630}
+  m_Layer: 0
+  m_Name: Detailed Smoke
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1070703629
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 4b31b1caadab1ee4b8606c9f35713992, type: 2}
+  m_PrefabInternal: {fileID: 254087979}
+  m_GameObject: {fileID: 1070703628}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 481286550}
+  m_RootOrder: 9
+--- !u!26 &1070703630
+ParticleRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2600000, guid: 4b31b1caadab1ee4b8606c9f35713992,
+    type: 2}
+  m_PrefabInternal: {fileID: 254087979}
+  m_GameObject: {fileID: 1070703628}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: ad90f586d4fe1b942b46f0da520a0e61, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_CameraVelocityScale: 0
+  m_StretchParticles: 0
+  m_LengthScale: 2
+  m_VelocityScale: 0
+  m_MaxParticleSize: .25
+  UV Animation:
+    x Tile: 1
+    y Tile: 1
+    cycles: 1
+--- !u!12 &1070703631
+ParticleAnimator:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1200000, guid: 4b31b1caadab1ee4b8606c9f35713992,
+    type: 2}
+  m_PrefabInternal: {fileID: 254087979}
+  m_GameObject: {fileID: 1070703628}
+  Does Animate Color?: 1
+  colorAnimation[0]:
+    serializedVersion: 2
+    rgba: 986895
+  colorAnimation[1]:
+    serializedVersion: 2
+    rgba: 546345108
+  colorAnimation[2]:
+    serializedVersion: 2
+    rgba: 729907597
+  colorAnimation[3]:
+    serializedVersion: 2
+    rgba: 829978744
+  colorAnimation[4]:
+    serializedVersion: 2
+    rgba: 12500670
+  worldRotationAxis: {x: 0, y: 0, z: 0}
+  localRotationAxis: {x: 0, y: 0, z: 0}
+  sizeGrow: .100000001
+  rndForce: {x: 0, y: 0, z: 0}
+  force: {x: 0, y: 0, z: 0}
+  damping: 1
+  stopSimulation: 0
+  autodestruct: 0
+--- !u!15 &1070703632
+EllipsoidParticleEmitter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1500000, guid: 4b31b1caadab1ee4b8606c9f35713992,
+    type: 2}
+  m_PrefabInternal: {fileID: 254087979}
+  m_GameObject: {fileID: 1070703628}
+  serializedVersion: 2
+  m_Enabled: 1
+  m_Emit: 1
+  minSize: 1
+  maxSize: 2.25
+  minEnergy: 10
+  maxEnergy: 10
+  minEmission: 40
+  maxEmission: 40
+  worldVelocity: {x: 0, y: 0, z: 0}
+  localVelocity: {x: 0, y: 1.5, z: 0}
+  rndVelocity: {x: 0, y: 1, z: 0}
+  emitterVelocityScale: .0500000007
+  tangentVelocity: {x: .100000001, y: 0, z: .100000001}
+  angularVelocity: 35
+  rndAngularVelocity: -10
+  rndRotation: 1
+  Simulate in Worldspace?: 1
+  m_OneShot: 0
+  m_Ellipsoid: {x: 1.10000002, y: 0, z: 1.10000002}
+  m_MinEmitterRange: 0
 --- !u!1 &1073204445
 GameObject:
   m_ObjectHideFlags: 0
@@ -22480,7 +22643,7 @@ GameObject:
   - 65: {fileID: 1083345453}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23201,7 +23364,7 @@ GameObject:
   - 4: {fileID: 1115866230}
   m_Layer: 0
   m_Name: Goal Posts
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -24997,7 +25160,7 @@ GameObject:
   - 65: {fileID: 1193923976}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28181,7 +28344,7 @@ GameObject:
   - 4: {fileID: 1256335154}
   m_Layer: 0
   m_Name: Obstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29133,7 +29296,7 @@ GameObject:
   - 65: {fileID: 1323979364}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29487,7 +29650,7 @@ GameObject:
   - 65: {fileID: 1342286824}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29710,7 +29873,6 @@ MonoBehaviour:
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
   nitroSpeed: 130
-  nitroTorque: 130
 --- !u!114 &1368033982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31956,7 +32118,7 @@ GameObject:
   - 65: {fileID: 1510915366}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32787,7 +32949,7 @@ GameObject:
   - 65: {fileID: 1532141556}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33466,7 +33628,7 @@ GameObject:
   - 65: {fileID: 1591936146}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33801,7 +33963,7 @@ GameObject:
   - 65: {fileID: 1618164085}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34217,7 +34379,6 @@ MonoBehaviour:
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
   nitroSpeed: 130
-  nitroTorque: 130
 --- !u!114 &1635867385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35465,7 +35626,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100024, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_TagString
-      value: CarCollider
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 100028, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
@@ -35870,7 +36043,7 @@ GameObject:
   - 65: {fileID: 1734234849}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36313,7 +36486,7 @@ GameObject:
   - 65: {fileID: 1760689755}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36844,7 +37017,7 @@ GameObject:
   - 65: {fileID: 1804739140}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Collider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37934,7 +38107,7 @@ GameObject:
   - 65: {fileID: 1861206237}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38471,7 +38644,6 @@ MonoBehaviour:
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
   nitroSpeed: 130
-  nitroTorque: 130
 --- !u!54 &1881066739
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41142,7 +41314,7 @@ GameObject:
   - 65: {fileID: 1971511314}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41215,7 +41387,7 @@ GameObject:
   - 65: {fileID: 1972544822}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Collider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41529,7 +41701,6 @@ MonoBehaviour:
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
   nitroSpeed: 130
-  nitroTorque: 130
 --- !u!54 &1977983691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41803,7 +41974,7 @@ GameObject:
   - 65: {fileID: 2007477738}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42263,6 +42434,10 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: -7.44149494
       objectReference: {fileID: 0}
+    - target: {fileID: 100046, guid: 6df3f650b33fa604cb3f5923fa50d053, type: 2}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6df3f650b33fa604cb3f5923fa50d053, type: 2}
   m_RootGameObject: {fileID: 1115866229}
@@ -42509,7 +42684,7 @@ GameObject:
   - 65: {fileID: 2036981102}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42795,7 +42970,6 @@ MonoBehaviour:
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
   nitroSpeed: 130
-  nitroTorque: 130
 --- !u!114 &2042105153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43866,7 +44040,7 @@ GameObject:
   - 65: {fileID: 2090683121}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Collider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44028,7 +44202,6 @@ MonoBehaviour:
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
   nitroSpeed: 130
-  nitroTorque: 130
 --- !u!114 &2099699819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44295,7 +44468,7 @@ GameObject:
   - 4: {fileID: 2109321358}
   m_Layer: 8
   m_Name: Colliders
-  m_TagString: CarCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44428,7 +44601,7 @@ GameObject:
   - 65: {fileID: 2110610315}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44713,7 +44886,7 @@ GameObject:
   - 65: {fileID: 2127208466}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: WallCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

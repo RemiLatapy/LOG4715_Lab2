@@ -564,6 +564,16 @@ public class CarController : MonoBehaviour
 		{
 			// Calculate the damage points in function of the speed of the impact
 			this.damagePoints += Mathf.FloorToInt(damagePoints*Mathf.Abs(speed));
+			if(this.damagePoints >= 30)
+			{
+				Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage") as Texture2D;
+				this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
+			}
+			if(this.damagePoints >= 50)
+			{
+				Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
+				this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
+			}
 			if(this.damagePoints >= 100)
 			{
 				damageFactor = 2;
