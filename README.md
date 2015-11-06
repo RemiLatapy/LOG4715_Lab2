@@ -1,9 +1,15 @@
 # LOG4715_Lab2
 
-* Modif général :  
-	- CarController  
-rank : rank of the car  
-display text on screen : StartCoroutine(raceManager.DisplayText("textToDisplay", timeOfDisplayMS));  
-numberOfCars : total number of cars (8 by default because of player 2)  
-void OnGui() : useful to debug  
-bool IsPlayer() : check if the current car is a user car.  
+* Command :
+	- Keyboard  
+A/D	(ground)		:	axis			:	tourner gauche/droite  
+A/D (air)			:	axis			:	pencher gauche/droite  
+W/S					:	axis			:	accélérer/freiner  
+,/L					:	axis			:	pencher avant/arriere  
+N					:	button			:	nitro
+  
+	- Pad  
+joy1 (ground)		:	axis			:	tourner gauche/droite  
+joy1 (air)			:	axis			:	orienter véhicule    
+high trigger R/L	:	axis			:	accélérer/freiner  
+low trigger L		:	button			:	nitro
