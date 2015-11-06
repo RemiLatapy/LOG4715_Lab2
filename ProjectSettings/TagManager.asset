@@ -8,11 +8,13 @@ TagManager:
   - Smelly
   - Fire
   - Pick Up
-  - Collider
-  - 
+  - Obstacle
+  - CarCollider
   - WallCollider
   - 
   - ItemChosen
+  - 
+  - Collider
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

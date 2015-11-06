@@ -85,21 +85,24 @@ public class CarController : MonoBehaviour
     public float SpeedFactor { get;  private set; }                                 // value between 0-1 of the car's current speed relative to max speed
 
 	// Variables use for picked up objects	
-	private int item; // id of picked up item, 0 -> none, 1 -> green projectile, 2 -> red projectile, 3 -> blue projectile, 4 -> nitro
+	private int item = 0; // id of picked up item, 0 -> none, 1 -> green projectile, 2 -> red projectile, 3 -> blue projectile, 4 -> nitro
 	// TODO : change into private
 	public Image itemBox;
 	public Text itemWonText;
 	// Variables for nitro
 	public Slider nitroSlider;
-	private float nitroLevel;
+	private float nitroLevel = 0;
 	private float currentMaxSpeed;
-	private float currentMaxTorque;
 	[SerializeField] 
 	[Range(100, 200)] private float nitroSpeed = 130f;
-	[SerializeField] 
-	[Range(100, 200)] private float nitroTorque = 130f;
 
-
+	// Variables use for damages
+	private int damagePoints = 0;
+	private const float wallDamageFactor = 0.7f;
+	private const float obstacleDamageFactor = 0.5f;
+	private const float carDamageFactor = 0.3f;
+	private float damageFactor = 1;
+	
 	public int NumGears {					// the number of gears set up on the car
 		get { return advanced.numGears; }
 	}						
@@ -154,8 +157,7 @@ public class CarController : MonoBehaviour
 	float curvedSpeedFactor;
 	bool reversing;
 	float targetAccelInput; // target accel input is our desired acceleration input. We smooth towards it later
-
-
+	
 
 
 	void Awake ()
@@ -180,10 +182,9 @@ public class CarController : MonoBehaviour
 
 	void Start()
 	{
-		item = 0;
+		// TODO delete
 		nitroLevel = 100;
 		currentMaxSpeed = maxSpeed;
-		currentMaxTorque = maxTorque;
 		if(this.IsPlayer()){
 			itemWonText.enabled = false;
 			itemBox.enabled = false;
@@ -270,7 +271,8 @@ public class CarController : MonoBehaviour
 		// current speed is measured in the forward direction of the car (sliding sideways doesn't count!)
 		CurrentSpeed = transform.InverseTransformDirection (rigidbody.velocity).z;
 		// speedfactor is a normalized representation of speed in relation to max speed:
-		SpeedFactor = Mathf.InverseLerp (0, reversing ? maxReversingSpeed : maxSpeed, Mathf.Abs (CurrentSpeed));
+		float speed = (reversing ? maxReversingSpeed : maxSpeed) / damageFactor;
+		SpeedFactor = Mathf.InverseLerp (0, speed, Mathf.Abs (CurrentSpeed));
 		curvedSpeedFactor = reversing ? 0 : CurveFactor (SpeedFactor);
 	}
 
@@ -487,6 +489,7 @@ public class CarController : MonoBehaviour
 			GUI.Label (new Rect (5, 220, 300, 240), "Rank : " + rank);
 			GUI.Label (new Rect (5, 240, 300, 260), "Rubberbanding Factor : " + rubberbandingFactor);
 			GUI.Label (new Rect (5, 260, 300, 280), "grounded : " + anyOnGround);
+			GUI.Label (new Rect (5, 280, 300, 300), "Vitesse : " + CurrentSpeed);
 		}
 	}
 
@@ -540,6 +543,35 @@ public class CarController : MonoBehaviour
 		}
 	}
 
+	void OnCollisionEnter(Collision col)
+	{
+		switch (col.collider.transform.parent.gameObject.tag) 
+		{
+			case "WallCollider":
+				applyDamage(wallDamageFactor, CurrentSpeed);
+				break;
+			case "Obstacle":
+				applyDamage(obstacleDamageFactor, CurrentSpeed);
+				break;
+			case "Player":
+				applyDamage(carDamageFactor, CurrentSpeed);
+				break;
+		}
+	}
+	
+	void applyDamage(float damagePoints, float speed){
+		if(this.damagePoints < 100)
+		{
+			// Calculate the damage points in function of the speed of the impact
+			this.damagePoints += Mathf.FloorToInt(damagePoints*Mathf.Abs(speed));
+			if(this.damagePoints >= 100)
+			{
+				damageFactor = 2;
+				StartCoroutine(raceManager.DisplayText("Voiture dead !", 1000));
+			}
+		}
+	}
+
 	void randomizeItem ()
 	{
 		// Divise in three categories for rubberbanding
@@ -571,9 +603,7 @@ public class CarController : MonoBehaviour
 	// So the car can drive faster
 	public void NitroUse () {
 		if (nitroLevel > 0) {
-			Debug.Log ("NitroUse");
 			this.maxSpeed = nitroSpeed;
-			this.maxTorque = nitroTorque;
 			nitroLevel -= 0.7f;
 			nitroSlider.value = nitroLevel;
 		}
@@ -583,8 +613,6 @@ public class CarController : MonoBehaviour
 	}
 	
 	public void StopNitroUse () {
-		Debug.Log ("StopNitroUse");
 		this.maxSpeed = currentMaxSpeed;
-		this.maxTorque = currentMaxTorque;
 	}
 }
