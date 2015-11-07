@@ -16,6 +16,7 @@ TagManager:
   - TurnIndicatorLeft
   - TurnIndicatorRight
   - StopIndicator
+  - SpeedBoost
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

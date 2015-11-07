@@ -91,6 +91,7 @@ public class CarController : MonoBehaviour
 	public Text itemWonText;
 	// Variables for nitro
 	public Slider nitroSlider;
+	private bool nitroUsed =false;
 	private float nitroLevel = 0;
 	private float currentMaxSpeed;
 	[SerializeField] 
@@ -283,7 +284,8 @@ public class CarController : MonoBehaviour
 				
 				CalculateRubberbandingFactor ();
 				// pressing forward while moving forward : accelerate!
-				targetAccelInput = accelBrakeInput * rubberbandingFactor;
+				targetAccelInput = accelBrakeInput * rubberbandingFactor * (nitroUsed?10:1);
+
 				BrakeInput = 0;
 			}
 			else {
@@ -607,8 +609,22 @@ public class CarController : MonoBehaviour
 			this.leftArrow.enabled = false;
 		}
 	}
-	
-	
+	void OnTriggerStay(Collider other)
+	{
+		if (other.gameObject.CompareTag ("SpeedBoost"))
+		{
+			StartNitroUse();
+			maxSpeed*=10;
+			CurrentSpeed=nitroSpeed;
+		}
+	}
+	void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject.CompareTag ("SpeedBoost"))
+		{
+			StopNitroUse();
+		}
+	}
 	void OnCollisionEnter(Collision col)
 	{
 		switch (col.collider.transform.parent.gameObject.tag) 
@@ -684,9 +700,7 @@ public class CarController : MonoBehaviour
 	// So the car can drive faster
 	public void NitroUse () {
 		if (nitroLevel > 0) {
-			this.transform.FindChild ("NitroEffects1").renderer.enabled = true;
-			this.transform.FindChild ("NitroEffects2").renderer.enabled = true;
-			this.maxSpeed = nitroSpeed;
+			StartNitroUse();
 			nitroLevel -= 0.7f;
 			nitroSlider.value = nitroLevel;
 		}
@@ -694,8 +708,15 @@ public class CarController : MonoBehaviour
 			StopNitroUse();
 		}
 	}
+	public void StartNitroUse(){
+		nitroUsed=true;
+		this.transform.FindChild ("NitroEffects1").renderer.enabled = true;
+		this.transform.FindChild ("NitroEffects2").renderer.enabled = true;
+		this.maxSpeed = nitroSpeed;
+	}
 	
 	public void StopNitroUse () {
+		nitroUsed=false;
 		this.maxSpeed = currentMaxSpeed;
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = false;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = false;
