@@ -94,10 +94,10 @@ public class CarController : MonoBehaviour
 	private float nitroLevel = 0;
 	private float currentMaxSpeed;
 	[SerializeField] 
-	[Range(100, 200)] private float nitroSpeed = 130f;
+	[Range(100, 200)] private float nitroSpeed = 160f;
 	
 	// Variables use for damages
-	private int damagePoints = 0;
+	private float damagePoints = 0;
 	private const float wallDamageFactor = 0.7f;
 	private const float obstacleDamageFactor = 0.5f;
 	private const float carDamageFactor = 0.3f;
@@ -189,10 +189,13 @@ public class CarController : MonoBehaviour
 		// TODO delete
 		nitroLevel = 100;
 		currentMaxSpeed = maxSpeed;
-		this.transform.FindChild("Fire").renderer.enabled = false;
-		this.transform.FindChild("Smoke").renderer.enabled = false;
+		this.transform.FindChild ("Fire").renderer.enabled = false;
+		this.transform.FindChild ("Smoke").renderer.enabled = false;
+		this.transform.FindChild ("NitroEffects1").renderer.enabled = false;
+		this.transform.FindChild ("NitroEffects2").renderer.enabled = false;
 		
-		if(this.IsPlayer()){
+		if(this.IsPlayer())
+		{
 			this.leftArrow.enabled = false;
 			this.rightArrow.enabled = false;
 			itemWonText.enabled = false;
@@ -208,6 +211,44 @@ public class CarController : MonoBehaviour
 	{
 		// set adjusted centre of mass.
 		rigidbody.centerOfMass = Vector3.up * adjustCentreOfMass;
+	}
+
+	void FixedUpdate(){
+		if (IsPlayer ()) {
+			Debug.Log (damagePoints);
+		}
+		// Damage points are restored through the time
+		if (damagePoints > 30) 
+		{
+			damagePoints -= 0.02f;
+		}
+
+		if(damagePoints < 50 && damagePoints >= 30)
+		{
+			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage1") as Texture2D;
+			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
+		}
+		else if(damagePoints < 70 && damagePoints >= 50)
+		{
+			this.transform.FindChild ("Smoke").renderer.enabled = false;
+			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
+			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
+		}
+		else if(damagePoints < 100 && damagePoints >= 70)
+		{
+			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
+			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
+			this.transform.FindChild ("Smoke").renderer.enabled = true;
+			this.transform.FindChild ("Fire").renderer.enabled = false;
+		}
+		else if(damagePoints >= 100)
+		{
+			damageFactor = 2;
+			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
+			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
+			this.transform.FindChild ("Fire").renderer.enabled = true;
+			this.transform.FindChild ("Smoke").renderer.enabled = true;
+		}
 	}
 	
 	
@@ -584,32 +625,32 @@ public class CarController : MonoBehaviour
 		}
 	}
 	
-	void applyDamage(float damagePoints, float speed){
-		if(this.damagePoints < 100)
+	void applyDamage(float damagePoints, float speed)
+	{
+		// Calculate the damage points in function of the speed of the impact
+		this.damagePoints += Mathf.FloorToInt(damagePoints*Mathf.Abs(speed));
+		/*
+		if(this.damagePoints >= 30)
 		{
-			// Calculate the damage points in function of the speed of the impact
-			this.damagePoints += Mathf.FloorToInt(damagePoints*Mathf.Abs(speed));
-			if(this.damagePoints >= 30)
-			{
-				Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage") as Texture2D;
-				this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
-			}
-			if(this.damagePoints >= 50)
-			{
-				Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
-				this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
-			}
-			if(this.damagePoints >= 70)
-			{
-				this.transform.FindChild ("Smoke").renderer.enabled = true;
-			}
-			if(this.damagePoints >= 100)
-			{
-				damageFactor = 2;
-				this.transform.FindChild ("Fire").renderer.enabled = true;
-				StartCoroutine(raceManager.DisplayText("Voiture dead !", 1000));
-			}
+			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage") as Texture2D;
+			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
 		}
+		if(this.damagePoints >= 50)
+		{
+			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
+			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
+		}
+		if(this.damagePoints >= 70)
+		{
+			this.transform.FindChild ("Smoke").renderer.enabled = true;
+		}
+		if(this.damagePoints >= 100)
+		{
+			damageFactor = 2;
+			this.transform.FindChild ("Fire").renderer.enabled = true;
+			StartCoroutine(raceManager.DisplayText("Voiture dead !", 1000));
+		}
+		*/
 	}
 	
 	void randomizeItem ()
@@ -643,6 +684,8 @@ public class CarController : MonoBehaviour
 	// So the car can drive faster
 	public void NitroUse () {
 		if (nitroLevel > 0) {
+			this.transform.FindChild ("NitroEffects1").renderer.enabled = true;
+			this.transform.FindChild ("NitroEffects2").renderer.enabled = true;
 			this.maxSpeed = nitroSpeed;
 			nitroLevel -= 0.7f;
 			nitroSlider.value = nitroLevel;
@@ -654,5 +697,7 @@ public class CarController : MonoBehaviour
 	
 	public void StopNitroUse () {
 		this.maxSpeed = currentMaxSpeed;
+		this.transform.FindChild ("NitroEffects1").renderer.enabled = false;
+		this.transform.FindChild ("NitroEffects2").renderer.enabled = false;
 	}
 }
