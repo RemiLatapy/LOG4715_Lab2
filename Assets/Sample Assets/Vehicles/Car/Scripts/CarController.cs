@@ -25,7 +25,7 @@ public class CarController : MonoBehaviour
 	[SerializeField] private float maxTorque = 35;                                  // the maximum torque of the engine
 	[SerializeField] private float minTorque = 10;                                  // the minimum torque of the engine
 	[SerializeField] private float brakePower = 40;                                 // how powerful the brakes are at stopping the car
-	
+
 	public int rank;																// rank of the car
 	private int numberOfCars;														// number of cars in the race
 	
@@ -48,7 +48,8 @@ public class CarController : MonoBehaviour
 		[Range(0, 1)] public float burnoutTendency = 0.2f;                          // how likely the car is to burnout 
 		[Range(0, 1)] public float spinoutSlipEffect = 0.5f;                        // how easily the car spins out when turning
 		[Range(0, 1)] public float sideSlideEffect = 0.5f;                          // how easily the car loses sideways grip 
-		
+
+
 		public float downForce = 30;                                                // the amount of downforce applied (speed is factored in)
 		public int numGears = 5;                                                    // the number of gears
 		[Range(0, 1)] public float gearDistributionBias = 0.2f;                     // Controls whether the gears are bunched together towards the lower or higher end of the car's range of speed.
@@ -83,7 +84,7 @@ public class CarController : MonoBehaviour
 	public float AvgSkid { get; private set; }                                      // the average skid factor from all wheels
 	public float RevsFactor { get; private set; }                                   // value between 0-1 indicating where the current revs fall between 0 and max revs
 	public float SpeedFactor { get;  private set; }                                 // value between 0-1 of the car's current speed relative to max speed
-	
+	[SerializeField] public float speedBooster = 20;
 	// Variables use for picked up objects	
 	private int item = 0; // id of picked up item, 0 -> none, 1 -> green projectile, 2 -> red projectile, 3 -> blue projectile, 4 -> nitro
 	// TODO : change into private
@@ -92,6 +93,11 @@ public class CarController : MonoBehaviour
 	// Variables for nitro
 	public Slider nitroSlider;
 	private bool nitroUsed =false;
+	private bool boosterUsed=false;
+	public bool Nitro{
+		get{return nitroUsed;}
+		set{nitroUsed=value;}
+	}
 	private float nitroLevel = 0;
 	private float currentMaxSpeed;
 	[SerializeField] 
@@ -224,6 +230,19 @@ public class CarController : MonoBehaviour
 			damagePoints -= 0.02f;
 		}
 
+		if(boosterUsed||nitroUsed)
+		{
+			StartNitroUse();
+			if(boosterUsed)
+			{
+				CurrentSpeed=nitroSpeed*10;
+			}
+		}
+		else
+		{
+			StopNitroUse();
+		}
+
 		if(damagePoints < 50 && damagePoints >= 30)
 		{
 			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage1") as Texture2D;
@@ -284,7 +303,7 @@ public class CarController : MonoBehaviour
 				
 				CalculateRubberbandingFactor ();
 				// pressing forward while moving forward : accelerate!
-				targetAccelInput = accelBrakeInput * rubberbandingFactor * (nitroUsed?10:1);
+				targetAccelInput = accelBrakeInput * rubberbandingFactor * (nitroUsed?10:1) * (boosterUsed?speedBooster:1);
 
 				BrakeInput = 0;
 			}
@@ -295,7 +314,11 @@ public class CarController : MonoBehaviour
 			}
 		}
 		else {
-			if (CurrentSpeed > smallSpeed) {
+			if(boosterUsed)
+			{
+				targetAccelInput = rubberbandingFactor *speedBooster;
+			}
+			else if (CurrentSpeed > smallSpeed) {
 				// pressing backward while moving forward : brake!
 				BrakeInput = -accelBrakeInput;
 				targetAccelInput = 0;
@@ -323,9 +346,11 @@ public class CarController : MonoBehaviour
 		// current speed is measured in the forward direction of the car (sliding sideways doesn't count!)
 		CurrentSpeed = transform.InverseTransformDirection (rigidbody.velocity).z;
 		// speedfactor is a normalized representation of speed in relation to max speed:
-		float speed = (reversing ? maxReversingSpeed : maxSpeed) / damageFactor;
+		float speed = (reversing ? maxReversingSpeed : maxSpeed)*CurrentSpeed / damageFactor;
+		
 		SpeedFactor = Mathf.InverseLerp (0, speed, Mathf.Abs (CurrentSpeed));
 		curvedSpeedFactor = reversing ? 0 : CurveFactor (SpeedFactor);
+
 	}
 	
 	void HandleGearChanging ()
@@ -613,16 +638,18 @@ public class CarController : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag ("SpeedBoost"))
 		{
-			StartNitroUse();
+			boosterUsed=true;
+			/*StartNitroUse();
 			maxSpeed*=10;
-			CurrentSpeed=nitroSpeed;
+			CurrentSpeed=nitroSpeed;*/
 		}
 	}
 	void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.CompareTag ("SpeedBoost"))
 		{
-			StopNitroUse();
+			boosterUsed=false;
+			//StopNitroUse();
 		}
 	}
 	void OnCollisionEnter(Collision col)
@@ -698,7 +725,7 @@ public class CarController : MonoBehaviour
 	
 	// When nitro is used, set maxSpeed and maxTorque to nitro values which are bigger
 	// So the car can drive faster
-	public void NitroUse () {
+	public void NitroUse() {
 		if (nitroLevel > 0) {
 			StartNitroUse();
 			nitroLevel -= 0.7f;

@@ -41,17 +41,11 @@ public class CarUserControlMP : MonoBehaviour
 		float h = Input.GetAxis(horizontal);
 		float v = Input.GetAxis(vertical);
 		#endif
-		car.Move(h,v);
 		if (jump) {
 			car.Jump ();
 			jump = false;
 		}
-		if (nitro) {
-			car.NitroUse ();
-		} 
-		else {
-			car.StopNitroUse ();
-		}
-
+		car.Nitro=nitro;
+		car.Move(h,v);
 	}
 }

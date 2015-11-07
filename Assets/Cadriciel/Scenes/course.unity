@@ -10819,6 +10819,7 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  speedBooster: 20
   itemBox: {fileID: 535432262}
   itemWonText: {fileID: 993812022}
   nitroSlider: {fileID: 1061812346}
@@ -23299,6 +23300,7 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
@@ -33558,6 +33560,7 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
@@ -39127,6 +39130,7 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
@@ -44207,6 +44211,7 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
@@ -48086,6 +48091,7 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
@@ -49361,6 +49367,7 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
@@ -50764,6 +50771,7 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
   nitroSlider: {fileID: 0}
