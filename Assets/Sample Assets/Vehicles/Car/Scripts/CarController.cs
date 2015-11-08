@@ -31,8 +31,8 @@ public class CarController : MonoBehaviour
 	
 	[SerializeField] private float adjustCentreOfMass = 0.25f;                      // vertical offset for the centre of mass
 	[SerializeField] bool preserveDirectionWhileInAir = false;                      // flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
-	[SerializeField] [Range(0, 2f)] private float adjustPitch = 1f;
-	[SerializeField] [Range(0, 2f)] private float adjustRoll = 1f;
+	[SerializeField] [Range(0, 1000f)] private float adjustPitch = 150f;
+	[SerializeField] [Range(0, 1000f)] private float adjustRoll = 150f;
 	
 	private int stylePoint = 0;														// Score increase by special drive
 	[SerializeField] private float jumpForce = 500f;
@@ -424,7 +424,7 @@ public class CarController : MonoBehaviour
 	{
 		// calcul rubberbanding factor with adjustment
 		float adjustRubberbanding = raceManager.AdjustRubberbanding;
-		rubberbandingFactor = ((adjustRubberbanding - 1/adjustRubberbanding) * (rank - 1)) / (numberOfCars - 1) + 1/adjustRubberbanding;
+		rubberbandingFactor = Mathf.Lerp (1f/adjustRubberbanding, adjustRubberbanding, (rank-1f)/(numberOfCars-1f));
 	}
 	
 	void CalculateSpeedValues ()
@@ -564,6 +564,7 @@ public class CarController : MonoBehaviour
 	
 	void AirOrientation (float h, float v)
 	{
+		// stop rotation when player release
 		if (!anyOnGround && IsPlayer()) {
 			if(h == 0)
 				rigidbody.angularVelocity.Set(0, rigidbody.angularVelocity.y, rigidbody.angularVelocity.z);
@@ -572,9 +573,8 @@ public class CarController : MonoBehaviour
 			if(v == 0 && h == 0)
 				return;
 
-			// TODO : change 300 by physic value
-			h *= 300 * Time.deltaTime * adjustPitch;
-			v *= 300 * Time.deltaTime * adjustRoll;
+			h *= adjustPitch;
+			v *= adjustRoll;
 			
 			rigidbody.AddTorque(transform.right * h);
 			rigidbody.AddTorque(transform.forward * -v);
