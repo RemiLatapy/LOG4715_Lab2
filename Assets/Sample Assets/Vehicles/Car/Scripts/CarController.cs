@@ -35,7 +35,7 @@ public class CarController : MonoBehaviour
 	[SerializeField] [Range(0, 1000f)] private float adjustRoll = 150f;
 	
 	private int stylePoint = 0;														// Score increase by special drive
-	[SerializeField] private float jumpForce = 500f;
+	[SerializeField] [Range(1, 10f)] private float jumpHigh = 3f;
 	
 	private float rubberbandingFactor = 1;											// Factor apply to increase or decrease speed
 	
@@ -583,6 +583,8 @@ public class CarController : MonoBehaviour
 	
 	public void Jump ()
 	{
+		float jumpForce = Mathf.Sqrt (2f * jumpHigh * Physics.gravity.magnitude) * rigidbody.mass;
+
 		if(anyOnGround)
 			rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
 	}	
