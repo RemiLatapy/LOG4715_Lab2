@@ -22385,6 +22385,121 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
+--- !u!1 &925970856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 925970863}
+  - 33: {fileID: 925970862}
+  - 65: {fileID: 925970861}
+  - 23: {fileID: 925970860}
+  - 114: {fileID: 925970859}
+  - 54: {fileID: 925970858}
+  - 114: {fileID: 925970857}
+  m_Layer: 0
+  m_Name: Destructible Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &925970857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925970856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2061952440, guid: f655bb0c7d39612409a173f95e9016c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immediate: 1
+  shards:
+    min: 5
+    max: 20
+  shardsPerFrame: 2
+--- !u!54 &925970858
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925970856}
+  serializedVersion: 2
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &925970859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925970856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1836541618, guid: f655bb0c7d39612409a173f95e9016c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactForceThreshold: 10
+--- !u!23 &925970860
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925970856}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: d37a5cbead14fdb45b40ff3e2093be3d, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &925970861
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925970856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &925970862
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925970856}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &925970863
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925970856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 29.6000004, y: 5.19999981, z: 176}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1001 &932808782
 Prefab:
   m_ObjectHideFlags: 0
@@ -23505,8 +23620,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
@@ -33884,8 +33999,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
@@ -39579,8 +39694,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
@@ -44761,8 +44876,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
@@ -48729,7 +48844,8 @@ MonoBehaviour:
   carapaceVerte: {fileID: 0}
   carapaceBleue: {fileID: 0}
   speedBooster: 20
-  itemBox: []
+  itemBox:
+  - {fileID: 0}
   itemWon: []
   nitroSlider: {fileID: 0}
   nitroSpeed: 130
@@ -50024,8 +50140,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
@@ -51364,8 +51480,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
