@@ -247,11 +247,7 @@ public class CarController : MonoBehaviour
 	void FixedUpdate(){
 		SpeedOMeter ();
 
-		// Damage points are restored through the time
-		if (damagePoints > 30) 
-		{
-			damagePoints -= 0.02f;
-		}
+
 		if (nitroUsed) {
 			NitroUse ();
 		}
@@ -268,19 +264,28 @@ public class CarController : MonoBehaviour
 			StopNitroUse();
 		}
 
+		// Damage points are restored through the time
+		if (damagePoints > 30) 
+		{
+			damagePoints -= 0.02f;
+		}
+
 		if(damagePoints < 50 && damagePoints >= 30)
 		{
+			damageFactor = 1;
 			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage1") as Texture2D;
 			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
 		}
 		else if(damagePoints < 70 && damagePoints >= 50)
 		{
+			damageFactor = 1;
 			this.transform.FindChild ("Smoke").renderer.enabled = false;
 			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
 			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
 		}
 		else if(damagePoints < 100 && damagePoints >= 70)
 		{
+			damageFactor = 1;
 			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
 			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
 			this.transform.FindChild ("Smoke").renderer.enabled = true;
@@ -373,7 +378,7 @@ public class CarController : MonoBehaviour
 				CalculateRubberbandingFactor ();
 				// pressing forward while moving forward : accelerate!
 				targetAccelInput = accelBrakeInput * rubberbandingFactor * (nitroUsed?10:1) * (boosterUsed?speedBooster:1);
-
+				//targetAccelInput = accelBrakeInput * rubberbandingFactor;
 				BrakeInput = 0;
 			}
 			else {
@@ -415,7 +420,7 @@ public class CarController : MonoBehaviour
 		// current speed is measured in the forward direction of the car (sliding sideways doesn't count!)
 		CurrentSpeed = transform.InverseTransformDirection (rigidbody.velocity).z;
 		// speedfactor is a normalized representation of speed in relation to max speed:
-		float speed = (reversing ? maxReversingSpeed : maxSpeed)*CurrentSpeed / damageFactor;
+		float speed = (reversing ? maxReversingSpeed : maxSpeed) / damageFactor;
 		
 		SpeedFactor = Mathf.InverseLerp (0, speed, Mathf.Abs (CurrentSpeed));
 		curvedSpeedFactor = reversing ? 0 : CurveFactor (SpeedFactor);
@@ -741,28 +746,6 @@ public class CarController : MonoBehaviour
 	{
 		// Calculate the damage points in function of the speed of the impact
 		this.damagePoints += Mathf.FloorToInt(damagePoints*Mathf.Abs(speed));
-		/*
-		if(this.damagePoints >= 30)
-		{
-			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage") as Texture2D;
-			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
-		}
-		if(this.damagePoints >= 50)
-		{
-			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
-			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
-		}
-		if(this.damagePoints >= 70)
-		{
-			this.transform.FindChild ("Smoke").renderer.enabled = true;
-		}
-		if(this.damagePoints >= 100)
-		{
-			damageFactor = 2;
-			this.transform.FindChild ("Fire").renderer.enabled = true;
-			StartCoroutine(raceManager.DisplayText("Voiture dead !", 1000));
-		}
-		*/
 	}
 	
 	void randomizeItem ()
@@ -798,7 +781,7 @@ public class CarController : MonoBehaviour
 		if (nitroLevel > 0) {
 			StartNitroUse();
 			nitroLevel -= 0.7f;
-			nitroSlider.value = nitroLevel;
+			if(IsPlayer()) nitroSlider.value = nitroLevel;
 		}
 		else {
 			StopNitroUse();

@@ -174,13 +174,14 @@ public class CarAIControl : MonoBehaviour
 			{
 				driving = false;
 			}
-
+			/*
 			// Randomize AI action
 			float action = Random.Range (1F, 10F);
 			// If the random number is 4, AI uses all its nitro boost
 			if(action == 4){
 				carController.NitroUse();
 			}
+			*/
 		}
 
     }

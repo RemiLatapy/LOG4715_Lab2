@@ -6852,7 +6852,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 1.10000002
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -10983,7 +10983,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 527691314}
   m_GameObject: {fileID: 481286549}
   serializedVersion: 2
-  m_Mass: 1.10000002
+  m_Mass: 50
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -11624,7 +11624,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: m_Mass
-      value: 1.10000002
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -20072,7 +20072,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 1.10000002
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -23407,7 +23407,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 1791083872}
   m_GameObject: {fileID: 981142452}
   serializedVersion: 2
-  m_Mass: 1.10000002
+  m_Mass: 50
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -31818,7 +31818,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1268121541}
-  m_LocalRotation: {x: .645932019, y: .642601013, z: .296321988, w: .286406994}
+  m_LocalRotation: {x: .645932078, y: .642601073, z: .296322018, w: .286407024}
   m_LocalPosition: {x: -103.400002, y: 38, z: 7.5}
   m_LocalScale: {x: 1, y: 1, z: 5.28524303}
   m_Children: []
@@ -33849,7 +33849,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 2109428619}
   m_GameObject: {fileID: 1368033979}
   serializedVersion: 2
-  m_Mass: 1.10000002
+  m_Mass: 50
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -39424,7 +39424,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 286293165}
   m_GameObject: {fileID: 1635867382}
   serializedVersion: 2
-  m_Mass: 1.10000002
+  m_Mass: 50
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -40587,7 +40587,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 1.10000002
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -42318,7 +42318,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 1.10000002
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -44393,7 +44393,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 1705016575}
   m_GameObject: {fileID: 1881066731}
   serializedVersion: 2
-  m_Mass: 1.10000002
+  m_Mass: 50
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -48278,7 +48278,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 2049109060}
   m_GameObject: {fileID: 1977983683}
   serializedVersion: 2
-  m_Mass: 1.10000002
+  m_Mass: 50
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -49676,7 +49676,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 838409333}
   m_GameObject: {fileID: 2042105150}
   serializedVersion: 2
-  m_Mass: 1.10000002
+  m_Mass: 50
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -49808,7 +49808,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: m_Mass
-      value: 1.10000002
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -51016,7 +51016,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 2142660374}
   m_GameObject: {fileID: 2099699816}
   serializedVersion: 2
-  m_Mass: 1.10000002
+  m_Mass: 50
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -51266,7 +51266,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 1.10000002
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -52040,7 +52040,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 1.10000002
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
