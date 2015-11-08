@@ -13,6 +13,7 @@ public class CarUserControlMP : MonoBehaviour
 
 	private bool jump;
 	private bool nitro;
+	private bool useItem;
 	
 	void Awake ()
 	{
@@ -23,8 +24,9 @@ public class CarUserControlMP : MonoBehaviour
 	void Update () {
 		#if CROSS_PLATFORM_INPUT
 		if (CrossPlatformInput.GetButtonDown("Jump")) jump = true;
-		if (CrossPlatformInput.GetButton("Nitro")) nitro = true;
-		if (CrossPlatformInput.GetButtonUp("Nitro")) nitro = false;
+		if (CrossPlatformInput.GetButton("Nitro")) car.Nitro = true;
+		if (CrossPlatformInput.GetButtonUp("Nitro")) car.Nitro = false;
+		if (CrossPlatformInput.GetButtonDown("Fire1")) car.Item = true;
 		#else
 		if (Input.GetButtonDown("Jump")) jump = true;
 		#endif
@@ -45,7 +47,6 @@ public class CarUserControlMP : MonoBehaviour
 			car.Jump ();
 			jump = false;
 		}
-		car.Nitro=nitro;
 		car.Move(h,v);
 	}
 }

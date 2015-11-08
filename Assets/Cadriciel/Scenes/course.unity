@@ -10819,6 +10819,9 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  carapaceRouge: {fileID: 161426, guid: 3689cfbc83970024f97a69f13b6c8d5b, type: 2}
+  carapaceVerte: {fileID: 129330, guid: 1446990042e4b5b43861ffd535de37c9, type: 2}
+  carapaceBleue: {fileID: 142492, guid: 6440f5b5a264127449447e49e84e560b, type: 2}
   speedBooster: 20
   itemBox: {fileID: 535432262}
   itemWonText: {fileID: 993812022}
@@ -11603,6 +11606,18 @@ Prefab:
       propertyPath: rightArrow
       value: 
       objectReference: {fileID: 1060477255}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: carapaceRouge
+      value: 
+      objectReference: {fileID: 161426, guid: 3689cfbc83970024f97a69f13b6c8d5b, type: 2}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: carapaceVerte
+      value: 
+      objectReference: {fileID: 129330, guid: 1446990042e4b5b43861ffd535de37c9, type: 2}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: carapaceBleue
+      value: 
+      objectReference: {fileID: 142492, guid: 6440f5b5a264127449447e49e84e560b, type: 2}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
@@ -23300,6 +23315,9 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  carapaceRouge: {fileID: 0}
+  carapaceVerte: {fileID: 0}
+  carapaceBleue: {fileID: 0}
   speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
@@ -33560,6 +33578,9 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  carapaceRouge: {fileID: 0}
+  carapaceVerte: {fileID: 0}
+  carapaceBleue: {fileID: 0}
   speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
@@ -39130,6 +39151,9 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  carapaceRouge: {fileID: 0}
+  carapaceVerte: {fileID: 0}
+  carapaceBleue: {fileID: 0}
   speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
@@ -44211,6 +44235,9 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  carapaceRouge: {fileID: 0}
+  carapaceVerte: {fileID: 0}
+  carapaceBleue: {fileID: 0}
   speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
@@ -48091,6 +48118,9 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  carapaceRouge: {fileID: 0}
+  carapaceVerte: {fileID: 0}
+  carapaceBleue: {fileID: 0}
   speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
@@ -49367,6 +49397,9 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  carapaceRouge: {fileID: 0}
+  carapaceVerte: {fileID: 0}
+  carapaceBleue: {fileID: 0}
   speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
@@ -50702,6 +50735,9 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
+  carapaceRouge: {fileID: 0}
+  carapaceVerte: {fileID: 0}
+  carapaceBleue: {fileID: 0}
   speedBooster: 20
   itemBox: {fileID: 0}
   itemWonText: {fileID: 0}
