@@ -116,6 +116,7 @@ public class CarController : MonoBehaviour
 	public bool Item{get;set;}
 	private float nitroLevel = 0;
 	private float currentMaxSpeed;
+	private float nitroFactor = 1;
 	[SerializeField] 
 	[Range(100, 200)] private float nitroSpeed = 160f;
 	
@@ -189,10 +190,7 @@ public class CarController : MonoBehaviour
 	float curvedSpeedFactor;
 	bool reversing;
 	float targetAccelInput; // target accel input is our desired acceleration input. We smooth towards it later
-	
-	void OnChange(){
-	}
-	
+
 	void Awake ()
 	{
 		// get a reference to all wheel attached to the car.
@@ -220,8 +218,6 @@ public class CarController : MonoBehaviour
 	
 	void Start()
 	{
-		// TODO delete
-		nitroLevel = 0;
 		currentMaxSpeed = maxSpeed;
 		this.transform.FindChild ("Fire").renderer.enabled = false;
 		this.transform.FindChild ("Smoke").renderer.enabled = false;
@@ -232,7 +228,6 @@ public class CarController : MonoBehaviour
 		{
 			this.leftArrow.enabled = false;
 			this.rightArrow.enabled = false;
-			//itemBox.enabled = false;
 			nitroSlider.value = nitroLevel;
 			HideItemBox();
 			for (int i = 0; i < itemWon.Length; i++) {
@@ -432,7 +427,7 @@ public class CarController : MonoBehaviour
 		// current speed is measured in the forward direction of the car (sliding sideways doesn't count!)
 		CurrentSpeed = transform.InverseTransformDirection (rigidbody.velocity).z;
 		// speedfactor is a normalized representation of speed in relation to max speed:
-		float speed = (reversing ? maxReversingSpeed : maxSpeed) / damageFactor;
+		float speed = ((reversing ? maxReversingSpeed : maxSpeed) / damageFactor) * nitroFactor;
 		
 		SpeedFactor = Mathf.InverseLerp (0, speed, Mathf.Abs (CurrentSpeed));
 		curvedSpeedFactor = reversing ? 0 : CurveFactor (SpeedFactor);
@@ -837,8 +832,8 @@ public class CarController : MonoBehaviour
 		nitroUsed=true;
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = true;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = true;
-		// If nitro is used damageFactor is used as a bonus
-		damageFactor = 0.5f;
+		// If nitro is used multiply the velocity by 2
+		nitroFactor = 2;
 	}
 	
 	public void StopNitroUse () {
@@ -846,6 +841,6 @@ public class CarController : MonoBehaviour
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = false;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = false;
 		// Restore normal speed
-		damageFactor = 1;
+		nitroFactor = 1;
 	}
 }
