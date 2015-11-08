@@ -11016,7 +11016,7 @@ MonoBehaviour:
   carapaceRouge: {fileID: 161426, guid: 3689cfbc83970024f97a69f13b6c8d5b, type: 2}
   carapaceVerte: {fileID: 129330, guid: 1446990042e4b5b43861ffd535de37c9, type: 2}
   carapaceBleue: {fileID: 142492, guid: 6440f5b5a264127449447e49e84e560b, type: 2}
-  speedBooster: 1500
+  speedBooster: 20
   itemBox:
   - {fileID: 1424221899}
   - {fileID: 398229665}
@@ -11888,10 +11888,6 @@ Prefab:
       value: 
       objectReference: {fileID: 1315631965}
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
-<<<<<<< HEAD
-      propertyPath: speedBooster
-      value: 1500
-=======
       propertyPath: adjustPitch
       value: 150
       objectReference: {fileID: 0}
@@ -11902,7 +11898,6 @@ Prefab:
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: preserveDirectionWhileInAir
       value: 1
->>>>>>> 4621299672a567f7dc7417f8fe11a6173010f704
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
