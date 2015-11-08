@@ -389,7 +389,7 @@ public class CarController : MonoBehaviour
 				
 				CalculateRubberbandingFactor ();
 				// pressing forward while moving forward : accelerate!
-				targetAccelInput = accelBrakeInput * rubberbandingFactor * (nitroUsed?10:1) * (boosterUsed?speedBooster:1);
+				targetAccelInput = accelBrakeInput * rubberbandingFactor * (nitroUsed?10:1);// * (boosterUsed?speedBooster:1);
 				//targetAccelInput = accelBrakeInput * rubberbandingFactor;
 				BrakeInput = 0;
 			}
@@ -400,11 +400,11 @@ public class CarController : MonoBehaviour
 			}
 		}
 		else {
-			if(boosterUsed)
+			/*if(boosterUsed)
 			{
 				targetAccelInput = rubberbandingFactor *speedBooster;
 			}
-			else if (CurrentSpeed > smallSpeed) {
+			else */if (CurrentSpeed > smallSpeed) {
 				// pressing backward while moving forward : brake!
 				BrakeInput = -accelBrakeInput;
 				targetAccelInput = 0;
@@ -718,6 +718,23 @@ public class CarController : MonoBehaviour
 			this.leftArrow.enabled = false;
 		}
 	}
+	void OnTriggerStay(Collider other)
+	{
+		if (other.gameObject.CompareTag ("SpeedBoost"))
+		{
+			this.rigidbody.AddForce(this.transform.forward*speedBooster);
+			StartNitroUse();
+		}
+	}
+	
+	void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject.CompareTag ("SpeedBoost"))
+		{
+			boosterUsed=false;
+			//StopNitroUse();
+		}
+	}
 
 	private void HideItemBox(){
 		for (int i = 0; i < itemBox.Length; i++) {
@@ -753,25 +770,7 @@ public class CarController : MonoBehaviour
 
 	}
 
-	void OnTriggerStay(Collider other)
-	{
-		if (other.gameObject.CompareTag ("SpeedBoost"))
-		{
-			boosterUsed=true;
-			/*StartNitroUse();
-			maxSpeed*=10;
-			CurrentSpeed=nitroSpeed;*/
-		}
-	}
 
-	void OnTriggerExit(Collider other)
-	{
-		if (other.gameObject.CompareTag ("SpeedBoost"))
-		{
-			boosterUsed=false;
-			//StopNitroUse();
-		}
-	}
 
 	void OnCollisionEnter(Collision col)
 	{
