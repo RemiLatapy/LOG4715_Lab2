@@ -61,7 +61,15 @@ public class CarController : MonoBehaviour
 		public float gearFactorSmoothing = 5f;                                      // Controls the speed at which revs drop or raise to match new gear, after a gear change.
 		[Range(0,1)]public float revRangeBoundary = 0.8f;                           // The amount of the full rev range used in each gear.
 	}
-	
+
+	public class Items{
+		public const int vide = 0;
+		public const int carapaceVerte = 1;
+		public const int carapaceRouge = 2;
+		public const int carapaceBleue = 3;
+		public const int nitro = 4;
+
+	}
 	
 	private RaceManager raceManager;
 	
@@ -71,11 +79,15 @@ public class CarController : MonoBehaviour
 	private float smallSpeed;                                                       // A small proportion of max speed, used to decide when to start accelerating/braking when transitioning between fwd and reverse motion
 	private float maxReversingSpeed;                                                // The maximum reversing speed
 	private bool immobilized;                                                       // Whether the car is accepting inputs.
-	
-	
+
+
+	//Prefabs
+	public GameObject carapaceRouge, carapaceVerte, carapaceBleue;
+
 	// publicly read-only props, useful for GUI, Sound effects, etc.
 	public int GearNum { get; private set; }                                        // the current gear we're in.
-	public float CurrentSpeed { get; private set; }                                 // the current speed of the car
+	public float CurrentSpeed { get; private set; } 								// the current speed of the car
+	[SerializeField] public float speedBooster = 20;								// the rate of the Booster
 	public float CurrentSteerAngle{ get; private set; }                             // The current steering angle for steerable wheels.
 	public float AccelInput { get; private set; }                                   // the current acceleration input
 	public float BrakeInput { get; private set; }                                   // the current brake input
@@ -84,12 +96,18 @@ public class CarController : MonoBehaviour
 	public float AvgSkid { get; private set; }                                      // the average skid factor from all wheels
 	public float RevsFactor { get; private set; }                                   // value between 0-1 indicating where the current revs fall between 0 and max revs
 	public float SpeedFactor { get;  private set; }                                 // value between 0-1 of the car's current speed relative to max speed
-	[SerializeField] public float speedBooster = 20;
+	public float SpeedCarapace{get; set;}
+
 	// Variables use for picked up objects	
 	private int item = 0; // id of picked up item, 0 -> none, 1 -> green projectile, 2 -> red projectile, 3 -> blue projectile, 4 -> nitro
 	// TODO : change into private
-	public Image itemBox;
-	public Text itemWonText;
+	public RawImage itemBox;
+	public RawImage redItem;
+	public RawImage blueItem;
+	public RawImage greenItem;
+	public RawImage[] itemWon; 
+
+
 	// Variables for nitro
 	public Slider nitroSlider;
 	private bool nitroUsed =false;
@@ -98,6 +116,7 @@ public class CarController : MonoBehaviour
 		get{return nitroUsed;}
 		set{nitroUsed=value;}
 	}
+	public bool Item{get;set;}
 	private float nitroLevel = 0;
 	private float currentMaxSpeed;
 	[SerializeField] 
@@ -113,6 +132,11 @@ public class CarController : MonoBehaviour
 	// Variables for turn indicators
 	public RawImage leftArrow;
 	public RawImage rightArrow;
+
+	// Variables for speedometer
+	public RawImage speedOMeterDial;
+	public RawImage speedOMeterPointer;
+	private float rotationAngleStart;
 	
 	public int NumGears {					// the number of gears set up on the car
 		get { return advanced.numGears; }
@@ -189,6 +213,11 @@ public class CarController : MonoBehaviour
 		// a few useful speeds are calculated for use later:
 		smallSpeed = maxSpeed*0.05f;
 		maxReversingSpeed = maxSpeed * advanced.reversingSpeedFactor;
+
+		/*carapaceBleue=Resources.Load("Assets/Resources/CarapaceBleu") as GameObject;
+		carapaceRouge=Resources.Load("Assets/Resources/CarapaceRouge") as GameObject;
+		carapaceVerte=Resources.Load("Assets/Resources/CarapaceVerte") as GameObject;
+		Debug.Log(carapaceBleue);*/
 	}
 	
 	void Start()
@@ -200,14 +229,20 @@ public class CarController : MonoBehaviour
 		this.transform.FindChild ("Smoke").renderer.enabled = false;
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = false;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = false;
-		
+
 		if(this.IsPlayer())
 		{
 			this.leftArrow.enabled = false;
 			this.rightArrow.enabled = false;
-			itemWonText.enabled = false;
 			itemBox.enabled = false;
 			nitroSlider.value = nitroLevel;
+			redItem.enabled = false;
+			greenItem.enabled = false;
+			blueItem.enabled = false;
+			itemBox.enabled = false;
+			for (int i = 0; i < itemWon.Length; i++) {
+				itemWon [i].enabled = false;
+			}
 		}
 		numberOfCars = transform.root.GetComponentsInChildren<CarController> ().Length;
 		if(IsPlayer())
@@ -222,16 +257,13 @@ public class CarController : MonoBehaviour
 
 	void FixedUpdate(){
 		AddStylePoints();
-		if (IsPlayer ()) {
-			//Debug.Log (damagePoints);
-		}
-		// Damage points are restored through the time
-		if (damagePoints > 30) 
-		{
-			damagePoints -= 0.02f;
-		}
+		SpeedOMeter ();
+		ManageDamagePoints ();
 
-		if(boosterUsed||nitroUsed)
+		if (nitroUsed) {
+			NitroUse ();
+		}
+		else if(boosterUsed)
 		{
 			StartNitroUse();
 			if(boosterUsed)
@@ -243,7 +275,18 @@ public class CarController : MonoBehaviour
 		{
 			StopNitroUse();
 		}
+	}
 
+	public void ManageDamagePoints()
+	{
+		// Damage points are restored through the time
+		if (damagePoints > 30) 
+		{
+			damagePoints -= 0.02f;
+		}
+
+		// No damageFactor by default
+		damageFactor = 1;
 		if(damagePoints < 50 && damagePoints >= 30)
 		{
 			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage1") as Texture2D;
@@ -271,6 +314,21 @@ public class CarController : MonoBehaviour
 			this.transform.FindChild ("Smoke").renderer.enabled = true;
 		}
 	}
+
+	public void SpeedOMeter()
+	{
+		if (IsPlayer ()) {
+			float speedFactor = CurrentSpeed / MaxSpeed;
+			float rotationAngle;
+			if (CurrentSpeed >= 0) {
+				rotationAngle = Mathf.Lerp (0, 180, speedFactor);
+			} else {
+				rotationAngle = Mathf.Lerp (0, 180, -speedFactor);
+			}
+			speedOMeterPointer.transform.RotateAround (new Vector3 (speedOMeterPointer.transform.position.x, speedOMeterPointer.transform.position.y, speedOMeterPointer.transform.position.z), new Vector3 (0, 0, 1), rotationAngleStart-rotationAngle);
+			rotationAngleStart = rotationAngle;
+		}
+	}
 	
 	
 	public void Move (float steerInput, float accelBrakeInput)
@@ -286,12 +344,45 @@ public class CarController : MonoBehaviour
 		ApplyDownforce ();
 		CalculateRevs();
 		PreserveDirectionInAir();
+<<<<<<< HEAD
 	}
 
 	public void  Orient (float roll, float pitch) {
 		AirOrientation (pitch, roll);
+=======
+		AddStylePoints();
+		AirOrientation(accelBrakeInput, steerInput);
+		if(Item) UseItem();
+>>>>>>> 692cb5c410c5e412c0a3f4079c61332ede8f54cb
 	}
+
+	void UseItem(){
+		Item=false;
+		switch(item)
+		{
+			case Items.carapaceVerte:
+				ThrowShell(Instantiate(carapaceVerte) as GameObject);
+				break;
+
+			case Items.carapaceRouge:
+				ThrowShell(Instantiate (carapaceRouge) as GameObject);
+				break;
+
+			case Items.carapaceBleue:
+				ThrowShell(Instantiate(carapaceBleue) as GameObject);
+				break;
+
+			default: break;
+		}
+		item=Items.vide;
 	
+	}
+	void ThrowShell(GameObject carapace)
+	{
+		carapace.transform.position=this.transform.forward;
+		Rigidbody rb=carapace.GetComponent<Rigidbody>();
+		rb.velocity=this.transform.forward * SpeedCarapace;
+	}
 	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)
 	{
 		// move.Z is the user's fwd/back input. We need to convert it into acceleration and braking.
@@ -307,7 +398,7 @@ public class CarController : MonoBehaviour
 				CalculateRubberbandingFactor ();
 				// pressing forward while moving forward : accelerate!
 				targetAccelInput = accelBrakeInput * rubberbandingFactor * (nitroUsed?10:1) * (boosterUsed?speedBooster:1);
-
+				//targetAccelInput = accelBrakeInput * rubberbandingFactor;
 				BrakeInput = 0;
 			}
 			else {
@@ -349,7 +440,7 @@ public class CarController : MonoBehaviour
 		// current speed is measured in the forward direction of the car (sliding sideways doesn't count!)
 		CurrentSpeed = transform.InverseTransformDirection (rigidbody.velocity).z;
 		// speedfactor is a normalized representation of speed in relation to max speed:
-		float speed = (reversing ? maxReversingSpeed : maxSpeed)*CurrentSpeed / damageFactor;
+		float speed = (reversing ? maxReversingSpeed : maxSpeed) / damageFactor;
 		
 		SpeedFactor = Mathf.InverseLerp (0, speed, Mathf.Abs (CurrentSpeed));
 		curvedSpeedFactor = reversing ? 0 : CurveFactor (SpeedFactor);
@@ -588,37 +679,43 @@ public class CarController : MonoBehaviour
 			
 			randomizeItem();
 			
-			if(item == 4) {
+			if(item == Items.nitro) {
 				nitroLevel = 100;
 			}
 			// If the car is the player, display informations
 			if(this.IsPlayer()){
+				itemBox.enabled = true;
 				switch(item){
-				case 1 :
-					itemWonText.text = "Yeaaah un projectile vert !!!";
-					itemWonText.color = Color.green;
-					itemBox.color = Color.green;
+				case Items.carapaceVerte :
+					greenItem.enabled = true;
+					redItem.enabled = false;
+					blueItem.enabled = false;
+
+					// Display the won item for a certain amount of time
+					StartCoroutine(ShowWonItem(3f, 0));
+
 					break;
-				case 2 :
-					itemWonText.text = "Yeaaah un projectile rouge !!!";
-					itemWonText.color = Color.red;
-					itemBox.color = Color.red;
+				case Items.carapaceRouge :
+					redItem.enabled = true;
+					greenItem.enabled = false;
+					blueItem.enabled = false;
+
+					// Display the won item for a certain amount of time
+					StartCoroutine(ShowWonItem(3f, 1));
 					break;
-				case 3 :
-					itemWonText.text = "Yeaaah un projectile bleu !!!";
-					itemWonText.color = Color.blue;
-					itemBox.color = Color.blue;
+				case Items.carapaceBleue :
+					blueItem.enabled = true;
+					redItem.enabled = false;
+					greenItem.enabled = false;
+
+					// Display the won item for a certain amount of time
+					StartCoroutine(ShowWonItem(3f, 2));
 					break;
-				case 4 : 
-					itemWonText.text = "Sbriii sbriii d'la nitro !!!";
-					itemWonText.color = Color.yellow;
+				case Items.nitro : 
 					nitroSlider.value = nitroLevel;
-					itemBox.color = Color.yellow;
 					break;
 				}
-				// Display the message for a certain amount of time
-				StartCoroutine(ShowMessageItem(3f));
-				itemBox.enabled = true;
+
 			}
 		}
 		else if (IsPlayer() && (other.gameObject.CompareTag ("TurnIndicatorLeft")))
@@ -637,6 +734,22 @@ public class CarController : MonoBehaviour
 			this.leftArrow.enabled = false;
 		}
 	}
+
+
+	IEnumerator ShowWonItem (float delay, int item) {
+		for (int i = 0; i < itemWon.Length; i++) {
+			if (i == item) {
+				itemWon [i].enabled = true;
+			} else
+				itemWon [i].enabled = false;
+		}
+		yield return new WaitForSeconds(delay);
+		for (int i = 0; i < itemWon.Length; i++) {
+			itemWon [i].enabled = false;
+		}
+
+	}
+
 	void OnTriggerStay(Collider other)
 	{
 		if (other.gameObject.CompareTag ("SpeedBoost"))
@@ -675,28 +788,6 @@ public class CarController : MonoBehaviour
 	{
 		// Calculate the damage points in function of the speed of the impact
 		this.damagePoints += Mathf.FloorToInt(damagePoints*Mathf.Abs(speed));
-		/*
-		if(this.damagePoints >= 30)
-		{
-			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage") as Texture2D;
-			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
-		}
-		if(this.damagePoints >= 50)
-		{
-			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
-			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
-		}
-		if(this.damagePoints >= 70)
-		{
-			this.transform.FindChild ("Smoke").renderer.enabled = true;
-		}
-		if(this.damagePoints >= 100)
-		{
-			damageFactor = 2;
-			this.transform.FindChild ("Fire").renderer.enabled = true;
-			StartCoroutine(raceManager.DisplayText("Voiture dead !", 1000));
-		}
-		*/
 	}
 	
 	void randomizeItem ()
@@ -711,7 +802,7 @@ public class CarController : MonoBehaviour
 		case 2:
 			// red or nitro
 			item = Mathf.RoundToInt(Random.Range (2F, 3F));
-			item = item == 3 ? 4 : 2;
+			item = item == Items.carapaceBleue ? Items.nitro : Items.carapaceRouge;
 			break;
 		case 3:
 			// red or blue or nitro => plus de chance d'avoir une bleu, c'est ben fun
@@ -720,19 +811,13 @@ public class CarController : MonoBehaviour
 		}
 	}
 	
-	IEnumerator ShowMessageItem (float delay) {
-		itemWonText.enabled = true;
-		yield return new WaitForSeconds(delay);
-		itemWonText.enabled = false;
-	}
-	
 	// When nitro is used, set maxSpeed and maxTorque to nitro values which are bigger
 	// So the car can drive faster
 	public void NitroUse() {
 		if (nitroLevel > 0) {
 			StartNitroUse();
 			nitroLevel -= 0.7f;
-			nitroSlider.value = nitroLevel;
+			if(IsPlayer()) nitroSlider.value = nitroLevel;
 		}
 		else {
 			StopNitroUse();
@@ -742,13 +827,14 @@ public class CarController : MonoBehaviour
 		nitroUsed=true;
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = true;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = true;
-		this.maxSpeed = nitroSpeed;
+		// If nitro is used damageFactor is used as a bonus
+		damageFactor = 0.5f;
 	}
 	
 	public void StopNitroUse () {
 		nitroUsed=false;
-		this.maxSpeed = currentMaxSpeed;
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = false;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = false;
+		damageFactor = 1;
 	}
 }
