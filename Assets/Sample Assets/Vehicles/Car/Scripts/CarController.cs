@@ -101,8 +101,13 @@ public class CarController : MonoBehaviour
 	// Variables use for picked up objects	
 	private int item = 0; // id of picked up item, 0 -> none, 1 -> green projectile, 2 -> red projectile, 3 -> blue projectile, 4 -> nitro
 	// TODO : change into private
-	public Image itemBox;
-	public Text itemWonText;
+	public RawImage itemBox;
+	public RawImage redItem;
+	public RawImage blueItem;
+	public RawImage greenItem;
+	public RawImage[] itemWon; 
+
+
 	// Variables for nitro
 	public Slider nitroSlider;
 	private bool nitroUsed =false;
@@ -229,9 +234,15 @@ public class CarController : MonoBehaviour
 		{
 			this.leftArrow.enabled = false;
 			this.rightArrow.enabled = false;
-			itemWonText.enabled = false;
 			itemBox.enabled = false;
 			nitroSlider.value = nitroLevel;
+			redItem.enabled = false;
+			greenItem.enabled = false;
+			blueItem.enabled = false;
+			itemBox.enabled = false;
+			for (int i = 0; i < itemWon.Length; i++) {
+				itemWon [i].enabled = false;
+			}
 		}
 		numberOfCars = transform.root.GetComponentsInChildren<CarController> ().Length;
 		if(IsPlayer())
@@ -246,7 +257,7 @@ public class CarController : MonoBehaviour
 
 	void FixedUpdate(){
 		SpeedOMeter ();
-
+		ManageDamagePoints ();
 
 		if (nitroUsed) {
 			NitroUse ();
@@ -263,29 +274,31 @@ public class CarController : MonoBehaviour
 		{
 			StopNitroUse();
 		}
+	}
 
+	public void ManageDamagePoints()
+	{
 		// Damage points are restored through the time
 		if (damagePoints > 30) 
 		{
 			damagePoints -= 0.02f;
 		}
 
+		// No damageFactor by default
+		damageFactor = 1;
 		if(damagePoints < 50 && damagePoints >= 30)
 		{
-			damageFactor = 1;
 			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage1") as Texture2D;
 			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
 		}
 		else if(damagePoints < 70 && damagePoints >= 50)
 		{
-			damageFactor = 1;
 			this.transform.FindChild ("Smoke").renderer.enabled = false;
 			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
 			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
 		}
 		else if(damagePoints < 100 && damagePoints >= 70)
 		{
-			damageFactor = 1;
 			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
 			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
 			this.transform.FindChild ("Smoke").renderer.enabled = true;
@@ -299,7 +312,6 @@ public class CarController : MonoBehaviour
 			this.transform.FindChild ("Fire").renderer.enabled = true;
 			this.transform.FindChild ("Smoke").renderer.enabled = true;
 		}
-
 	}
 
 	public void SpeedOMeter()
@@ -664,32 +676,38 @@ public class CarController : MonoBehaviour
 			}
 			// If the car is the player, display informations
 			if(this.IsPlayer()){
+				itemBox.enabled = true;
 				switch(item){
 				case Items.carapaceVerte :
-					itemWonText.text = "Yeaaah un projectile vert !!!";
-					itemWonText.color = Color.green;
-					itemBox.color = Color.green;
+					greenItem.enabled = true;
+					redItem.enabled = false;
+					blueItem.enabled = false;
+
+					// Display the won item for a certain amount of time
+					StartCoroutine(ShowWonItem(3f, 0));
+
 					break;
 				case Items.carapaceRouge :
-					itemWonText.text = "Yeaaah un projectile rouge !!!";
-					itemWonText.color = Color.red;
-					itemBox.color = Color.red;
+					redItem.enabled = true;
+					greenItem.enabled = false;
+					blueItem.enabled = false;
+
+					// Display the won item for a certain amount of time
+					StartCoroutine(ShowWonItem(3f, 1));
 					break;
 				case Items.carapaceBleue :
-					itemWonText.text = "Yeaaah un projectile bleu !!!";
-					itemWonText.color = Color.blue;
-					itemBox.color = Color.blue;
+					blueItem.enabled = true;
+					redItem.enabled = false;
+					greenItem.enabled = false;
+
+					// Display the won item for a certain amount of time
+					StartCoroutine(ShowWonItem(3f, 2));
 					break;
 				case Items.nitro : 
-					itemWonText.text = "Sbriii sbriii d'la nitro !!!";
-					itemWonText.color = Color.yellow;
 					nitroSlider.value = nitroLevel;
-					itemBox.color = Color.yellow;
 					break;
 				}
-				// Display the message for a certain amount of time
-				StartCoroutine(ShowMessageItem(3f));
-				itemBox.enabled = true;
+
 			}
 		}
 		else if (IsPlayer() && (other.gameObject.CompareTag ("TurnIndicatorLeft")))
@@ -708,6 +726,22 @@ public class CarController : MonoBehaviour
 			this.leftArrow.enabled = false;
 		}
 	}
+
+
+	IEnumerator ShowWonItem (float delay, int item) {
+		for (int i = 0; i < itemWon.Length; i++) {
+			if (i == item) {
+				itemWon [i].enabled = true;
+			} else
+				itemWon [i].enabled = false;
+		}
+		yield return new WaitForSeconds(delay);
+		for (int i = 0; i < itemWon.Length; i++) {
+			itemWon [i].enabled = false;
+		}
+
+	}
+
 	void OnTriggerStay(Collider other)
 	{
 		if (other.gameObject.CompareTag ("SpeedBoost"))
@@ -769,12 +803,6 @@ public class CarController : MonoBehaviour
 		}
 	}
 	
-	IEnumerator ShowMessageItem (float delay) {
-		itemWonText.enabled = true;
-		yield return new WaitForSeconds(delay);
-		itemWonText.enabled = false;
-	}
-	
 	// When nitro is used, set maxSpeed and maxTorque to nitro values which are bigger
 	// So the car can drive faster
 	public void NitroUse() {
@@ -791,13 +819,14 @@ public class CarController : MonoBehaviour
 		nitroUsed=true;
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = true;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = true;
-		this.maxSpeed = nitroSpeed;
+		// If nitro is used damageFactor is used as a bonus
+		damageFactor = 0.5f;
 	}
 	
 	public void StopNitroUse () {
 		nitroUsed=false;
-		this.maxSpeed = currentMaxSpeed;
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = false;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = false;
+		damageFactor = 1;
 	}
 }
