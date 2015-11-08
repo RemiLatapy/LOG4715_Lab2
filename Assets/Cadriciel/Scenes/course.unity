@@ -1692,6 +1692,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 2142660374}
   m_GameObject: {fileID: 68496922}
   m_Mesh: {fileID: 4300000, guid: e6fec471c20b9d148b1f87910e67bea4, type: 3}
+--- !u!1 &70085064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 70085065}
+  m_Layer: 0
+  m_Name: Destructibles Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &70085065
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 70085064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.3687592, y: 7.5229826, z: 174.460312}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1366862733}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1 &75794204
 GameObject:
   m_ObjectHideFlags: 0
@@ -8161,6 +8189,50 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
+--- !u!1001 &292663793
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 70085065}
+    m_Modifications:
+    - target: {fileID: 437304, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 437304, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 437304, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 34.9000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 437304, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 437304, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 437304, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 437304, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 437304, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+  m_RootGameObject: {fileID: 1366862726}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &293988240
 GameObject:
   m_ObjectHideFlags: 0
@@ -23510,8 +23582,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
@@ -33816,6 +33888,127 @@ EllipsoidParticleEmitter:
   m_OneShot: 0
   m_Ellipsoid: {x: 0, y: 0, z: 0}
   m_MinEmitterRange: 0
+--- !u!1 &1366862726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 137304, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+  m_PrefabInternal: {fileID: 292663793}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1366862733}
+  - 33: {fileID: 1366862732}
+  - 65: {fileID: 1366862731}
+  - 23: {fileID: 1366862730}
+  - 114: {fileID: 1366862729}
+  - 54: {fileID: 1366862728}
+  - 114: {fileID: 1366862727}
+  m_Layer: 0
+  m_Name: Wood Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1366862727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11437304, guid: 473186b36dd54674596d5ff58da5ec57,
+    type: 2}
+  m_PrefabInternal: {fileID: 292663793}
+  m_GameObject: {fileID: 1366862726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2061952440, guid: f655bb0c7d39612409a173f95e9016c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  immediate: 1
+  shards:
+    min: 5
+    max: 20
+  shardsPerFrame: 2
+--- !u!54 &1366862728
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5437304, guid: 473186b36dd54674596d5ff58da5ec57,
+    type: 2}
+  m_PrefabInternal: {fileID: 292663793}
+  m_GameObject: {fileID: 1366862726}
+  serializedVersion: 2
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1366862729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11437306, guid: 473186b36dd54674596d5ff58da5ec57,
+    type: 2}
+  m_PrefabInternal: {fileID: 292663793}
+  m_GameObject: {fileID: 1366862726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1836541618, guid: f655bb0c7d39612409a173f95e9016c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactForceThreshold: 10
+--- !u!23 &1366862730
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2337304, guid: 473186b36dd54674596d5ff58da5ec57,
+    type: 2}
+  m_PrefabInternal: {fileID: 292663793}
+  m_GameObject: {fileID: 1366862726}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: d37a5cbead14fdb45b40ff3e2093be3d, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!65 &1366862731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6537304, guid: 473186b36dd54674596d5ff58da5ec57,
+    type: 2}
+  m_PrefabInternal: {fileID: 292663793}
+  m_GameObject: {fileID: 1366862726}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1366862732
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3337304, guid: 473186b36dd54674596d5ff58da5ec57,
+    type: 2}
+  m_PrefabInternal: {fileID: 292663793}
+  m_GameObject: {fileID: 1366862726}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1366862733
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 437304, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+  m_PrefabInternal: {fileID: 292663793}
+  m_GameObject: {fileID: 1366862726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.5, y: -4.5, z: 34.9000015}
+  m_LocalScale: {x: 5.75975704, y: 5.75975847, z: 5.75975847}
+  m_Children: []
+  m_Father: {fileID: 70085065}
+  m_RootOrder: 0
 --- !u!1 &1368033979
 GameObject:
   m_ObjectHideFlags: 0
@@ -33889,8 +34082,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
@@ -39584,8 +39777,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
@@ -44766,8 +44959,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
@@ -50030,8 +50223,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
@@ -51370,8 +51563,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
