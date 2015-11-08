@@ -31,8 +31,8 @@ public class CarController : MonoBehaviour
 	
 	[SerializeField] private float adjustCentreOfMass = 0.25f;                      // vertical offset for the centre of mass
 	[SerializeField] bool preserveDirectionWhileInAir = false;                      // flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
-	[SerializeField] [Range(0, 2f)] private float adjustPitch = 1f;
-	[SerializeField] [Range(0, 2f)] private float adjustRoll = 1f;
+	[SerializeField] [Range(0, 1000f)] private float adjustPitch = 150f;
+	[SerializeField] [Range(0, 1000f)] private float adjustRoll = 150f;
 	
 	private int stylePoint = 0;														// Score increase by special drive
 	[SerializeField] private float jumpForce = 500f;
@@ -116,6 +116,7 @@ public class CarController : MonoBehaviour
 	public bool Item{get;set;}
 	private float nitroLevel = 0;
 	private float currentMaxSpeed;
+	private float nitroFactor = 1;
 	[SerializeField] 
 	[Range(100, 200)] private float nitroSpeed = 160f;
 	
@@ -185,14 +186,11 @@ public class CarController : MonoBehaviour
 	
 	
 	// variables added due to separating out things into functions!
-	bool anyOnGround;
+	bool anyOnGround = true;
 	float curvedSpeedFactor;
 	bool reversing;
 	float targetAccelInput; // target accel input is our desired acceleration input. We smooth towards it later
-	
-	void OnChange(){
-	}
-	
+
 	void Awake ()
 	{
 		// get a reference to all wheel attached to the car.
@@ -220,8 +218,6 @@ public class CarController : MonoBehaviour
 	
 	void Start()
 	{
-		// TODO delete
-		nitroLevel = 0;
 		currentMaxSpeed = maxSpeed;
 		this.transform.FindChild ("Fire").renderer.enabled = false;
 		this.transform.FindChild ("Smoke").renderer.enabled = false;
@@ -232,7 +228,6 @@ public class CarController : MonoBehaviour
 		{
 			this.leftArrow.enabled = false;
 			this.rightArrow.enabled = false;
-			//itemBox.enabled = false;
 			nitroSlider.value = nitroLevel;
 			HideItemBox();
 			for (int i = 0; i < itemWon.Length; i++) {
@@ -424,7 +419,7 @@ public class CarController : MonoBehaviour
 	{
 		// calcul rubberbanding factor with adjustment
 		float adjustRubberbanding = raceManager.AdjustRubberbanding;
-		rubberbandingFactor = ((adjustRubberbanding - 1/adjustRubberbanding) * (rank - 1)) / (numberOfCars - 1) + 1/adjustRubberbanding;
+		rubberbandingFactor = Mathf.Lerp (1f/adjustRubberbanding, adjustRubberbanding, (rank-1f)/(numberOfCars-1f));
 	}
 	
 	void CalculateSpeedValues ()
@@ -432,7 +427,7 @@ public class CarController : MonoBehaviour
 		// current speed is measured in the forward direction of the car (sliding sideways doesn't count!)
 		CurrentSpeed = transform.InverseTransformDirection (rigidbody.velocity).z;
 		// speedfactor is a normalized representation of speed in relation to max speed:
-		float speed = (reversing ? maxReversingSpeed : maxSpeed) / damageFactor;
+		float speed = ((reversing ? maxReversingSpeed : maxSpeed) / damageFactor) * nitroFactor;
 		
 		SpeedFactor = Mathf.InverseLerp (0, speed, Mathf.Abs (CurrentSpeed));
 		curvedSpeedFactor = reversing ? 0 : CurveFactor (SpeedFactor);
@@ -541,6 +536,11 @@ public class CarController : MonoBehaviour
 		if (!anyOnGround) {
 			stylePoint++;
 		}
+
+		// Add style point when skid
+		if (AvgSkid > 0.8) {
+			stylePoint++;
+		}
 	}
 	
 	IEnumerator DoABarrelRoll() {
@@ -564,6 +564,7 @@ public class CarController : MonoBehaviour
 	
 	void AirOrientation (float h, float v)
 	{
+		// stop rotation when player release
 		if (!anyOnGround && IsPlayer()) {
 			if(h == 0)
 				rigidbody.angularVelocity.Set(0, rigidbody.angularVelocity.y, rigidbody.angularVelocity.z);
@@ -572,9 +573,8 @@ public class CarController : MonoBehaviour
 			if(v == 0 && h == 0)
 				return;
 
-			// TODO : change 300 by physic value
-			h *= 300 * Time.deltaTime * adjustPitch;
-			v *= 300 * Time.deltaTime * adjustRoll;
+			h *= adjustPitch;
+			v *= adjustRoll;
 			
 			rigidbody.AddTorque(transform.right * h);
 			rigidbody.AddTorque(transform.forward * -v);
@@ -831,8 +831,8 @@ public class CarController : MonoBehaviour
 		nitroUsed=true;
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = true;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = true;
-		// If nitro is used damageFactor is used as a bonus
-		damageFactor = 0.5f;
+		// If nitro is used multiply the velocity by 2
+		nitroFactor = 2;
 	}
 	
 	public void StopNitroUse () {
@@ -840,6 +840,6 @@ public class CarController : MonoBehaviour
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = false;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = false;
 		// Restore normal speed
-		damageFactor = 1;
+		nitroFactor = 1;
 	}
 }

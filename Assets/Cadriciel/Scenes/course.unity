@@ -10923,8 +10923,8 @@ MonoBehaviour:
   rank: 0
   adjustCentreOfMass: .25
   preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  adjustPitch: 150
+  adjustRoll: 150
   jumpForce: 500
   advanced:
     burnoutSlipEffect: .400000006
@@ -11816,8 +11816,21 @@ Prefab:
       value: 
       objectReference: {fileID: 1315631965}
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+<<<<<<< HEAD
       propertyPath: speedBooster
       value: 1500
+=======
+      propertyPath: adjustPitch
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: adjustRoll
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: preserveDirectionWhileInAir
+      value: 1
+>>>>>>> 4621299672a567f7dc7417f8fe11a6173010f704
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
@@ -12267,7 +12280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _carContainer: {fileID: 1158375330}
   _announcement: {fileID: 438218563}
-  adjustRubberbanding: 1.5
+  adjustRubberbanding: 1.20000005
   _timeToStart: 3
   _endCountdown: 5
 --- !u!114 &557694393
