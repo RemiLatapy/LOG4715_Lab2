@@ -127,6 +127,11 @@ public class CarController : MonoBehaviour
 	// Variables for turn indicators
 	public RawImage leftArrow;
 	public RawImage rightArrow;
+
+	// Variables for speedometer
+	public RawImage speedOMeterDial;
+	public RawImage speedOMeterPointer;
+	private float rotationAngleStart;
 	
 	public int NumGears {					// the number of gears set up on the car
 		get { return advanced.numGears; }
@@ -240,16 +245,17 @@ public class CarController : MonoBehaviour
 	}
 
 	void FixedUpdate(){
-		/*if (IsPlayer ()) {
-			Debug.Log (damagePoints);
-		}*/
+		SpeedOMeter ();
+
 		// Damage points are restored through the time
 		if (damagePoints > 30) 
 		{
 			damagePoints -= 0.02f;
 		}
-
-		if(boosterUsed||nitroUsed)
+		if (nitroUsed) {
+			NitroUse ();
+		}
+		else if(boosterUsed)
 		{
 			StartNitroUse();
 			if(boosterUsed)
@@ -287,6 +293,22 @@ public class CarController : MonoBehaviour
 			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
 			this.transform.FindChild ("Fire").renderer.enabled = true;
 			this.transform.FindChild ("Smoke").renderer.enabled = true;
+		}
+
+	}
+
+	public void SpeedOMeter()
+	{
+		if (IsPlayer ()) {
+			float speedFactor = CurrentSpeed / MaxSpeed;
+			float rotationAngle;
+			if (CurrentSpeed >= 0) {
+				rotationAngle = Mathf.Lerp (0, 180, speedFactor);
+			} else {
+				rotationAngle = Mathf.Lerp (0, 180, -speedFactor);
+			}
+			speedOMeterPointer.transform.RotateAround (new Vector3 (speedOMeterPointer.transform.position.x, speedOMeterPointer.transform.position.y, speedOMeterPointer.transform.position.z), new Vector3 (0, 0, 1), rotationAngleStart-rotationAngle);
+			rotationAngleStart = rotationAngle;
 		}
 	}
 	
