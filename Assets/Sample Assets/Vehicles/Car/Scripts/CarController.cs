@@ -185,7 +185,7 @@ public class CarController : MonoBehaviour
 	
 	
 	// variables added due to separating out things into functions!
-	bool anyOnGround;
+	bool anyOnGround = true;
 	float curvedSpeedFactor;
 	bool reversing;
 	float targetAccelInput; // target accel input is our desired acceleration input. We smooth towards it later
@@ -539,6 +539,11 @@ public class CarController : MonoBehaviour
 	{
 		// Add style point when jumping
 		if (!anyOnGround) {
+			stylePoint++;
+		}
+
+		// Add style point when skid
+		if (AvgSkid > 0.8) {
 			stylePoint++;
 		}
 	}
