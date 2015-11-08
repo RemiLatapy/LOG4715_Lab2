@@ -221,8 +221,9 @@ public class CarController : MonoBehaviour
 	}
 
 	void FixedUpdate(){
+		AddStylePoints();
 		if (IsPlayer ()) {
-			Debug.Log (damagePoints);
+			//Debug.Log (damagePoints);
 		}
 		// Damage points are restored through the time
 		if (damagePoints > 30) 
@@ -285,8 +286,10 @@ public class CarController : MonoBehaviour
 		ApplyDownforce ();
 		CalculateRevs();
 		PreserveDirectionInAir();
-		AddStylePoints();
-		AirOrientation(accelBrakeInput, steerInput);
+	}
+
+	public void  Orient (float roll, float pitch) {
+		AirOrientation (pitch, roll);
 	}
 	
 	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)

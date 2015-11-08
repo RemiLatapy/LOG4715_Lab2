@@ -11,6 +11,9 @@ public class CarUserControlMP : MonoBehaviour
 	[SerializeField]
 	private string horizontal = "Horizontal";
 
+	[SerializeField]
+	private string verticalOrientation = "VerticalOrientation";
+
 	private bool jump;
 	private bool nitro;
 	
@@ -27,6 +30,8 @@ public class CarUserControlMP : MonoBehaviour
 		if (CrossPlatformInput.GetButtonUp("Nitro")) nitro = false;
 		#else
 		if (Input.GetButtonDown("Jump")) jump = true;
+		if (Input.GetButton("Nitro")) nitro = true;
+		if (Input.GetButtonUp("Nitro")) nitro = false
 		#endif
 	}
 	
@@ -37,9 +42,11 @@ public class CarUserControlMP : MonoBehaviour
 		#if CROSS_PLATFORM_INPUT
 		float h = CrossPlatformInput.GetAxis(horizontal);
 		float v = CrossPlatformInput.GetAxis(vertical);
+		float v_o = CrossPlatformInput.GetAxis(verticalOrientation);
 		#else
 		float h = Input.GetAxis(horizontal);
 		float v = Input.GetAxis(vertical);
+		float v_o = Input.GetAxis(verticalOrientation);
 		#endif
 		if (jump) {
 			car.Jump ();
@@ -47,5 +54,6 @@ public class CarUserControlMP : MonoBehaviour
 		}
 		car.Nitro=nitro;
 		car.Move(h,v);
+		car.Orient (h, v_o);
 	}
 }
