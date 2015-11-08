@@ -101,10 +101,7 @@ public class CarController : MonoBehaviour
 	// Variables use for picked up objects	
 	private int item = 0; // id of picked up item, 0 -> none, 1 -> green projectile, 2 -> red projectile, 3 -> blue projectile, 4 -> nitro
 	// TODO : change into private
-	public RawImage itemBox;
-	public RawImage redItem;
-	public RawImage blueItem;
-	public RawImage greenItem;
+	public RawImage[] itemBox;
 	public RawImage[] itemWon; 
 
 
@@ -193,7 +190,8 @@ public class CarController : MonoBehaviour
 	bool reversing;
 	float targetAccelInput; // target accel input is our desired acceleration input. We smooth towards it later
 	
-	
+	void OnChange(){
+	}
 	
 	void Awake ()
 	{
@@ -223,7 +221,7 @@ public class CarController : MonoBehaviour
 	void Start()
 	{
 		// TODO delete
-		nitroLevel = 100;
+		nitroLevel = 0;
 		currentMaxSpeed = maxSpeed;
 		this.transform.FindChild ("Fire").renderer.enabled = false;
 		this.transform.FindChild ("Smoke").renderer.enabled = false;
@@ -234,12 +232,9 @@ public class CarController : MonoBehaviour
 		{
 			this.leftArrow.enabled = false;
 			this.rightArrow.enabled = false;
-			itemBox.enabled = false;
+			//itemBox.enabled = false;
 			nitroSlider.value = nitroLevel;
-			redItem.enabled = false;
-			greenItem.enabled = false;
-			blueItem.enabled = false;
-			itemBox.enabled = false;
+			HideItemBox();
 			for (int i = 0; i < itemWon.Length; i++) {
 				itemWon [i].enabled = false;
 			}
@@ -370,6 +365,8 @@ public class CarController : MonoBehaviour
 			default: break;
 		}
 		item=Items.vide;
+		HideItemBox ();
+
 	
 	}
 	void ThrowShell(GameObject carapace)
@@ -680,34 +677,25 @@ public class CarController : MonoBehaviour
 			}
 			// If the car is the player, display informations
 			if(this.IsPlayer()){
-				itemBox.enabled = true;
+
 				switch(item){
 				case Items.carapaceVerte :
-					greenItem.enabled = true;
-					redItem.enabled = false;
-					blueItem.enabled = false;
-
 					// Display the won item for a certain amount of time
-					StartCoroutine(ShowWonItem(3f, 0));
-
+					StartCoroutine(ShowWonItem(3f, Items.carapaceVerte-1));
+					ShowItemBox(Items.carapaceVerte);
 					break;
 				case Items.carapaceRouge :
-					redItem.enabled = true;
-					greenItem.enabled = false;
-					blueItem.enabled = false;
-
 					// Display the won item for a certain amount of time
-					StartCoroutine(ShowWonItem(3f, 1));
+					StartCoroutine(ShowWonItem(3f, Items.carapaceRouge-1));
+					ShowItemBox(Items.carapaceRouge);
 					break;
 				case Items.carapaceBleue :
-					blueItem.enabled = true;
-					redItem.enabled = false;
-					greenItem.enabled = false;
-
 					// Display the won item for a certain amount of time
-					StartCoroutine(ShowWonItem(3f, 2));
+					StartCoroutine(ShowWonItem(3f, Items.carapaceBleue-1));
+					ShowItemBox(Items.carapaceBleue);
 					break;
 				case Items.nitro : 
+					StartCoroutine(ShowWonItem(3f, Items.nitro-1));
 					nitroSlider.value = nitroLevel;
 					break;
 				}
@@ -731,7 +719,26 @@ public class CarController : MonoBehaviour
 		}
 	}
 
+	private void HideItemBox(){
+		for (int i = 0; i < itemBox.Length; i++) {
+				itemBox [i].enabled = false;
+		}
+	}
 
+	// Display the item box with the won item in it
+	private void ShowItemBox(int item){
+		if(item > 0){
+			itemBox[0].enabled = true;
+			for (int i = 1; i < itemBox.Length; i++) {
+				if (i == item) {
+					itemBox [i].enabled = true;
+				} else
+					itemBox [i].enabled = false;
+			}
+		}
+	}
+
+	// Display the won item for a certain amount of time
 	IEnumerator ShowWonItem (float delay, int item) {
 		for (int i = 0; i < itemWon.Length; i++) {
 			if (i == item) {
@@ -756,6 +763,7 @@ public class CarController : MonoBehaviour
 			CurrentSpeed=nitroSpeed;*/
 		}
 	}
+
 	void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.CompareTag ("SpeedBoost"))
@@ -764,19 +772,20 @@ public class CarController : MonoBehaviour
 			//StopNitroUse();
 		}
 	}
+
 	void OnCollisionEnter(Collision col)
 	{
 		switch (col.collider.transform.parent.gameObject.tag) 
 		{
-		case "WallCollider":
-			applyDamage(wallDamageFactor, CurrentSpeed);
-			break;
-		case "Obstacle":
-			applyDamage(obstacleDamageFactor, CurrentSpeed);
-			break;
-		case "Player":
-			applyDamage(carDamageFactor, CurrentSpeed);
-			break;
+			case "WallCollider":
+				applyDamage(wallDamageFactor, CurrentSpeed);
+				break;
+			case "Obstacle":
+				applyDamage(obstacleDamageFactor, CurrentSpeed);
+				break;
+			case "Player":
+				applyDamage(carDamageFactor, CurrentSpeed);
+				break;
 		}
 	}
 	
@@ -831,6 +840,7 @@ public class CarController : MonoBehaviour
 		nitroUsed=false;
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = false;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = false;
+		// Restore normal speed
 		damageFactor = 1;
 	}
 }
