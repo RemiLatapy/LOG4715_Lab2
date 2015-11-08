@@ -35,7 +35,7 @@ public class CarController : MonoBehaviour
 	[SerializeField] [Range(0, 2f)] private float adjustRoll = 1f;
 	
 	private int stylePoint = 0;														// Score increase by special drive
-	[SerializeField] private float jumpForce = 10f;
+	[SerializeField] private float jumpForce = 500f;
 	
 	private float rubberbandingFactor = 1;											// Factor apply to increase or decrease speed
 	
@@ -259,6 +259,7 @@ public class CarController : MonoBehaviour
 		AddStylePoints();
 		SpeedOMeter ();
 		ManageDamagePoints ();
+		if(Item) UseItem();
 
 		if (nitroUsed) {
 			NitroUse ();
@@ -344,16 +345,10 @@ public class CarController : MonoBehaviour
 		ApplyDownforce ();
 		CalculateRevs();
 		PreserveDirectionInAir();
-<<<<<<< HEAD
 	}
 
 	public void  Orient (float roll, float pitch) {
 		AirOrientation (pitch, roll);
-=======
-		AddStylePoints();
-		AirOrientation(accelBrakeInput, steerInput);
-		if(Item) UseItem();
->>>>>>> 692cb5c410c5e412c0a3f4079c61332ede8f54cb
 	}
 
 	void UseItem(){
@@ -579,7 +574,8 @@ public class CarController : MonoBehaviour
 				rigidbody.angularVelocity.Set(rigidbody.angularVelocity.x, rigidbody.angularVelocity.y, 0);
 			if(v == 0 && h == 0)
 				return;
-			
+
+			// TODO : change 300 by physic value
 			h *= 300 * Time.deltaTime * adjustPitch;
 			v *= 300 * Time.deltaTime * adjustRoll;
 			
