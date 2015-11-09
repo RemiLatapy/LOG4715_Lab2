@@ -547,11 +547,13 @@ public class CarController : MonoBehaviour
 			rigidbody.angularVelocity = Vector3.Lerp (rigidbody.angularVelocity, Vector3.zero, Time.deltaTime);
 		}
 	}
+
+
 	
 	void AddStylePoints ()
 	{
-		// Add style point when jumping
-		if (!anyOnGround) {
+		// Add style point when jump
+		if (!anyOnGround && rigidbody.velocity.magnitude > 4f) {
 			stylePoint++;
 		}
 
@@ -559,6 +561,14 @@ public class CarController : MonoBehaviour
 		if (AvgSkid > minSkidToScore) {
 			stylePoint++;
 		}
+	}
+
+	public void modifyStyleScore (int points, string message)
+	{
+		stylePoint += points;
+		stylePoint = stylePoint < 0 ? 0 : stylePoint;
+		if(IsPlayer())
+			StartCoroutine(raceManager.DisplayText(message, 1000));
 	}
 	
 	IEnumerator DoABarrelRoll() {
