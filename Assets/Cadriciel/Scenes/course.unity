@@ -10996,11 +10996,11 @@ MonoBehaviour:
   maxTorque: 35
   minTorque: 10
   brakePower: 40
-  rank: 0
   adjustCentreOfMass: .25
-  preserveDirectionWhileInAir: 1
-  adjustPitch: 150
-  adjustRoll: 150
+  airControl:
+    preserveDirectionWhileInAir: 0
+    adjustPitch: 150
+    adjustRoll: 150
   jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
@@ -11017,10 +11017,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  carapaceRouge: {fileID: 161426, guid: 3689cfbc83970024f97a69f13b6c8d5b, type: 2}
-  carapaceVerte: {fileID: 129330, guid: 1446990042e4b5b43861ffd535de37c9, type: 2}
-  carapaceBleue: {fileID: 142492, guid: 6440f5b5a264127449447e49e84e560b, type: 2}
-  speedBooster: 20
   itemBox:
   - {fileID: 1424221899}
   - {fileID: 398229665}
@@ -11902,6 +11898,10 @@ Prefab:
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: preserveDirectionWhileInAir
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: speedBooster
+      value: 1500
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
@@ -23578,11 +23578,11 @@ MonoBehaviour:
   maxTorque: 20
   minTorque: 10
   brakePower: 40
-  rank: 0
   adjustCentreOfMass: .25
-  preserveDirectionWhileInAir: 1
-  adjustPitch: 150
-  adjustRoll: 150
+  airControl:
+    preserveDirectionWhileInAir: 0
+    adjustPitch: 150
+    adjustRoll: 150
   jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
@@ -23599,10 +23599,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  carapaceRouge: {fileID: 0}
-  carapaceVerte: {fileID: 0}
-  carapaceBleue: {fileID: 0}
-  speedBooster: 20
   itemBox: []
   itemWon: []
   nitroSlider: {fileID: 0}
@@ -33920,11 +33916,6 @@ MonoBehaviour:
   m_Script: {fileID: 2061952440, guid: f655bb0c7d39612409a173f95e9016c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  immediate: 1
-  shards:
-    min: 5
-    max: 20
-  shardsPerFrame: 2
 --- !u!54 &1366862728
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -33953,7 +33944,6 @@ MonoBehaviour:
   m_Script: {fileID: 1836541618, guid: f655bb0c7d39612409a173f95e9016c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactForceThreshold: 10
 --- !u!23 &1366862730
 Renderer:
   m_ObjectHideFlags: 0
@@ -34078,11 +34068,11 @@ MonoBehaviour:
   maxTorque: 35
   minTorque: 10
   brakePower: 40
-  rank: 0
   adjustCentreOfMass: .25
-  preserveDirectionWhileInAir: 1
-  adjustPitch: 150
-  adjustRoll: 150
+  airControl:
+    preserveDirectionWhileInAir: 0
+    adjustPitch: 150
+    adjustRoll: 150
   jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
@@ -34099,10 +34089,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  carapaceRouge: {fileID: 0}
-  carapaceVerte: {fileID: 0}
-  carapaceBleue: {fileID: 0}
-  speedBooster: 20
   itemBox: []
   itemWon: []
   nitroSlider: {fileID: 0}
@@ -39773,11 +39759,11 @@ MonoBehaviour:
   maxTorque: 50
   minTorque: 10
   brakePower: 40
-  rank: 0
   adjustCentreOfMass: .25
-  preserveDirectionWhileInAir: 1
-  adjustPitch: 150
-  adjustRoll: 150
+  airControl:
+    preserveDirectionWhileInAir: 0
+    adjustPitch: 150
+    adjustRoll: 150
   jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
@@ -39794,10 +39780,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  carapaceRouge: {fileID: 0}
-  carapaceVerte: {fileID: 0}
-  carapaceBleue: {fileID: 0}
-  speedBooster: 20
   itemBox: []
   itemWon: []
   nitroSlider: {fileID: 0}
@@ -44955,11 +44937,11 @@ MonoBehaviour:
   maxTorque: 35
   minTorque: 10
   brakePower: 40
-  rank: 0
   adjustCentreOfMass: .25
-  preserveDirectionWhileInAir: 1
-  adjustPitch: 150
-  adjustRoll: 150
+  airControl:
+    preserveDirectionWhileInAir: 0
+    adjustPitch: 150
+    adjustRoll: 150
   jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
@@ -44976,10 +44958,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  carapaceRouge: {fileID: 0}
-  carapaceVerte: {fileID: 0}
-  carapaceBleue: {fileID: 0}
-  speedBooster: 20
   itemBox: []
   itemWon: []
   nitroSlider: {fileID: 0}
@@ -48901,11 +48879,11 @@ MonoBehaviour:
   maxTorque: 35
   minTorque: 10
   brakePower: 40
-  rank: 0
   adjustCentreOfMass: .25
-  preserveDirectionWhileInAir: 1
-  adjustPitch: 1
-  adjustRoll: 1
+  airControl:
+    preserveDirectionWhileInAir: 0
+    adjustPitch: 150
+    adjustRoll: 150
   jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
@@ -48922,10 +48900,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  carapaceRouge: {fileID: 0}
-  carapaceVerte: {fileID: 0}
-  carapaceBleue: {fileID: 0}
-  speedBooster: 20
   itemBox:
   - {fileID: 0}
   itemWon: []
@@ -50219,11 +50193,11 @@ MonoBehaviour:
   maxTorque: 35
   minTorque: 10
   brakePower: 40
-  rank: 0
   adjustCentreOfMass: .25
-  preserveDirectionWhileInAir: 1
-  adjustPitch: 150
-  adjustRoll: 150
+  airControl:
+    preserveDirectionWhileInAir: 0
+    adjustPitch: 150
+    adjustRoll: 150
   jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
@@ -50240,10 +50214,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  carapaceRouge: {fileID: 0}
-  carapaceVerte: {fileID: 0}
-  carapaceBleue: {fileID: 0}
-  speedBooster: 20
   itemBox: []
   itemWon: []
   nitroSlider: {fileID: 0}
@@ -51559,11 +51529,11 @@ MonoBehaviour:
   maxTorque: 80
   minTorque: 10
   brakePower: 40
-  rank: 0
   adjustCentreOfMass: .25
-  preserveDirectionWhileInAir: 1
-  adjustPitch: 150
-  adjustRoll: 150
+  airControl:
+    preserveDirectionWhileInAir: 0
+    adjustPitch: 150
+    adjustRoll: 150
   jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
@@ -51580,10 +51550,6 @@ MonoBehaviour:
     accelChangeSmoothing: 2
     gearFactorSmoothing: 5
     revRangeBoundary: .800000012
-  carapaceRouge: {fileID: 0}
-  carapaceVerte: {fileID: 0}
-  carapaceBleue: {fileID: 0}
-  speedBooster: 20
   itemBox: []
   itemWon: []
   nitroSlider: {fileID: 0}

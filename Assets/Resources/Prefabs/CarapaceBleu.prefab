@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2342492}
   - 54: {fileID: 5442492}
   - 114: {fileID: 11442492}
+  - 114: {fileID: 11451068}
   m_Layer: 0
   m_Name: CarapaceBleu
   m_TagString: CaraBleu
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.280000001, y: 1.15999997, z: 20.3099995}
+  m_LocalPosition: {x: -.280000001, y: 2, z: 20.3099995}
   m_LocalScale: {x: 2.08710766, y: 2.31219864, z: 2.29999995}
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,13 +67,13 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142492}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1000
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 36
   m_CollisionDetection: 0
 --- !u!114 &11442492
 MonoBehaviour:
@@ -85,6 +86,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f31b84932325342ae87f99f78afe25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11451068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae75f3113ee764c9d06a978f97a260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: .5
 --- !u!135 &13542492
 SphereCollider:
   m_ObjectHideFlags: 1

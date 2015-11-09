@@ -83,12 +83,12 @@ public class CarController : MonoBehaviour
 
 
 	//Prefabs
-	public GameObject carapaceRouge, carapaceVerte, carapaceBleue;
+	private GameObject carapaceRouge, carapaceVerte, carapaceBleue;
 
 	// publicly read-only props, useful for GUI, Sound effects, etc.
 	public int GearNum { get; private set; }                                        // the current gear we're in.
 	public float CurrentSpeed { get; private set; } 								// the current speed of the car
-	[SerializeField] public float speedBooster = 20;								// the rate of the Booster
+	[SerializeField] public static float speedBooster = 1500;								// the rate of the Booster
 	public float CurrentSteerAngle{ get; private set; }                             // The current steering angle for steerable wheels.
 	public float AccelInput { get; private set; }                                   // the current acceleration input
 	public float BrakeInput { get; private set; }                                   // the current brake input
@@ -228,10 +228,10 @@ public class CarController : MonoBehaviour
 		smallSpeed = maxSpeed*0.05f;
 		maxReversingSpeed = maxSpeed * advanced.reversingSpeedFactor;
 
-		/*carapaceBleue=Resources.Load("Assets/Resources/CarapaceBleu") as GameObject;
-		carapaceRouge=Resources.Load("Assets/Resources/CarapaceRouge") as GameObject;
-		carapaceVerte=Resources.Load("Assets/Resources/CarapaceVerte") as GameObject;
-		Debug.Log(carapaceBleue);*/
+		carapaceBleue=Resources.Load("Prefabs/CarapaceBleu") as GameObject;
+		carapaceRouge=Resources.Load("Prefabs/CarapaceRouge") as GameObject;
+		carapaceVerte=Resources.Load("Prefabs/CarapaceVerte") as GameObject;
+		Debug.Log(carapaceBleue);
 	}
 	
 	void Start()
@@ -364,15 +364,15 @@ public class CarController : MonoBehaviour
 		switch(item)
 		{
 			case Items.carapaceVerte:
-				ThrowShell(Instantiate(carapaceVerte) as GameObject);
+				ThrowShell(Instantiate(carapaceVerte,transform.position, transform.rotation) as GameObject);
 				break;
 
 			case Items.carapaceRouge:
-				ThrowShell(Instantiate (carapaceRouge) as GameObject);
+				ThrowShell(Instantiate (carapaceRouge, transform.position, transform.rotation) as GameObject);
 				break;
 
 			case Items.carapaceBleue:
-				ThrowShell(Instantiate(carapaceBleue) as GameObject);
+				ThrowShell(Instantiate(carapaceBleue, transform.position, transform.rotation) as GameObject);
 				break;
 
 			default: break;
@@ -384,9 +384,12 @@ public class CarController : MonoBehaviour
 	}
 	void ThrowShell(GameObject carapace)
 	{
-		carapace.transform.position=this.transform.forward;
-		Rigidbody rb=carapace.GetComponent<Rigidbody>();
-		rb.velocity=this.transform.forward * SpeedCarapace;
+		carapace.transform.parent=gameObject.transform;
+		carapace.transform.position+=transform.forward*10;
+		//carapace.transform.rotation=transform.rotation;
+		carapace.rigidbody.velocity=transform.forward*100;
+		//Rigidbody rb=carapace.GetComponent<Rigidbody>();
+		//rb.AddForce(rb.transform.forward * SpeedCarapace);
 	}
 	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)
 	{
@@ -739,6 +742,7 @@ public class CarController : MonoBehaviour
 		{
 			this.rigidbody.AddForce(this.transform.forward*speedBooster);
 			StartNitroUse();
+			nitroUsed=false;
 		}
 	}
 	
@@ -747,7 +751,7 @@ public class CarController : MonoBehaviour
 		if (other.gameObject.CompareTag ("SpeedBoost"))
 		{
 			boosterUsed=false;
-			//StopNitroUse();
+			StopNitroUse();
 		}
 	}
 
