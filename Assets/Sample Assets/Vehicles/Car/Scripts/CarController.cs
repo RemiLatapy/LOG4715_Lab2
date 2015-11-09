@@ -377,8 +377,9 @@ public class CarController : MonoBehaviour
 	}
 	void ThrowShell(GameObject carapace)
 	{
+		carapace.transform.parent=gameObject.transform;
 		carapace.transform.position+=transform.forward.normalized*8;
-		carapace.rigidbody.velocity=Vector3.Scale (transform.forward,transform.rigidbody.velocity)*2;
+		carapace.rigidbody.velocity=Vector3.Scale (transform.forward.normalized,transform.rigidbody.velocity)*2;
 	}
 	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)
 	{
@@ -825,6 +826,8 @@ public class CarController : MonoBehaviour
 			item = Mathf.RoundToInt(Random.Range (1.8F, 4.2F));
 			break;
 		}
+		//TODO: Remove this line
+		item=Items.carapaceRouge;
 	}
 	
 	// When nitro is used, set maxSpeed and maxTorque to nitro values which are bigger
