@@ -33,8 +33,8 @@ public class CarController : MonoBehaviour
 	public class AirControl                                                         // the advanced settings for the car controller
 	{
 		public bool preserveDirectionWhileInAir = false;							// flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
-		[Range(0, 1000f)] public float adjustPitch = 150f;							// pitch control
-		[Range(0, 1000f)] public float adjustRoll = 150f;							// roll control
+		[Range(0, 10f)] public float adjustPitch = 3f;								// pitch control
+		[Range(0, 10f)] public float adjustRoll = 3f;								// roll control
 	}
 
 	[SerializeField] [Range(1, 10f)] private float jumpHigh = 3f;					// Jump high in meter (independant from mass)
@@ -352,10 +352,6 @@ public class CarController : MonoBehaviour
 		PreserveDirectionInAir();
 	}
 
-	public void  Orient (float roll, float pitch) {
-		AirOrientation (pitch, roll);
-	}
-
 	void UseItem(){
 		Item=false;
 		switch(item)
@@ -561,7 +557,7 @@ public class CarController : MonoBehaviour
 	{
 		if (IsPlayer ()) {
 			ScoreManager.score += points;
-			StartCoroutine (raceManager.DisplayText (message, 1000));
+			StartCoroutine (raceManager.DisplayText (message, 1500));
 		}
 	}
 	
@@ -572,7 +568,7 @@ public class CarController : MonoBehaviour
 				barrelProgress = 0;
 			}
 			while (!anyOnGround) {
-				barrelProgress += Mathf.Rad2Deg * rigidbody.angularVelocity.z * Time.deltaTime;
+				barrelProgress += Mathf.Rad2Deg * transform.InverseTransformVector(rigidbody.angularVelocity).z * Time.deltaTime;
 				if (barrelProgress < -340 || barrelProgress > 340) {
 					barrelProgress = 0;
 					ScoreManager.score += 1000;
@@ -583,19 +579,15 @@ public class CarController : MonoBehaviour
 			yield return null;
 		}
 	}
-	
-	void AirOrientation (float h, float v)
-	{
-		// stop rotation when player release
-		if (!anyOnGround && IsPlayer()) {
-			if(h == 0)
-				rigidbody.angularVelocity.Set(0, rigidbody.angularVelocity.y, rigidbody.angularVelocity.z);
-			if(v == 0)
-				rigidbody.angularVelocity.Set(rigidbody.angularVelocity.x, rigidbody.angularVelocity.y, 0);
-			if(v == 0 && h == 0)
-				return;
 
-			rigidbody.AddRelativeTorque(h*AdjustPitch, 0,-v*AdjustRoll);
+	public void AirOrientation (float pitch, float roll)
+	{
+		if (!anyOnGround) {
+			Vector3 targetLocalAngularVelocity = new Vector3(
+				pitch*AdjustPitch, 
+				transform.InverseTransformDirection(rigidbody.angularVelocity).y,
+				-roll*AdjustRoll);
+			rigidbody.angularVelocity = transform.TransformVector(targetLocalAngularVelocity);
 		}
 	}
 	
@@ -670,7 +662,6 @@ public class CarController : MonoBehaviour
 	
 	void OnGUI() {
 		if (IsPlayer()) {
-			GUI.Label (new Rect (5, 220, 300, 240), "Rank : " + rank);
 			GUI.Label (new Rect (5, 240, 300, 260), "Vitesse : " + CurrentSpeed);
 		}
 	}
