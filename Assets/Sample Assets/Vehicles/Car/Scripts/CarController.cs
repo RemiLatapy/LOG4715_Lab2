@@ -565,7 +565,7 @@ public class CarController : MonoBehaviour
 	{
 		if (IsPlayer ()) {
 			ScoreManager.score += points;
-			StartCoroutine (raceManager.DisplayText (message, 1000));
+			StartCoroutine (raceManager.DisplayText (message, 1500));
 		}
 	}
 	
@@ -674,7 +674,6 @@ public class CarController : MonoBehaviour
 	
 	void OnGUI() {
 		if (IsPlayer()) {
-			GUI.Label (new Rect (5, 220, 300, 240), "Rank : " + rank);
 			GUI.Label (new Rect (5, 240, 300, 260), "Vitesse : " + CurrentSpeed);
 		}
 	}
