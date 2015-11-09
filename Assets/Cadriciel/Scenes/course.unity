@@ -36415,7 +36415,7 @@ GameObject:
   - 4: {fileID: 1104837423}
   m_Layer: 0
   m_Name: Jump Ramp
-  m_TagString: WallCollider
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -43966,7 +43966,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_TagString
-      value: WallCollider
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}

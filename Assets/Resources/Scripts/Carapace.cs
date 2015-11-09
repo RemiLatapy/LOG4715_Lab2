@@ -73,7 +73,9 @@ public class Carapace : MonoBehaviour {
 	
 	// Update is called once per Fixtime
 	void FixedUpdate () {
-		rigidbody.AddForce(transform.forward*speed,ForceMode.VelocityChange);
+		//rigidbody.AddForce(transform.forward*speed,ForceMode.VelocityChange);
+		rigidbody.velocity=transform.forward*speed;
+		Debug.Log(transform.forward*speed);
 		switch(tag)
 		{
 			case "CaraRouge":
@@ -130,7 +132,7 @@ public class Carapace : MonoBehaviour {
 	{
 		if(carContact||wallContact)
 		{
-			Destroy(gameObject,0.1f);
+			Destroy(gameObject,0.2f);
 		}
 		Quaternion targetRotation=Quaternion.LookRotation(target.position-transform.position);
 		transform.rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation,targetRotation,homingRotation));
