@@ -190,6 +190,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 6.17333412
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 1323979363}
@@ -272,7 +276,7 @@ GameObject:
   - 65: {fileID: 5794647}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1378,7 +1382,7 @@ GameObject:
   - 65: {fileID: 55790553}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2081,6 +2085,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 6.17333364
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 582965562}
@@ -2389,7 +2397,7 @@ GameObject:
   - 65: {fileID: 95964277}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2499,6 +2507,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.3247875
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5862bbfe91a75054ca72c13b555b6ac5, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5862bbfe91a75054ca72c13b555b6ac5, type: 2}
   m_RootGameObject: {fileID: 1635125975}
@@ -2541,7 +2553,7 @@ Transform:
   - {fileID: 965463810}
   - {fileID: 1639565881}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!1 &116190492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2628,7 +2640,7 @@ GameObject:
   - 65: {fileID: 116221832}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3619,7 +3631,7 @@ GameObject:
   - 65: {fileID: 148785384}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4025,6 +4037,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 11.0254917
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 1510915365}
@@ -4145,7 +4161,7 @@ GameObject:
   - 65: {fileID: 171971366}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6050,6 +6066,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 21.4004784
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 2110610313}
@@ -6926,7 +6946,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -8576,7 +8596,7 @@ GameObject:
   - 65: {fileID: 333441247}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8648,7 +8668,7 @@ GameObject:
   - 65: {fileID: 336434100}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8914,7 +8934,7 @@ GameObject:
   - 65: {fileID: 352388362}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9122,7 +9142,7 @@ GameObject:
   - 65: {fileID: 367487136}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9591,7 +9611,7 @@ GameObject:
   - 65: {fileID: 401431576}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9692,6 +9712,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 21.5348797
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -10168,7 +10192,7 @@ GameObject:
   - 65: {fileID: 428350804}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10240,7 +10264,7 @@ GameObject:
   - 65: {fileID: 428607986}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11122,7 +11146,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 527691314}
   m_GameObject: {fileID: 481286549}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 100
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -11771,7 +11795,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: m_Mass
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -12602,6 +12626,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 11.0254936
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 336434099}
@@ -12677,7 +12705,7 @@ GameObject:
   - 65: {fileID: 582965563}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13052,6 +13080,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 11.0254927
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -14186,7 +14218,7 @@ GameObject:
   - 65: {fileID: 654103633}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14917,7 +14949,7 @@ Transform:
   m_LocalScale: {x: 7.27232504, y: 7.28206921, z: 3.40386462}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!1 &691674700
 GameObject:
   m_ObjectHideFlags: 0
@@ -15324,7 +15356,7 @@ GameObject:
   - 65: {fileID: 710782514}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16798,6 +16830,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 21.534874
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -18508,6 +18544,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 11.0254936
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 352388361}
@@ -18749,7 +18789,7 @@ GameObject:
   - 65: {fileID: 822932213}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18850,6 +18890,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 11.5174961
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -20222,7 +20266,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -20549,6 +20593,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 11.0254917
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 1052350985}
@@ -20657,6 +20705,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 11.0254917
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 333441246}
@@ -20704,6 +20756,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 24.9636993
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -20824,6 +20880,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 11.0254917
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -22502,6 +22562,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 15.4643641
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 5794645}
@@ -23613,7 +23677,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 1791083872}
   m_GameObject: {fileID: 981142452}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 100
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -24549,7 +24613,7 @@ GameObject:
   - 65: {fileID: 1052194670}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24633,7 +24697,7 @@ GameObject:
   - 65: {fileID: 1052350986}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25752,7 +25816,7 @@ GameObject:
   - 65: {fileID: 1083345453}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26083,7 +26147,7 @@ GameObject:
   - 4: {fileID: 1104837423}
   m_Layer: 0
   m_Name: Jump Ramp
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -27245,6 +27309,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 11.0254917
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 401431575}
@@ -28064,6 +28132,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
   m_RootGameObject: {fileID: 2090683119}
@@ -28558,7 +28630,7 @@ GameObject:
   - 65: {fileID: 1193923976}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31199,6 +31271,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 11.0254917
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 1618164084}
@@ -31990,6 +32066,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.20683765
       objectReference: {fileID: 0}
+    - target: {fileID: 100080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
   m_RootGameObject: {fileID: 1104837422}
@@ -32695,6 +32775,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 21.5348797
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 2007477736}
@@ -33101,6 +33185,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 11.0254936
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 1342286823}
@@ -33248,7 +33336,7 @@ GameObject:
   - 65: {fileID: 1323979364}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33349,6 +33437,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 11.0254927
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -33602,7 +33694,7 @@ GameObject:
   - 65: {fileID: 1342286824}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34313,7 +34405,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 2109428619}
   m_GameObject: {fileID: 1368033979}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 100
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -35535,6 +35627,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 11.0254908
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 367487135}
@@ -36378,6 +36474,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 14.5975227
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 95964275}
@@ -36874,6 +36974,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
   m_RootGameObject: {fileID: 1972544820}
@@ -37094,7 +37198,7 @@ GameObject:
   - 65: {fileID: 1510915366}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37987,6 +38091,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 10.7540398
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 428350802}
@@ -38105,7 +38213,7 @@ GameObject:
   - 65: {fileID: 1532141556}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38206,6 +38314,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 11.0254917
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -39072,7 +39184,7 @@ GameObject:
   - 65: {fileID: 1591936146}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39305,6 +39417,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 21.5348721
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 2127208464}
@@ -39407,7 +39523,7 @@ GameObject:
   - 65: {fileID: 1618164085}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39720,7 +39836,7 @@ GameObject:
   - 64: {fileID: 1635125976}
   m_Layer: 0
   m_Name: House 16x16x24
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -40004,7 +40120,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 286293165}
   m_GameObject: {fileID: 1635867382}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 100
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -40290,6 +40406,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 22.4210682
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 710782512}
@@ -40558,6 +40678,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 11.0254927
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -41167,7 +41291,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -41501,6 +41625,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 23.7963028
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 1861206235}
@@ -41784,7 +41912,7 @@ GameObject:
   - 65: {fileID: 1734234849}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42479,7 +42607,7 @@ GameObject:
   - 65: {fileID: 1760689755}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42958,7 +43086,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -43102,7 +43230,7 @@ GameObject:
   - 65: {fileID: 1804739140}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43277,6 +43405,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 10.7540398
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -44158,6 +44290,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 6.17333317
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_RootGameObject: {fileID: 148785383}
@@ -44609,7 +44745,7 @@ GameObject:
   - 65: {fileID: 1861206237}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45158,7 +45294,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 1705016575}
   m_GameObject: {fileID: 1881066731}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 100
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -45778,6 +45914,10 @@ Prefab:
     - target: {fileID: 400000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
@@ -48620,7 +48760,7 @@ GameObject:
   - 65: {fileID: 1971511314}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48693,7 +48833,7 @@ GameObject:
   - 65: {fileID: 1972544822}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49101,7 +49241,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 2049109060}
   m_GameObject: {fileID: 1977983683}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 100
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -49223,6 +49363,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 44.4077263
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -49366,7 +49510,7 @@ GameObject:
   - 65: {fileID: 2007477738}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50112,7 +50256,7 @@ GameObject:
   - 65: {fileID: 2036981102}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50531,7 +50675,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 838409333}
   m_GameObject: {fileID: 2042105150}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 100
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -50663,7 +50807,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: m_Mass
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -50807,6 +50951,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 11.0254927
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -51048,6 +51196,10 @@ Prefab:
     - target: {fileID: 400000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44884af1ac1d64d42902da40268ba120, type: 2}
@@ -51532,7 +51684,7 @@ GameObject:
   - 65: {fileID: 2090683121}
   m_Layer: 0
   m_Name: Pillar 2x8x2
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51875,7 +52027,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 2142660374}
   m_GameObject: {fileID: 2099699816}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 100
   m_Drag: .100000001
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -51925,6 +52077,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 21.5348759
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -52000,6 +52156,10 @@ Prefab:
     - target: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
       propertyPath: m_LocalScale.x
       value: 21.5348816
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
+      propertyPath: m_TagString
+      value: WallCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -52125,7 +52285,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
@@ -52149,7 +52309,7 @@ GameObject:
   - 65: {fileID: 2110610315}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52434,7 +52594,7 @@ GameObject:
   - 65: {fileID: 2127208466}
   m_Layer: 0
   m_Name: Wall 8x8x1
-  m_TagString: Untagged
+  m_TagString: WallCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52899,7 +53059,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_Mass
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle

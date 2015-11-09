@@ -381,12 +381,8 @@ public class CarController : MonoBehaviour
 	}
 	void ThrowShell(GameObject carapace)
 	{
-		//carapace.transform.parent=gameObject.transform;
-		carapace.transform.position+=transform.forward*10;
-		//carapace.transform.rotation=transform.rotation;
-		carapace.rigidbody.velocity=transform.forward*100;
-		//Rigidbody rb=carapace.GetComponent<Rigidbody>();
-		//rb.AddForce(rb.transform.forward * SpeedCarapace);
+		carapace.transform.position+=transform.forward.normalized*10;
+		carapace.rigidbody.velocity=transform.rigidbody.velocity;
 	}
 	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)
 	{

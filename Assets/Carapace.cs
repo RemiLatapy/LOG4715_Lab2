@@ -4,19 +4,28 @@ using System.Collections;
 public class Carapace : MonoBehaviour {
 
 	[SerializeField]public float speed=10;
-
+	[SerializeField]public int maxRebonds=3;
+	private int rebonds;
 	// Use this for initialization
 	void Start () {
-	
+		rebonds=0;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		rigidbody.AddForce(transform.forward*speed,ForceMode.VelocityChange);
-		/*Vector3 pos=transform.position;
-		pos.y=Terrain.activeTerrain.SampleHeight(transform.position);
-		transform.position=pos;*/
-
+	}
+	void OnTriggerEnter(Collider other) {
+		if(other.gameObject.CompareTag("WallCollider")||other.gameObject.CompareTag("Obstacle"))
+		{
+			rebonds++;
+		}
+	}
+	
+	void Update()
+	{
+		if(rebonds>=maxRebonds)
+			Destroy(gameObject,0.2f);
 	}
 
 }

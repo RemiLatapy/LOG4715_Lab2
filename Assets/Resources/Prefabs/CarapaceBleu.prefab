@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 442492}
   - 33: {fileID: 3342492}
   - 135: {fileID: 13542492}
+  - 135: {fileID: 13506296}
   - 23: {fileID: 2342492}
   - 54: {fileID: 5442492}
   - 114: {fileID: 11442492}
@@ -73,7 +74,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 36
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!114 &11442492
 MonoBehaviour:
@@ -98,13 +99,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: .5
---- !u!135 &13542492
+  maxRebonds: 3
+--- !u!135 &13506296
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142492}
   m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .699999988
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &13542492
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142492}
+  m_Material: {fileID: 13400000, guid: 99e86ee0ad11f8d6d00011d98d76c639, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
