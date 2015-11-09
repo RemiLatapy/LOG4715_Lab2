@@ -18,11 +18,13 @@ public class RaceManager : MonoBehaviour
 	[SerializeField]
 	private int _endCountdown;
 
+	public static int numberOfCars;
+
 	// Use this for initialization
 	void Awake () 
 	{
 		CarActivation(false);
-
+		numberOfCars = _carContainer.transform.childCount;
 	}
 	
 	void Start()
@@ -91,10 +93,6 @@ public class RaceManager : MonoBehaviour
 			car.enabled = activate;
 		}
 
-	}
-
-	public int getNumberOfCars() {
-		return _carContainer.transform.childCount;
 	}
 
 	public float AdjustRubberbanding {

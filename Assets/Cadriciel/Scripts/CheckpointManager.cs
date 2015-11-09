@@ -47,6 +47,8 @@ public class CheckpointManager : MonoBehaviour
 		rank.Sort();
 		int i = 1;
 		foreach (PositionData car in rank) {
+			if(car.car.name == "Joueur 1")
+				RankManager.rank = i;
 			car.car.rank=i;
 			i++;
 		}
@@ -97,10 +99,6 @@ public class CheckpointManager : MonoBehaviour
 			{
 				carData.checkPoint = checkPointIndex;
 				carData.passageOrder = passageOrder;
-//				if(IsPlayer(car)) {
-//					Debug.Log(car.name + " " + carData.lap + " " + carData.checkPoint + " " + carData.passageOrder);
-//					Debug.Log(car.name + " " + car.rank + " score = " + carData.Score);
-//				}
 			}
 		}
 

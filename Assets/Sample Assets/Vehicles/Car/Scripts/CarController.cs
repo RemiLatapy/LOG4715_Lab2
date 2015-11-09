@@ -204,7 +204,6 @@ public class CarController : MonoBehaviour
 	float curvedSpeedFactor;
 	bool reversing;
 	float targetAccelInput; // target accel input is our desired acceleration input. We smooth towards it later
-	int numberOfCars;														// number of cars in the race
 	private float rubberbandingFactor = 1;									// Factor apply to increase or decrease speed
 
 
@@ -251,7 +250,6 @@ public class CarController : MonoBehaviour
 				itemWon [i].enabled = false;
 			}
 		}
-		numberOfCars = transform.root.GetComponentsInChildren<CarController> ().Length;
 		if(IsPlayer())
 			StartCoroutine(DoABarrelRoll());
 	}
@@ -437,7 +435,7 @@ public class CarController : MonoBehaviour
 	{
 		// calcul rubberbanding factor with adjustment
 		float adjustRubberbanding = raceManager.AdjustRubberbanding;
-		rubberbandingFactor = Mathf.Lerp (1f/adjustRubberbanding, adjustRubberbanding, (rank-1f)/(numberOfCars-1f));
+		rubberbandingFactor = Mathf.Lerp (1f/adjustRubberbanding, adjustRubberbanding, (rank-1f)/(RaceManager.numberOfCars-1f));
 	}
 	
 	void CalculateSpeedValues ()
@@ -548,8 +546,6 @@ public class CarController : MonoBehaviour
 		}
 	}
 
-
-	
 	void AddStylePoints ()
 	{
 		// Add style point when jump
@@ -823,7 +819,7 @@ public class CarController : MonoBehaviour
 	void randomizeItem ()
 	{
 		// Divise in three categories for rubberbanding
-		int rankThird = Mathf.FloorToInt (3f * rank / numberOfCars);
+		int rankThird = Mathf.FloorToInt (3f * rank / RaceManager.numberOfCars);
 		switch (rankThird) {
 		case 1:
 			// green or red
