@@ -26,19 +26,20 @@ public class CarController : MonoBehaviour
 	[SerializeField] private float minTorque = 10;                                  // the minimum torque of the engine
 	[SerializeField] private float brakePower = 40;                                 // how powerful the brakes are at stopping the car
 
-	public int rank;																// rank of the car
-	private int numberOfCars;														// number of cars in the race
-	
 	[SerializeField] private float adjustCentreOfMass = 0.25f;                      // vertical offset for the centre of mass
-	[SerializeField] bool preserveDirectionWhileInAir = false;                      // flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
-	[SerializeField] [Range(0, 1000f)] private float adjustPitch = 150f;
-	[SerializeField] [Range(0, 1000f)] private float adjustRoll = 150f;
-	
-	private int stylePoint = 0;														// Score increase by special drive
+
+	[SerializeField] private AirControl airControl;                                 // container for the air control setting which will expose as a foldout in the inspector
+	[System.Serializable]
+	public class AirControl                                                         // the advanced settings for the car controller
+	{
+		public bool preserveDirectionWhileInAir = false;							// flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
+		[Range(0, 1000f)] public float adjustPitch = 150f;							// pitch control
+		[Range(0, 1000f)] public float adjustRoll = 150f;							// roll control
+	}
+
 	[SerializeField] [Range(1, 10f)] private float jumpHigh = 3f;					// Jump high in meter (independant from mass)
-	
-	private float rubberbandingFactor = 1;											// Factor apply to increase or decrease speed
-	
+	float minSkidToScore = 0.7f;														// Minimum avg skid to score
+
 	[SerializeField] private Advanced advanced;                                     // container for the advanced setting which will expose as a foldout in the inspector
 	
 	[System.Serializable]
@@ -71,7 +72,7 @@ public class CarController : MonoBehaviour
 
 	}
 	
-	private RaceManager raceManager;
+	private RaceManager raceManager;												// Reference to race manager
 	
 	private float[] gearDistribution;                                               // Stores the caluclated change point for each gear (0-1 as a normalised amount relative to car's max speed)
 	private Wheel[] wheels;                                                         // Stores a reference to each wheel attached to this car.
@@ -97,6 +98,8 @@ public class CarController : MonoBehaviour
 	public float RevsFactor { get; private set; }                                   // value between 0-1 indicating where the current revs fall between 0 and max revs
 	public float SpeedFactor { get;  private set; }                                 // value between 0-1 of the car's current speed relative to max speed
 	public float SpeedCarapace{get; set;}
+	public int rank{get; set;}														// rank of the car
+
 
 	// Variables use for picked up objects	
 	private int item = 0; // id of picked up item, 0 -> none, 1 -> green projectile, 2 -> red projectile, 3 -> blue projectile, 4 -> nitro
@@ -183,13 +186,28 @@ public class CarController : MonoBehaviour
 	{
 		get { return maxSteerAngle; }
 	}
-	
+
+	public float AdjustPitch {
+		get { return airControl.adjustPitch; }
+	}
+
+	public float AdjustRoll	{
+		get { return airControl.adjustRoll; }
+	}
+
+	public bool PreserveDirectionWhileInAir {
+		get { return airControl.preserveDirectionWhileInAir; }
+	}
 	
 	// variables added due to separating out things into functions!
 	bool anyOnGround = true;
 	float curvedSpeedFactor;
 	bool reversing;
 	float targetAccelInput; // target accel input is our desired acceleration input. We smooth towards it later
+	int numberOfCars;														// number of cars in the race
+	private int stylePoint = 0;												// Score increase by special drive
+	private float rubberbandingFactor = 1;									// Factor apply to increase or decrease speed
+
 
 	void Awake ()
 	{
@@ -524,7 +542,7 @@ public class CarController : MonoBehaviour
 	void PreserveDirectionInAir()
 	{
 		// special feature which allows cars to remain roughly pointing in the direction of travel
-		if (!anyOnGround && preserveDirectionWhileInAir && rigidbody.velocity.magnitude > smallSpeed) {
+		if (!anyOnGround && PreserveDirectionWhileInAir && rigidbody.velocity.magnitude > smallSpeed) {
 			rigidbody.MoveRotation (Quaternion.Slerp (rigidbody.rotation, Quaternion.LookRotation (rigidbody.velocity), Time.deltaTime));
 			rigidbody.angularVelocity = Vector3.Lerp (rigidbody.angularVelocity, Vector3.zero, Time.deltaTime);
 		}
@@ -538,7 +556,7 @@ public class CarController : MonoBehaviour
 		}
 
 		// Add style point when skid
-		if (AvgSkid > 0.8) {
+		if (AvgSkid > minSkidToScore) {
 			stylePoint++;
 		}
 	}
@@ -573,7 +591,7 @@ public class CarController : MonoBehaviour
 			if(v == 0 && h == 0)
 				return;
 
-			rigidbody.AddRelativeTorque(h*adjustPitch, 0,-v*adjustRoll);
+			rigidbody.AddRelativeTorque(h*AdjustPitch, 0,-v*AdjustRoll);
 		}
 	}
 	
@@ -650,9 +668,7 @@ public class CarController : MonoBehaviour
 		if (IsPlayer()) {
 			GUI.Label (new Rect (5, 200, 300, 220), "Style Points : " + stylePoint);
 			GUI.Label (new Rect (5, 220, 300, 240), "Rank : " + rank);
-			GUI.Label (new Rect (5, 240, 300, 260), "Rubberbanding Factor : " + rubberbandingFactor);
-			GUI.Label (new Rect (5, 260, 300, 280), "grounded : " + anyOnGround);
-			GUI.Label (new Rect (5, 280, 300, 300), "Vitesse : " + CurrentSpeed);
+			GUI.Label (new Rect (5, 240, 300, 260), "Vitesse : " + CurrentSpeed);
 		}
 	}
 	
