@@ -4,9 +4,9 @@ using System.Collections;
 public class DestructionManager : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
-		this.GetComponent<Collider>().enabled = false;
 		CarController car = other.GetComponentInParent<CarController> ();
 		if (car != null) {
+			this.GetComponent<Collider>().enabled = false;
 			car.modifyStyleScore (500, "BOUM ! +500");
 		}
 	}
