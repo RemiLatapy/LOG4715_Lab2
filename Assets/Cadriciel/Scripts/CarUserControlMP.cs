@@ -44,17 +44,18 @@ public class CarUserControlMP : MonoBehaviour
 		#if CROSS_PLATFORM_INPUT
 		float h = CrossPlatformInput.GetAxis(horizontal);
 		float v = CrossPlatformInput.GetAxis(vertical);
-		float v_o = CrossPlatformInput.GetAxis(verticalOrientation);
+		float pitch = CrossPlatformInput.GetAxis(verticalOrientation);
 		#else
 		float h = Input.GetAxis(horizontal);
 		float v = Input.GetAxis(vertical);
-		float v_o = Input.GetAxis(verticalOrientation);
+		float pitch = Input.GetAxis(verticalOrientation);
 		#endif
+		float roll = h;
 		if (jump) {
 			car.Jump ();
 			jump = false;
 		}
 		car.Move(h,v);
-		car.Orient (h, v_o);
+		car.AirOrientation (pitch, roll);
 	}
 }
