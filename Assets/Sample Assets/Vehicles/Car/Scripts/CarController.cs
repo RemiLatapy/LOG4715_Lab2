@@ -377,8 +377,8 @@ public class CarController : MonoBehaviour
 	}
 	void ThrowShell(GameObject carapace)
 	{
-		carapace.transform.position+=transform.forward.normalized*10;
-		carapace.rigidbody.velocity=transform.rigidbody.velocity;
+		carapace.transform.position+=transform.forward.normalized*8;
+		carapace.rigidbody.velocity=Vector3.Scale (transform.forward,transform.rigidbody.velocity)*2;
 	}
 	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)
 	{

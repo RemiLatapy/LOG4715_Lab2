@@ -567,7 +567,7 @@ GameObject:
   - 23: {fileID: 15412850}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -738,7 +738,7 @@ GameObject:
   - 23: {fileID: 20029845}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4316,7 +4316,7 @@ GameObject:
   - 23: {fileID: 146986255}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4723,7 +4723,7 @@ GameObject:
   - 23: {fileID: 155447994}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5866,7 +5866,7 @@ GameObject:
   - 23: {fileID: 1616127788}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9363,6 +9363,18 @@ Prefab:
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
       value: .156000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100028, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
@@ -12997,7 +13009,7 @@ GameObject:
   - 23: {fileID: 387808570}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13247,7 +13259,7 @@ GameObject:
   - 23: {fileID: 394131513}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15595,6 +15607,7 @@ GameObject:
   - 114: {fileID: 481286553}
   - 114: {fileID: 481286552}
   - 114: {fileID: 481286556}
+  - 64: {fileID: 481286558}
   m_Layer: 8
   m_Name: Joueur 1
   m_TagString: Player
@@ -15783,6 +15796,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &481286558
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 481286549}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 0}
 --- !u!1 &487389443
 GameObject:
   m_ObjectHideFlags: 0
@@ -16739,6 +16765,18 @@ Prefab:
     - target: {fileID: 11400030, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: airControl.adjustRoll
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100034, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
@@ -18803,7 +18841,7 @@ GameObject:
   - 23: {fileID: 619919297}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19673,7 +19711,7 @@ GameObject:
   - 23: {fileID: 652447580}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22809,7 +22847,7 @@ GameObject:
   - 23: {fileID: 758540634}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27607,6 +27645,18 @@ Prefab:
       propertyPath: maxSpeedSteerAngle
       value: .156000003
       objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100028, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
   m_RootGameObject: {fileID: 2042105150}
@@ -30487,7 +30537,7 @@ GameObject:
   - 23: {fileID: 917747849}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31732,7 +31782,7 @@ GameObject:
   - 23: {fileID: 959888862}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34995,7 +35045,7 @@ GameObject:
   - 23: {fileID: 1068297732}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39310,7 +39360,7 @@ GameObject:
   - 23: {fileID: 1192968015}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39772,7 +39822,7 @@ GameObject:
   - 23: {fileID: 1203657148}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49119,7 +49169,7 @@ GameObject:
   - 23: {fileID: 1438518266}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50144,7 +50194,7 @@ GameObject:
   - 23: {fileID: 1477828580}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51165,7 +51215,7 @@ GameObject:
   - 23: {fileID: 1510053339}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52106,7 +52156,7 @@ GameObject:
   - 23: {fileID: 1520312601}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54724,7 +54774,7 @@ GameObject:
   - 23: {fileID: 2072621873}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54736,7 +54786,7 @@ Transform:
   m_PrefabInternal: {fileID: 1791083872}
   m_GameObject: {fileID: 207475163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .932968259, z: -.980857849}
+  m_LocalPosition: {x: 0, y: .93296814, z: -.980857849}
   m_LocalScale: {x: 1.21000004, y: .810000002, z: 2.33999991}
   m_Children: []
   m_Father: {fileID: 1541747074}
@@ -55513,7 +55563,7 @@ GameObject:
   - 23: {fileID: 1636282844}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57033,15 +57083,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100026, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: CarCollider
       objectReference: {fileID: 0}
     - target: {fileID: 100030, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: CarCollider
       objectReference: {fileID: 0}
     - target: {fileID: 100028, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: CarCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
@@ -59702,6 +59752,22 @@ Prefab:
       propertyPath: maxSpeedSteerAngle
       value: .156000003
       objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .93296814
+      objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100028, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
   m_RootGameObject: {fileID: 981142452}
@@ -60750,7 +60816,7 @@ GameObject:
   - 23: {fileID: 1825979790}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70412,6 +70478,18 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100034, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
@@ -71051,7 +71129,7 @@ GameObject:
   - 23: {fileID: 207475165}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72371,6 +72449,18 @@ Prefab:
       propertyPath: maxSpeedSteerAngle
       value: .156000003
       objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100028, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
   m_RootGameObject: {fileID: 1368033979}
@@ -72746,7 +72836,7 @@ GameObject:
   - 23: {fileID: 2128274912}
   m_Layer: 8
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: CarCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73144,6 +73234,18 @@ Prefab:
     - target: {fileID: 11400004, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
       propertyPath: maxSpeedSteerAngle
       value: .156000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100028, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}
+      propertyPath: m_TagString
+      value: CarCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce87ff1a55e61844fbd4cf92e6653b8f, type: 2}

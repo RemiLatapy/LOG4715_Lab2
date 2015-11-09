@@ -16,9 +16,16 @@ public class Carapace : MonoBehaviour {
 		rigidbody.AddForce(transform.forward*speed,ForceMode.VelocityChange);
 	}
 	void OnTriggerEnter(Collider other) {
+		Debug.Log ("Prout");
 		if(other.gameObject.CompareTag("WallCollider")||other.gameObject.CompareTag("Obstacle"))
 		{
+			Debug.Log ("Wall");
 			rebonds++;
+		}
+		else if(other.gameObject.CompareTag("CarCollider"))
+		{
+			Debug.Log ("Car");
+			Destroy(gameObject,0.1f);
 		}
 	}
 	
