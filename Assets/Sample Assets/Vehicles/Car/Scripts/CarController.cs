@@ -572,7 +572,7 @@ public class CarController : MonoBehaviour
 				barrelProgress = 0;
 			}
 			while (!anyOnGround) {
-				barrelProgress += Mathf.Rad2Deg * rigidbody.angularVelocity.z * Time.deltaTime;
+				barrelProgress += Mathf.Rad2Deg * transform.InverseTransformVector(rigidbody.angularVelocity).z * Time.deltaTime;
 				if (barrelProgress < -340 || barrelProgress > 340) {
 					barrelProgress = 0;
 					ScoreManager.score += 1000;
