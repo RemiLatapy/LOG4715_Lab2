@@ -35,7 +35,7 @@ public class CarController : MonoBehaviour
 	[SerializeField] [Range(0, 1000f)] private float adjustRoll = 150f;
 	
 	private int stylePoint = 0;														// Score increase by special drive
-	[SerializeField] [Range(1, 10f)] private float jumpHigh = 3f;
+	[SerializeField] [Range(1, 10f)] private float jumpHigh = 3f;					// Jump high in meter (independant from mass)
 	
 	private float rubberbandingFactor = 1;											// Factor apply to increase or decrease speed
 	
@@ -573,20 +573,17 @@ public class CarController : MonoBehaviour
 			if(v == 0 && h == 0)
 				return;
 
-			h *= adjustPitch;
-			v *= adjustRoll;
-			
-			rigidbody.AddTorque(transform.right * h);
-			rigidbody.AddTorque(transform.forward * -v);
+			rigidbody.AddRelativeTorque(h*adjustPitch, 0,-v*adjustRoll);
 		}
 	}
 	
 	public void Jump ()
 	{
-		float jumpForce = Mathf.Sqrt (2f * jumpHigh * Physics.gravity.magnitude) * rigidbody.mass;
-
-		if(anyOnGround)
-			rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+		// Calculate jump force to respect jump high.
+		if (anyOnGround) {
+			float jumpForce = Mathf.Sqrt (2f * jumpHigh * Physics.gravity.magnitude) * rigidbody.mass;
+			rigidbody.AddForce (new Vector3 (0, jumpForce, 0), ForceMode.Impulse);
+		}
 	}	
 	
 	// simple function to add a curved bias towards 1 for a value in the 0-1 range

@@ -8228,6 +8228,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 137304, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 473186b36dd54674596d5ff58da5ec57, type: 2}
   m_RootGameObject: {fileID: 1366862726}
@@ -10997,7 +11001,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 150
   adjustRoll: 150
-  jumpForce: 500
+  jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -23579,7 +23583,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 150
   adjustRoll: 150
-  jumpForce: 500
+  jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -34079,7 +34083,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 150
   adjustRoll: 150
-  jumpForce: 500
+  jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -39774,7 +39778,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 150
   adjustRoll: 150
-  jumpForce: 500
+  jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -44956,7 +44960,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 150
   adjustRoll: 150
-  jumpForce: 500
+  jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -48902,7 +48906,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 1
   adjustRoll: 1
-  jumpForce: 10
+  jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -50220,7 +50224,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 150
   adjustRoll: 150
-  jumpForce: 500
+  jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
@@ -51560,7 +51564,7 @@ MonoBehaviour:
   preserveDirectionWhileInAir: 1
   adjustPitch: 150
   adjustRoll: 150
-  jumpForce: 500
+  jumpHigh: 3
   advanced:
     burnoutSlipEffect: .400000006
     burnoutTendency: .200000003
