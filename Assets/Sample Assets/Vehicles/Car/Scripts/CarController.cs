@@ -205,7 +205,6 @@ public class CarController : MonoBehaviour
 	bool reversing;
 	float targetAccelInput; // target accel input is our desired acceleration input. We smooth towards it later
 	int numberOfCars;														// number of cars in the race
-	private int stylePoint = 0;												// Score increase by special drive
 	private float rubberbandingFactor = 1;									// Factor apply to increase or decrease speed
 
 
@@ -264,7 +263,8 @@ public class CarController : MonoBehaviour
 	}
 
 	void FixedUpdate(){
-		AddStylePoints();
+		if(IsPlayer())
+			AddStylePoints();
 		SpeedOMeter ();
 		ManageDamagePoints ();
 		if(Item) UseItem();
@@ -554,21 +554,21 @@ public class CarController : MonoBehaviour
 	{
 		// Add style point when jump
 		if (!anyOnGround && rigidbody.velocity.magnitude > 4f) {
-			stylePoint++;
+			ScoreManager.score++;
 		}
 
 		// Add style point when skid
 		if (AvgSkid > minSkidToScore) {
-			stylePoint++;
+			ScoreManager.score++;
 		}
 	}
 
 	public void modifyStyleScore (int points, string message)
 	{
-		stylePoint += points;
-		stylePoint = stylePoint < 0 ? 0 : stylePoint;
-		if(IsPlayer())
-			StartCoroutine(raceManager.DisplayText(message, 1000));
+		if (IsPlayer ()) {
+			ScoreManager.score += points;
+			StartCoroutine (raceManager.DisplayText (message, 1000));
+		}
 	}
 	
 	IEnumerator DoABarrelRoll() {
@@ -581,7 +581,7 @@ public class CarController : MonoBehaviour
 				barrelProgress += Mathf.Rad2Deg * rigidbody.angularVelocity.z * Time.deltaTime;
 				if (barrelProgress < -340 || barrelProgress > 340) {
 					barrelProgress = 0;
-					stylePoint += 1000;
+					ScoreManager.score += 1000;
 					StartCoroutine(raceManager.DisplayText("Barrel Roll ! +1000 !", 1000));
 				}
 				yield return null;
@@ -676,7 +676,6 @@ public class CarController : MonoBehaviour
 	
 	void OnGUI() {
 		if (IsPlayer()) {
-			GUI.Label (new Rect (5, 200, 300, 220), "Style Points : " + stylePoint);
 			GUI.Label (new Rect (5, 220, 300, 240), "Rank : " + rank);
 			GUI.Label (new Rect (5, 240, 300, 260), "Vitesse : " + CurrentSpeed);
 		}
