@@ -13,9 +13,9 @@ public class Carapace : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		rigidbody.AddForce(transform.forward*speed,ForceMode.VelocityChange);
-		Vector3 pos=transform.position;
+		/*Vector3 pos=transform.position;
 		pos.y=Terrain.activeTerrain.SampleHeight(transform.position);
-		transform.position=pos;
+		transform.position=pos;*/
 
 	}
 

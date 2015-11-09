@@ -229,7 +229,6 @@ public class CarController : MonoBehaviour
 		carapaceBleue=Resources.Load("Prefabs/CarapaceBleu") as GameObject;
 		carapaceRouge=Resources.Load("Prefabs/CarapaceRouge") as GameObject;
 		carapaceVerte=Resources.Load("Prefabs/CarapaceVerte") as GameObject;
-		Debug.Log(carapaceBleue);
 	}
 	
 	void Start()
@@ -382,7 +381,7 @@ public class CarController : MonoBehaviour
 	}
 	void ThrowShell(GameObject carapace)
 	{
-		carapace.transform.parent=gameObject.transform;
+		//carapace.transform.parent=gameObject.transform;
 		carapace.transform.position+=transform.forward*10;
 		//carapace.transform.rotation=transform.rotation;
 		carapace.rigidbody.velocity=transform.forward*100;
