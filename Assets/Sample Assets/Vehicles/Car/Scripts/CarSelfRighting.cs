@@ -9,6 +9,11 @@ public class CarSelfRighting : MonoBehaviour
     [SerializeField] private float waitTime = 3f;       	// time to wait before self righting
     [SerializeField] private float velocityThreshold = 1f;  // the velocity below which the car is considered stationary for self-righting
 	private float lastOkTime;								// the last time that the car was in an OK state
+	CarController carController;
+
+	void Start() {
+		carController = (CarController) GetComponent("CarController");
+	}
 
     void Update ()
     {
@@ -30,5 +35,6 @@ public class CarSelfRighting : MonoBehaviour
         // set the correct orientation for the car, and lift it off the ground a little
         transform.position += Vector3.up;
         transform.rotation = Quaternion.LookRotation(transform.forward);
+		carController.modifyStyleScore(-200, "Car on roof ! -200 !");
     }
 }
