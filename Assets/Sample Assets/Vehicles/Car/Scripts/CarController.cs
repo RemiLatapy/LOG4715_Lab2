@@ -773,17 +773,19 @@ public class CarController : MonoBehaviour
 
 	void OnCollisionEnter(Collision col)
 	{
-		switch (col.collider.transform.parent.gameObject.tag) 
-		{
+		Transform parent = col.collider.transform.parent;
+		if (parent != null) {
+			switch (parent.gameObject.tag) {
 			case "WallCollider":
-				applyDamage(wallDamageFactor, CurrentSpeed);
+				applyDamage (wallDamageFactor, CurrentSpeed);
 				break;
 			case "Obstacle":
-				applyDamage(obstacleDamageFactor, CurrentSpeed);
+				applyDamage (obstacleDamageFactor, CurrentSpeed);
 				break;
 			case "Player":
-				applyDamage(carDamageFactor, CurrentSpeed);
+				applyDamage (carDamageFactor, CurrentSpeed);
 				break;
+			}
 		}
 	}
 	
