@@ -140,19 +140,20 @@ public class Carapace : MonoBehaviour {
 	//Gestion des carapaces bleues
 	void BlueHoming()
 	{
-		if(carContact && carTouched==target)
+		if(carContact && (carTouched.position-target.position).sqrMagnitude < 2)
 		{
 			Destroy (gameObject,0.2f);
 		}
-		if((target.position-transform.position).sqrMagnitude < 10f)
+		Debug.Log("Distance : "+target.name+"  "+ (target.position-transform.position).sqrMagnitude);
+		if((target.position-transform.position).sqrMagnitude < 1000f)
 		{
-			Debug.Log ("Red Aiming");
+			//Debug.Log ("Red Aiming");
 			GoTowardsTarget(target);
 		}
 		else
 		{
 			GoTowardsTarget(this.GetComponent<WaypointProgressTracker>().target);
-			Debug.Log ("Blue Aiming");
+			//Debug.Log ("Blue Aiming");
 		}
 	}
 

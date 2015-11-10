@@ -104,7 +104,6 @@ public class CarController : MonoBehaviour
 
 	// Variables use for picked up objects	
 	private int item = 0; // id of picked up item, 0 -> none, 1 -> green projectile, 2 -> red projectile, 3 -> blue projectile, 4 -> nitro
-	// TODO : change into private
 	public RawImage[] itemBox;
 	public RawImage[] itemWon; 
 
@@ -119,17 +118,33 @@ public class CarController : MonoBehaviour
 	}
 	public bool Item{get;set;}
 	private float nitroLevel = 0;
-	private float currentMaxSpeed;
 	private float nitroFactor = 1;
+	// The nitro factor that will be applied to nitroFactor
+	[SerializeField] 
+	[Range(1, 3)] private float appliedNitroFactor = 2;
+	[SerializeField] 
+	[Range(0, 2)] private float reduceNitro = 0.7f;
 	[SerializeField] 
 	[Range(100, 200)] private float nitroSpeed = 160f;
 	
 	// Variables use for damages
 	private float damagePoints = 0;
-	private const float wallDamageFactor = 0.7f;
-	private const float obstacleDamageFactor = 0.5f;
-	private const float carDamageFactor = 0.3f;
+	[SerializeField] 
+	[Range(0, 2)] private float reduceDamagePoints = 0.02f;
+	// Factor for damage against wall
+	[SerializeField] 
+	[Range(0, 2)] private float wallDamageFactor = 0.7f;
+	// Factor for damage against an obstacle
+	[SerializeField] 
+	[Range(0, 2)] private float obstacleDamageFactor = 0.5f;
+	// Factor for damage against a car
+	[SerializeField] 
+	[Range(0, 2)] private float carDamageFactor = 0.3f;
 	private float damageFactor = 1;
+	// The damage factor that will be applied to damageFactor 
+	[SerializeField] 
+	[Range(1, 3)] private float appliedDamageFactor = 2;
+
 	
 	// Variables for turn indicators
 	public RawImage leftArrow;
@@ -238,7 +253,6 @@ public class CarController : MonoBehaviour
 	
 	void Start()
 	{
-		currentMaxSpeed = maxSpeed;
 		this.transform.FindChild ("Fire").renderer.enabled = false;
 		this.transform.FindChild ("Smoke").renderer.enabled = false;
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = false;
@@ -293,7 +307,7 @@ public class CarController : MonoBehaviour
 		// Damage points are restored through the time
 		if (damagePoints > 30) 
 		{
-			damagePoints -= 0.02f;
+			damagePoints -= reduceDamagePoints;
 		}
 
 		// No damageFactor by default
@@ -318,7 +332,7 @@ public class CarController : MonoBehaviour
 		}
 		else if(damagePoints >= 100)
 		{
-			damageFactor = 2;
+			damageFactor = appliedDamageFactor;
 			Texture2D someTexture = Resources.Load("textures/skyCar_body_dff_damage2") as Texture2D;
 			this.transform.Find("SkyCar/vehicle_skyCar_body_paintwork").renderer.materials[1].SetTexture("_MainTex", someTexture);
 			this.transform.FindChild ("Fire").renderer.enabled = true;
@@ -838,7 +852,7 @@ public class CarController : MonoBehaviour
 	public void NitroUse() {
 		if (nitroLevel > 0) {
 			StartNitroUse();
-			nitroLevel -= 0.7f;
+			nitroLevel -= reduceNitro;
 			if(IsPlayer()) nitroSlider.value = nitroLevel;
 		}
 		else {
@@ -850,7 +864,7 @@ public class CarController : MonoBehaviour
 		this.transform.FindChild ("NitroEffects1").renderer.enabled = true;
 		this.transform.FindChild ("NitroEffects2").renderer.enabled = true;
 		// If nitro is used multiply the velocity by 2
-		nitroFactor = 2;
+		nitroFactor = appliedNitroFactor;
 	}
 	
 	public void StopNitroUse () {
