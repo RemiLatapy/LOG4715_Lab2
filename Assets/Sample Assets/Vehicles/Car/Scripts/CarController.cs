@@ -105,7 +105,7 @@ public class CarController : MonoBehaviour
 	// Variables use for picked up objects	
 	private int item = 0; // id of picked up item, 0 -> none, 1 -> green projectile, 2 -> red projectile, 3 -> blue projectile, 4 -> nitro
 	public RawImage[] itemBox;
-	public RawImage[] itemWon; 
+	public RawImage[] itemWon;
 
 
 	// Variables for nitro
@@ -827,7 +827,7 @@ public class CarController : MonoBehaviour
 	void randomizeItem ()
 	{
 		// Divise in three categories for rubberbanding
-		int rankThird = Mathf.FloorToInt (3f * rank / RaceManager.numberOfCars);
+		int rankThird = Mathf.FloorToInt (3.1f * rank / RaceManager.numberOfCars);
 		switch (rankThird) {
 		case 1:
 			// green or red
@@ -835,7 +835,7 @@ public class CarController : MonoBehaviour
 			break;
 		case 2:
 			// red or nitro
-			item = Mathf.RoundToInt(Random.Range (2F, 3F));
+			item = Mathf.RoundToInt(Random.Range (1F, 3F));
 			item = item == Items.carapaceBleue ? Items.nitro : Items.carapaceRouge;
 			break;
 		case 3:

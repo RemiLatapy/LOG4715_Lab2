@@ -14,7 +14,6 @@ GameObject:
   - 23: {fileID: 2361426}
   - 54: {fileID: 5461426}
   - 114: {fileID: 11466396}
-  - 114: {fileID: 11461426}
   m_Layer: 0
   m_Name: CarapaceRouge
   m_TagString: CaraRouge
@@ -76,17 +75,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &11461426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 486f5629bc7e4be45a61a05904647514, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11466396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,8 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccae75f3113ee764c9d06a978f97a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
-  homingRotation: 15
+  speed: 50
+  homingRotation: 20
   maxRebonds: 3
 --- !u!135 &13524408
 SphereCollider:
