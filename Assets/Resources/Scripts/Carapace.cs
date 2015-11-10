@@ -11,6 +11,7 @@ public class Carapace : MonoBehaviour {
 	private int rebonds;
 	private Transform target;
 	private Transform carSender;
+	private Transform carTouched;
 
 	private bool wallContact=false;
 	private bool carContact=false;
@@ -75,7 +76,6 @@ public class Carapace : MonoBehaviour {
 	void FixedUpdate () {
 		//rigidbody.AddForce(transform.forward*speed,ForceMode.VelocityChange);
 		rigidbody.velocity=transform.forward*speed;
-		Debug.Log(transform.forward*speed);
 		switch(tag)
 		{
 			case "CaraRouge":
@@ -108,7 +108,7 @@ public class Carapace : MonoBehaviour {
 		}
 		else if(other.gameObject.CompareTag("CarCollider"))
 		{
-			//if(other.transform!=carSender)
+			carTouched=other.transform;
 			carContact=true;
 		}
 	}
@@ -134,13 +134,31 @@ public class Carapace : MonoBehaviour {
 		{
 			Destroy(gameObject,0.2f);
 		}
-		Quaternion targetRotation=Quaternion.LookRotation(target.position-transform.position);
-		transform.rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation,targetRotation,homingRotation));
+		GoTowardsTarget(target);
 	}
 
 	//Gestion des carapaces bleues
 	void BlueHoming()
 	{
+		if(carContact && carTouched==target)
+		{
+			Destroy (gameObject,0.2f);
+		}
+		if((target.position-transform.position).sqrMagnitude < 10f)
+		{
+			Debug.Log ("Red Aiming");
+			GoTowardsTarget(target);
+		}
+		else
+		{
+			GoTowardsTarget(this.GetComponent<WaypointProgressTracker>().target);
+			Debug.Log ("Blue Aiming");
+		}
 	}
 
+	void GoTowardsTarget(Transform targetAim)
+	{
+		Quaternion targetRotation=Quaternion.LookRotation(targetAim.position-transform.position);
+		transform.rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation,targetRotation,homingRotation));
+	}
 }

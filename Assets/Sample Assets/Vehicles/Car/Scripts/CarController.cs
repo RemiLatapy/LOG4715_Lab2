@@ -827,7 +827,7 @@ public class CarController : MonoBehaviour
 			break;
 		}
 		//TODO: Remove this line
-		item=Items.carapaceRouge;
+		item=Items.carapaceBleue;
 	}
 	
 	// When nitro is used, set maxSpeed and maxTorque to nitro values which are bigger
