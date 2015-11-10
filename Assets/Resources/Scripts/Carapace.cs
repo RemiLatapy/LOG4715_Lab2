@@ -75,7 +75,7 @@ public class Carapace : MonoBehaviour {
 	// Update is called once per Fixtime
 	void FixedUpdate () {
 		//rigidbody.AddForce(transform.forward*speed,ForceMode.VelocityChange);
-		rigidbody.velocity=transform.forward*speed;
+
 		switch(tag)
 		{
 			case "CaraRouge":
@@ -116,6 +116,8 @@ public class Carapace : MonoBehaviour {
 	//Gestion des carapaces vertes
 	void GreenHoming()
 	{
+		//rigidbody.velocity=transform.forward*speed;
+		rigidbody.AddForce(transform.forward*speed,ForceMode.VelocityChange);
 		if(carContact)
 			Destroy(gameObject,0.1f);
 		else if(wallContact)
@@ -130,6 +132,7 @@ public class Carapace : MonoBehaviour {
 	//Gestion des carapces rouges
 	void RedHoming()
 	{
+		rigidbody.velocity=transform.forward*speed;
 		if(carContact||wallContact)
 		{
 			Destroy(gameObject,0.2f);
@@ -140,6 +143,7 @@ public class Carapace : MonoBehaviour {
 	//Gestion des carapaces bleues
 	void BlueHoming()
 	{
+		rigidbody.velocity=transform.forward*speed;
 		if(carContact && (carTouched.position-target.position).sqrMagnitude < 2)
 		{
 			Destroy (gameObject,0.2f);
