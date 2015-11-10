@@ -692,7 +692,7 @@ public class CarController : MonoBehaviour
 	void OnTriggerEnter(Collider other) 
 	{
 		// If we pick up an object and we don't already have one
-		if (other.gameObject.CompareTag ("Pick Up")) //&& item == 0)
+		if (other.gameObject.CompareTag ("Pick Up") && (item == Items.vide || item == Items.nitro))
 		{
 			// Destroy the object
 			Destroy (other.gameObject);
