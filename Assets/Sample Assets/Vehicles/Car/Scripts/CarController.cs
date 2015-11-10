@@ -34,12 +34,12 @@ public class CarController : MonoBehaviour
 	{
 		public bool PreciseAirControl = true;										// Full control
 		public bool preserveDirectionWhileInAir = false;							// flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
-		[Range(0, 10f)] public float adjustPitchControl = 3f;								// pitch control
-		[Range(0, 10f)] public float adjustRollControl = 3f;								// roll control
+		[Range(0, 10f)] public float adjustPitchControl = 3f;						// pitch control
+		[Range(0, 10f)] public float adjustRollControl = 3f;						// roll control
 	}
 
 	[SerializeField] [Range(1, 10f)] private float jumpHigh = 3f;					// Jump high in meter (independant from mass)
-	float minSkidToScore = 0.7f;														// Minimum avg skid to score
+	float minSkidToScore = 0.7f;													// Minimum avg skid to score
 
 	[SerializeField] private Advanced advanced;                                     // container for the advanced setting which will expose as a foldout in the inspector
 	

@@ -109,4 +109,10 @@ public class CheckpointManager : MonoBehaviour
 	{
 		return car.GetComponent<CarUserControlMP>() != null;
 	}
+
+	public Checkpoint GetLastCheckpoint(CarController car) {
+		int indexCheckpoint =  _carPositions [car].checkPoint;
+		Checkpoint[] checkpoints = GameObject.Find ("Checkpoints").GetComponentsInChildren<Checkpoint> ();
+		return checkpoints[indexCheckpoint];
+	}
 }
