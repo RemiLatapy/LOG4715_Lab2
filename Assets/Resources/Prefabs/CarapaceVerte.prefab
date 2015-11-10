@@ -86,7 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccae75f3113ee764c9d06a978f97a260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: .5
+  speed: 20
+  homingRotation: .100000001
   maxRebonds: 3
 --- !u!135 &13513560
 SphereCollider:

@@ -50,6 +50,8 @@ public class WaypointProgressTracker : MonoBehaviour {
 		{
 			target = new GameObject(name+" Waypoint Target").transform;
 		}
+		if(circuit == null)
+			circuit= WaypointCircuit.FindObjectOfType<WaypointCircuit>();
 
 		Reset ();
 
