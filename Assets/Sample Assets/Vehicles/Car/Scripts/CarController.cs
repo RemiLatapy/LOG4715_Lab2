@@ -32,13 +32,14 @@ public class CarController : MonoBehaviour
 	[System.Serializable]
 	public class AirControl                                                         // the advanced settings for the car controller
 	{
+		public bool PreciseAirControl = true;										// Full control
 		public bool preserveDirectionWhileInAir = false;							// flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
-		[Range(0, 10f)] public float adjustPitch = 3f;								// pitch control
-		[Range(0, 10f)] public float adjustRoll = 3f;								// roll control
+		[Range(0, 10f)] public float adjustPitchControl = 3f;						// pitch control
+		[Range(0, 10f)] public float adjustRollControl = 3f;						// roll control
 	}
 
 	[SerializeField] [Range(1, 10f)] private float jumpHigh = 3f;					// Jump high in meter (independant from mass)
-	float minSkidToScore = 0.7f;														// Minimum avg skid to score
+	float minSkidToScore = 0.7f;													// Minimum avg skid to score
 
 	[SerializeField] private Advanced advanced;                                     // container for the advanced setting which will expose as a foldout in the inspector
 	
@@ -188,15 +189,19 @@ public class CarController : MonoBehaviour
 	}
 
 	public float AdjustPitch {
-		get { return airControl.adjustPitch; }
+		get { return airControl.adjustPitchControl; }
 	}
 
 	public float AdjustRoll	{
-		get { return airControl.adjustRoll; }
+		get { return airControl.adjustRollControl; }
 	}
 
 	public bool PreserveDirectionWhileInAir {
 		get { return airControl.preserveDirectionWhileInAir; }
+	}
+
+	public bool PreciseAirControl {
+		get { return airControl.PreciseAirControl; }
 	}
 	
 	// variables added due to separating out things into functions!
@@ -584,11 +589,15 @@ public class CarController : MonoBehaviour
 	public void AirOrientation (float pitch, float roll)
 	{
 		if (!anyOnGround) {
-			Vector3 targetLocalAngularVelocity = new Vector3(
-				pitch*AdjustPitch, 
-				transform.InverseTransformDirection(rigidbody.angularVelocity).y,
-				-roll*AdjustRoll);
-			rigidbody.angularVelocity = transform.TransformVector(targetLocalAngularVelocity);
+			if (PreciseAirControl) {
+				Vector3 targetLocalAngularVelocity = new Vector3 (
+				pitch * AdjustPitch, 
+				transform.InverseTransformDirection (rigidbody.angularVelocity).y,
+				-roll * AdjustRoll);
+				rigidbody.angularVelocity = transform.TransformVector (targetLocalAngularVelocity);
+			} else {
+				rigidbody.AddRelativeTorque (pitch * AdjustPitch * 50, 0, -roll * AdjustRoll * 50);
+			}
 		}
 	}
 	
