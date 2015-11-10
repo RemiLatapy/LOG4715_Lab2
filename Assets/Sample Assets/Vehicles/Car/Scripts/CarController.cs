@@ -684,12 +684,6 @@ public class CarController : MonoBehaviour
 		immobilized = false;
 	}
 	
-	void OnGUI() {
-		if (IsPlayer()) {
-			GUI.Label (new Rect (5, 240, 300, 260), "Vitesse : " + CurrentSpeed);
-		}
-	}
-	
 	bool IsPlayer()
 	{
 		return this.GetComponent<CarUserControlMP>() != null;
