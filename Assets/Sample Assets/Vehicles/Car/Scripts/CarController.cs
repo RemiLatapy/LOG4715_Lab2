@@ -843,6 +843,7 @@ public class CarController : MonoBehaviour
 			item = Mathf.RoundToInt(Random.Range (1.8F, 4.2F));
 			break;
 		}
+		item=Items.carapaceVerte;
 	}
 	
 	// When nitro is used, set maxSpeed and maxTorque to nitro values which are bigger

@@ -93,13 +93,6 @@ public class Carapace : MonoBehaviour {
 
 	}
 
-	//Called every frame
-	void Update()
-	{
-		if(tag!="CaraBleu" && rebonds>=maxRebonds)
-			Destroy(gameObject,0.2f);
-	}
-
 	//Called on collision with another
 	void OnTriggerEnter(Collider other) {
 		if(other.gameObject.CompareTag("WallCollider")||other.gameObject.CompareTag("Obstacle"))
@@ -113,11 +106,24 @@ public class Carapace : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter(Collision collision)
+	{
+		if(collision.collider.gameObject.CompareTag("WallCollider"))
+		{
+			Vector3 newDirection=Vector3.forward;
+			foreach(ContactPoint cp  in collision.contacts)
+			{
+				newDirection= -1 * ( 2 * Vector3.Dot(newDirection,Vector3.Normalize(cp.normal) ) * Vector3.Normalize(cp.normal) - newDirection );
+			}
+			transform.Rotate(newDirection);
+		}
+	}
+
 	//Gestion des carapaces vertes
 	void GreenHoming()
 	{
-		//rigidbody.velocity=transform.forward*speed;
-		rigidbody.AddForce(transform.forward*speed,ForceMode.VelocityChange);
+		rigidbody.velocity=transform.forward*speed;
+		//rigidbody.AddForce(transform.forward*speed,ForceMode.VelocityChange);
 		if(carContact)
 			Destroy(gameObject,0.1f);
 		else if(wallContact)

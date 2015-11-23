@@ -15732,7 +15732,6 @@ GameObject:
   - 114: {fileID: 481286553}
   - 114: {fileID: 481286552}
   - 114: {fileID: 481286556}
-  - 64: {fileID: 481286558}
   m_Layer: 8
   m_Name: Joueur 1
   m_TagString: Player
@@ -15929,19 +15928,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &481286558
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 481286549}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
-  m_Mesh: {fileID: 0}
 --- !u!1 &487389443
 GameObject:
   m_ObjectHideFlags: 0
