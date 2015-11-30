@@ -25,6 +25,8 @@ public class CheckpointManager : MonoBehaviour
 		public int checkPoint;
 		public int passageOrder;
 		public int position;
+		public int activeShortcut = -1;
+		public bool shortcutPassed = false;
 		public CarController car;
 
 		public int Score {
@@ -95,14 +97,31 @@ public class CheckpointManager : MonoBehaviour
 					}
 				}
 			}
-			else if (carData.checkPoint == checkPointIndex-1) //Checkpoints must be hit in order (any checkpoint)
+			else if (carData.checkPoint == checkPointIndex-1 || carData.shortcutPassed) //Checkpoints must be hit in order (any checkpoint)
 			{
 				carData.checkPoint = checkPointIndex;
 				carData.passageOrder = passageOrder;
+				carData.shortcutPassed = false;
+				carData.activeShortcut = -1;
 			}
 		}
 
 
+	}
+
+	public void ShortcutTriggered(CarController car, int shortcutIndex, bool isEntry)
+	{
+		PositionData carData = _carPositions[car];
+
+		if (isEntry) {
+			carData.activeShortcut = shortcutIndex;
+			carData.shortcutPassed = false;
+		} else {
+			if (carData.activeShortcut == shortcutIndex) {
+				carData.shortcutPassed = true;
+				carData.activeShortcut = -1;
+			}
+		}
 	}
 
 	bool IsPlayer(CarController car)

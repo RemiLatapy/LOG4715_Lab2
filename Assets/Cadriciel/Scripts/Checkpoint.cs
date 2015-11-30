@@ -4,10 +4,10 @@ using System.Collections;
 public class Checkpoint : MonoBehaviour 
 {
 	[SerializeField]
-	private CheckpointManager _manager;
+	protected CheckpointManager _manager;
 
 	[SerializeField]
-	private int _index;
+	protected int _index;
 
 	private int passageOrder = 999;
 
