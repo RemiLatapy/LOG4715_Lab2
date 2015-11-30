@@ -2340,15 +2340,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 125.099998
+      value: 125.239998
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 193.5
+      value: 193.800003
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 235.199997
+      value: 235.520004
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2376,7 +2376,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_TagString
-      value: Obstacle
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 100080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_Name
@@ -37596,7 +37596,7 @@ GameObject:
   - 4: {fileID: 1104837423}
   m_Layer: 0
   m_Name: Jump Ramp
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -38245,7 +38245,7 @@ GameObject:
   - 4: {fileID: 1122233919}
   m_Layer: 0
   m_Name: Jump Ramp Shortcut
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -38257,7 +38257,7 @@ Transform:
   m_PrefabInternal: {fileID: 77685372}
   m_GameObject: {fileID: 1122233918}
   m_LocalRotation: {x: 0, y: -.978824794, z: 0, w: .204699963}
-  m_LocalPosition: {x: 125.099998, y: 193.5, z: 235.199997}
+  m_LocalPosition: {x: 125.239998, y: 193.800003, z: 235.520004}
   m_LocalScale: {x: .80553472, y: 1, z: 2.20683908}
   m_Children:
   - {fileID: 1018898459}
@@ -45088,7 +45088,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_TagString
-      value: Obstacle
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
