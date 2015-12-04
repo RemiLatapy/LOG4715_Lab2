@@ -55,12 +55,12 @@ Material:
         second: .00999999978
       data:
         first:
-          name: _Parallax
-        second: .0199999996
-      data:
-        first:
           name: _SpecThreshold
         second: .699999988
+      data:
+        first:
+          name: _Parallax
+        second: .0199999996
     m_Colors:
       data:
         first:
