@@ -17,7 +17,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 899f06fe9b3b7ad4c86287efb479db5b, type: 3}
+          m_Texture: {fileID: 2800000, guid: 024663898a04a924bbc5282e24e50f30, type: 3}
           m_Scale: {x: 3, y: 3}
           m_Offset: {x: 0, y: 0}
       data:
@@ -26,6 +26,13 @@ Material:
         second:
           m_Texture: {fileID: 2800000, guid: 3cc8bad26f300f54cb986fd885f2548b, type: 3}
           m_Scale: {x: 3, y: 3}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DecalTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:

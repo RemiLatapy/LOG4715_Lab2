@@ -13,7 +13,7 @@ public class StartScreenManager : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
 		{
-			Application.LoadLevel("course");
+			Application.LoadLevel("courseFlo2");
 		}
 	}
 }
