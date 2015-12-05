@@ -8,10 +8,12 @@ public class MovingPlatforms : MonoBehaviour {
 	private Vector3 newPosition;
 	private string currentState;
 	public float smooth;
+	public float repeatTime;
 
 	// Use this for initialization
 	void Start () {
 		currentState = "";
+		ChangeTarget ();
 	}
 	
 	// Update is called once per frame
@@ -32,5 +34,7 @@ public class MovingPlatforms : MonoBehaviour {
 			currentState = "Moving To Position 2";
 			newPosition = position2.position;
 		}
+
+		Invoke ("ChangeTarget", repeatTime);
 	}
 }
