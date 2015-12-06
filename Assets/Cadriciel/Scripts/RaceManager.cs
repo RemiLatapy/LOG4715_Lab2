@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using System;
 
 public class RaceManager : MonoBehaviour 
 {
@@ -20,11 +22,20 @@ public class RaceManager : MonoBehaviour
 
 	public static int numberOfCars;
 
+	float timer;
+	bool raceIsRunning = true;
+
 	// Use this for initialization
 	void Awake () 
 	{
+		raceIsRunning = true;
 		CarActivation(false);
 		numberOfCars = _carContainer.transform.childCount;
+	}
+
+	void Update()
+	{
+		restartRace ();
 	}
 	
 	void Start()
@@ -44,29 +55,34 @@ public class RaceManager : MonoBehaviour
 		while (count > 0);
 		_announcement.text = "Partez!";
 		CarActivation(true);
+		timer = Time.time;
 		yield return new WaitForSeconds(1.0f);
 		_announcement.text = "";
 	}
 
-	public void EndRace(string winner)
-	{
-		StartCoroutine(EndRaceImpl(winner));
-	}
-
-	IEnumerator EndRaceImpl(string winner)
+	public void EndRace()
 	{
 		CarActivation(false);
-		_announcement.fontSize = 20;
-		int count = _endCountdown;
-		do 
-		{
-			_announcement.text = "Victoire: " + winner + " en premiere place. Retour au titre dans " + count.ToString();
-			yield return new WaitForSeconds(1.0f);
-			count--;
-		}
-		while (count > 0);
+		raceIsRunning = false;
+		TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time - timer);
+		string timeText = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
 
-		Application.LoadLevel("boot");
+
+		EndRanking endRanking = GameObject.Find ("Canvas End/Ranking").GetComponent<EndRanking>();
+		BestTimeManager bestTimeManager = GameObject.Find ("Canvas End/BestTime").GetComponent<BestTimeManager>();
+		PressSpaceManager pressSpaceManager = GameObject.Find ("Canvas End/PressSpace").GetComponent<PressSpaceManager>();
+
+		endRanking.UpdateFinalRanking ();
+		bestTimeManager.UpdateFinalTime (timeText);
+		pressSpaceManager.StartCoroutine ("ToggleVisibility");
+		
+		SwitchCanvas ();
+	}
+
+	public void restartRace()
+	{
+		if(!raceIsRunning && CrossPlatformInput.GetButtonDown("Jump"))
+			Application.LoadLevel("courseFlo2");
 	}
 
 	public void Announce(string announcement, float duration = 2.0f)
@@ -106,5 +122,14 @@ public class RaceManager : MonoBehaviour
 		_announcement.text = text;
 		yield return new WaitForSeconds(timeMS/1000f);
 		_announcement.text = "";
+	}
+
+	static void SwitchCanvas ()
+	{
+		GameObject canvas = GameObject.Find ("Canvas");
+		canvas.SetActive (false);
+		GameObject.Find ("Canvas End/Ranking").GetComponent<Text>().enabled = true;
+		GameObject.Find ("Canvas End/BestTime").GetComponent<Text>().enabled = true;
+		GameObject.Find ("Canvas End/PressSpace").GetComponent<Text>().enabled = true;
 	}
 }

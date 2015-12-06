@@ -93,7 +93,7 @@ public class CheckpointManager : MonoBehaviour
 					if (carData.lap >= _totalLaps)
 					{
 						_finished = true;
-						GetComponent<RaceManager>().EndRace(car.name.ToLower());
+						GetComponent<RaceManager>().EndRace();
 					}
 				}
 			}
@@ -134,4 +134,19 @@ public class CheckpointManager : MonoBehaviour
 		Checkpoint[] checkpoints = GameObject.Find ("Checkpoints").GetComponentsInChildren<Checkpoint> ();
 		return checkpoints[indexCheckpoint];
 	}
+
+	public string RankingFormated {
+		get {
+			string formatedRanking = "";
+			rank.Sort();
+			int i = 1;
+			foreach (PositionData car in rank) {
+				formatedRanking += i + ". " + car.car.name + "\n";
+				i++;
+			}
+
+			return formatedRanking;
+		}
+	}
+
 }
