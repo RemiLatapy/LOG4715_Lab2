@@ -66,8 +66,7 @@ public class RaceManager : MonoBehaviour
 		raceIsRunning = false;
 		TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time - timer);
 		string timeText = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
-
-
+		
 		EndRanking endRanking = GameObject.Find ("Canvas End/Ranking").GetComponent<EndRanking>();
 		BestTimeManager bestTimeManager = GameObject.Find ("Canvas End/BestTime").GetComponent<BestTimeManager>();
 		PressSpaceManager pressSpaceManager = GameObject.Find ("Canvas End/PressSpace").GetComponent<PressSpaceManager>();
@@ -75,7 +74,7 @@ public class RaceManager : MonoBehaviour
 		endRanking.UpdateFinalRanking ();
 		bestTimeManager.UpdateFinalTime (timeText);
 		pressSpaceManager.StartCoroutine ("ToggleVisibility");
-		
+
 		SwitchCanvas ();
 	}
 
@@ -109,6 +108,15 @@ public class RaceManager : MonoBehaviour
 			car.enabled = activate;
 		}
 
+		if (!activate) {
+			foreach (CarController car in _carContainer.GetComponentsInChildren<CarController>()) {
+				car.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+			}
+		} else {
+			foreach (CarController car in _carContainer.GetComponentsInChildren<CarController>()) {
+				car.rigidbody.constraints = RigidbodyConstraints.None;
+			}
+		}
 	}
 
 	public float AdjustRubberbanding {
@@ -131,5 +139,8 @@ public class RaceManager : MonoBehaviour
 		GameObject.Find ("Canvas End/Ranking").GetComponent<Text>().enabled = true;
 		GameObject.Find ("Canvas End/BestTime").GetComponent<Text>().enabled = true;
 		GameObject.Find ("Canvas End/PressSpace").GetComponent<Text>().enabled = true;
+		Camera minimapCam = GameObject.Find ("Minimap/Camera").GetComponent<Camera>();
+		minimapCam.clearFlags = CameraClearFlags.Nothing;
+		minimapCam.rect = new Rect(0.5f, 0f, 0.8f, 0.8f);
 	}
 }
