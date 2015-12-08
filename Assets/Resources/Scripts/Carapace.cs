@@ -50,7 +50,6 @@ public class Carapace : MonoBehaviour {
 				}
 			}
 		}
-		Debug.Log(target.name);
 	}
 
 	/*Find the first car and set it as target*/
@@ -154,7 +153,6 @@ public class Carapace : MonoBehaviour {
 		{
 			Destroy (gameObject,0.2f);
 		}
-		Debug.Log("Distance : "+target.name+"  "+ (target.position-transform.position).sqrMagnitude);
 		if((target.position-transform.position).sqrMagnitude < 1000f)
 		{
 			//Debug.Log ("Red Aiming");

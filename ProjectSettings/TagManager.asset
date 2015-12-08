@@ -25,6 +25,7 @@ TagManager:
   - PlatformCollider
   - Road
   - Water
+  - SpeedBoost2
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

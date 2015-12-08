@@ -89,8 +89,8 @@ public class CarController : MonoBehaviour
 	// publicly read-only props, useful for GUI, Sound effects, etc.
 	public int GearNum { get; private set; }                                        // the current gear we're in.
 	public float CurrentSpeed { get; private set; } 								// the current speed of the car
-	[SerializeField] public static float speedBooster = 800;								// the rate of the Booster
-	public float CurrentSteerAngle{ get; private set; }                             // The current steering angle for steerable wheels.
+	[SerializeField] public float speedBooster = 5f;// the rate of the Booster
+	public float CurrentSteerAngle{ get; private set; }			                   // The current steering angle for steerable wheels.
 	public float AccelInput { get; private set; }                                   // the current acceleration input
 	public float BrakeInput { get; private set; }                                   // the current brake input
 	public float GearFactor  { get; private set; }                                  // value between 0-1 indicating where the current revs fall within the current range of revs for this gear
@@ -126,7 +126,6 @@ public class CarController : MonoBehaviour
 	[Range(0, 2)] private float reduceNitro = 0.7f;
 	[SerializeField] 
 	[Range(100, 200)] private float nitroSpeed = 160f;
-	
 	// Variables use for damages
 	private float damagePoints = 0;
 	[SerializeField] 
@@ -754,10 +753,20 @@ public class CarController : MonoBehaviour
 		bool water=false;
 		if (other.gameObject.CompareTag ("SpeedBoost"))
 		{
+			if(other.gameObject.name=="SpeedBoost 2")
+			{
+				Debug.Log (other.gameObject.name);
+				this.rigidbody.AddForce(Quaternion.AngleAxis(0, other.transform.forward)  *Vector3.forward* speedBooster ,ForceMode.Acceleration);
+				StartNitroUse(); 
+				nitroUsed=false;
+			}
+			else
+			{
 
-			this.rigidbody.AddForce(Quaternion.AngleAxis(0, Vector3.up) * other.transform.forward * 50,ForceMode.Acceleration);
-			StartNitroUse(); 
-			nitroUsed=false;
+				this.rigidbody.AddForce(Quaternion.AngleAxis(90, other.transform.forward)  *Vector3.forward* speedBooster ,ForceMode.Acceleration);
+				StartNitroUse(); 
+				nitroUsed=false;
+			}
 		}
 
 		else if(other.gameObject.CompareTag("Water"))

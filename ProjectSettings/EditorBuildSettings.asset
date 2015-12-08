@@ -50,4 +50,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Cadriciel/Scenes/boot.unity
   - enabled: 1
-    path: Assets/Cadriciel/Scenes/courseFlo2.unity
+    path: Assets/Cadriciel/Scenes/course.unity
