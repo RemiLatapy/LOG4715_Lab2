@@ -150,6 +150,8 @@ public class CarController : MonoBehaviour
 	public RawImage leftArrow;
 	public RawImage rightArrow;
 
+	public RawImage bam;
+
 	// Variables for speedometer
 	public RawImage speedOMeterDial;
 	public RawImage speedOMeterPointer;
@@ -262,6 +264,7 @@ public class CarController : MonoBehaviour
 		{
 			this.leftArrow.enabled = false;
 			this.rightArrow.enabled = false;
+			this.bam.enabled = false;
 			nitroSlider.value = nitroLevel;
 			HideItemBox();
 			for (int i = 0; i < itemWon.Length; i++) {
@@ -802,16 +805,26 @@ public class CarController : MonoBehaviour
 
 	void OnCollisionEnter(Collision col)
 	{
-		Transform parent = col.collider.transform.parent;
-		if (parent != null) {
-			switch (parent.gameObject.tag) {
+		//Transform parent = col.collider.transform.parent;
+		Transform tranform = col.collider.transform.parent;
+		if (transform != null) {
+			switch (tranform.gameObject.tag) {
 			case "WallCollider":
+				if(IsPlayer ()) {
+					StartCoroutine(ShowBAM(1f));
+				}
 				applyDamage (wallDamageFactor, CurrentSpeed);
 				break;
 			case "Obstacle":
 				applyDamage (obstacleDamageFactor, CurrentSpeed);
+				if(IsPlayer ()) {
+					StartCoroutine(ShowBAM(1f));
+				}
 				break;
 			case "Player":
+				if(IsPlayer ()) {
+					StartCoroutine(ShowBAM(1f));
+				}
 				applyDamage (carDamageFactor, CurrentSpeed);
 				break;
 			}
@@ -822,6 +835,13 @@ public class CarController : MonoBehaviour
 	{
 		// Calculate the damage points in function of the speed of the impact
 		this.damagePoints += Mathf.FloorToInt(damagePoints*Mathf.Abs(speed));
+	}
+
+	IEnumerator ShowBAM (float delay) {
+		this.bam.enabled = true;
+		yield return new WaitForSeconds(delay);
+		this.bam.enabled = false;
+		
 	}
 	
 	void randomizeItem ()
