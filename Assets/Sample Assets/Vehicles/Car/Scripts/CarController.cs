@@ -751,15 +751,11 @@ public class CarController : MonoBehaviour
 	}
 	void OnTriggerStay(Collider other)
 	{
-
-		if(gameObject.name=="Joueur 1")
-		{Debug.Log(other.gameObject.name);}
 		bool water=false;
 		if (other.gameObject.CompareTag ("SpeedBoost"))
 		{
-			Debug.Log (other.transform.forward);
 
-			this.rigidbody.AddForce(Quaternion.AngleAxis(90, Vector3.up) * other.transform.forward * 50,ForceMode.Acceleration);
+			this.rigidbody.AddForce(Quaternion.AngleAxis(0, Vector3.up) * other.transform.forward * 50,ForceMode.Acceleration);
 			StartNitroUse(); 
 			nitroUsed=false;
 		}
@@ -777,8 +773,6 @@ public class CarController : MonoBehaviour
 	
 	void OnTriggerExit(Collider other)
 	{
-		if(gameObject.name=="Joueur 1")
-			   {Debug.Log(other.gameObject.name);}
 		if (other.gameObject.CompareTag ("SpeedBoost"))
 		{
 			boosterUsed=false;
