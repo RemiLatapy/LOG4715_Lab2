@@ -89,7 +89,7 @@ public class CarController : MonoBehaviour
 	// publicly read-only props, useful for GUI, Sound effects, etc.
 	public int GearNum { get; private set; }                                        // the current gear we're in.
 	public float CurrentSpeed { get; private set; } 								// the current speed of the car
-	[SerializeField] public static float speedBooster = 1500;								// the rate of the Booster
+	[SerializeField] public static float speedBooster = 800;								// the rate of the Booster
 	public float CurrentSteerAngle{ get; private set; }                             // The current steering angle for steerable wheels.
 	public float AccelInput { get; private set; }                                   // the current acceleration input
 	public float BrakeInput { get; private set; }                                   // the current brake input
@@ -749,8 +749,10 @@ public class CarController : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag ("SpeedBoost"))
 		{
-			this.rigidbody.AddForce(this.transform.forward*speedBooster);
-			StartNitroUse();
+			Debug.Log (other.transform.forward);
+
+			this.rigidbody.AddForce(Quaternion.AngleAxis(-90, Vector3.right) * other.transform.forward * 50,ForceMode.Acceleration);
+			StartNitroUse(); 
 			nitroUsed=false;
 		}
 	}
