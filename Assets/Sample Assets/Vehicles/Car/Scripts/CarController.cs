@@ -141,7 +141,8 @@ public class CarController : MonoBehaviour
 	[SerializeField] 
 	[Range(0, 2)] private float carDamageFactor = 0.3f;
 	private float damageFactor = 1;
-	// The damage factor that will be applied to damageFactor 
+	// The damage factor that will be applied to damageFactor
+	private float zoneFactor = 1;
 	[SerializeField] 
 	[Range(1, 3)] private float appliedDamageFactor = 2;
 
@@ -460,7 +461,7 @@ public class CarController : MonoBehaviour
 		// current speed is measured in the forward direction of the car (sliding sideways doesn't count!)
 		CurrentSpeed = transform.InverseTransformDirection (rigidbody.velocity).z;
 		// speedfactor is a normalized representation of speed in relation to max speed:
-		float speed = ((reversing ? maxReversingSpeed : maxSpeed) / damageFactor) * nitroFactor;
+		float speed = ((reversing ? maxReversingSpeed : maxSpeed) / (damageFactor*zoneFactor)) * nitroFactor;
 		
 		SpeedFactor = Mathf.InverseLerp (0, speed, Mathf.Abs (CurrentSpeed));
 		curvedSpeedFactor = reversing ? 0 : CurveFactor (SpeedFactor);
@@ -750,22 +751,46 @@ public class CarController : MonoBehaviour
 	}
 	void OnTriggerStay(Collider other)
 	{
+
+		if(gameObject.name=="Joueur 1")
+		{Debug.Log(other.gameObject.name);}
+		bool water=false;
 		if (other.gameObject.CompareTag ("SpeedBoost"))
 		{
 			Debug.Log (other.transform.forward);
 
-			this.rigidbody.AddForce(Quaternion.AngleAxis(-90, Vector3.right) * other.transform.forward * 50,ForceMode.Acceleration);
+			this.rigidbody.AddForce(Quaternion.AngleAxis(90, Vector3.up) * other.transform.forward * 50,ForceMode.Acceleration);
 			StartNitroUse(); 
 			nitroUsed=false;
+		}
+
+		else if(other.gameObject.CompareTag("Water"))
+		{
+			zoneFactor=appliedDamageFactor;
+			water=true;
+		}
+		else if(!water && other.gameObject.CompareTag("Road"))
+        {
+			zoneFactor=1;
 		}
 	}
 	
 	void OnTriggerExit(Collider other)
 	{
+		if(gameObject.name=="Joueur 1")
+			   {Debug.Log(other.gameObject.name);}
 		if (other.gameObject.CompareTag ("SpeedBoost"))
 		{
 			boosterUsed=false;
 			StopNitroUse();
+		}
+		else if(other.gameObject.CompareTag("Road"))
+		{
+			zoneFactor=appliedDamageFactor;
+		}
+		else if(other.gameObject.CompareTag("Water"))
+		{
+			zoneFactor=1;
 		}
 	}
 
